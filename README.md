@@ -1,3 +1,3 @@
-# My Personal Web Page
+# Personal Website
 
 See https://mxnluz.io.
