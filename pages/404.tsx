@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/404.module.scss'
 
-import PolyBackground from '../components/PolyBackground';
+import MeshBackground from '../components/MeshBackground';
 
 
 const Error404: NextPage = () => {
@@ -12,7 +12,7 @@ const Error404: NextPage = () => {
         <title>Page not found | Maximilian Luz</title>
       </Head>
 
-      <PolyBackground className={styles.particles} />
+      <MeshBackground className={styles.particles} />
 
       <main className={styles.wrapper}>
         <p className={styles.errorcode}>404</p>

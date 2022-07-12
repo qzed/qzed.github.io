@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/home.module.scss'
 
-import PolyBackground from '../components/PolyBackground';
+import MeshBackground from '../components/MeshBackground';
 
 
 const Home: NextPage = () => {
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Personal website of Maximilian Luz" />
       </Head>
 
-      <PolyBackground className={styles.particles} />
+      <MeshBackground className={styles.particles} />
 
       <main className={styles.wrapper}>
         <p className={styles.notice}>

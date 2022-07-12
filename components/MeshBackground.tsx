@@ -10,7 +10,7 @@ async function init(engine: Engine) {
     await loadSlim(engine);
 }
 
-const PolyBackground = ({ className }: Props) => {
+const MeshBackground = ({ className }: Props) => {
     const options = {
         fpsLimit: 30,
         particles: {
@@ -57,4 +57,4 @@ const PolyBackground = ({ className }: Props) => {
     return <Particles className={className} init={init} options={options} />
 };
 
-export default PolyBackground;
+export default MeshBackground;
