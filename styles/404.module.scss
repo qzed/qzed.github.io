@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.base {
+  background-color: #0e1010;
+  color: #c8d4dc;
+
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60vh;
+  text-align: center;
+
+  p {
+    z-index: 1;
+  }
+}
+
+.particles {
+  z-index: -1000;
+}
+
+.errorcode {
+  font-family: "Playfair Display", monospace;
+  font-size: 128px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.errortext {
+  font-family: "Playfair Display", monospace;
+  font-size: 38px;
+  margin: 5px;
+}

@@ -1,21 +1,22 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/home.module.scss'
+import styles from '../styles/404.module.scss'
+
+import PolyBackground from '../components/PolyBackground';
+
 
 const Error404: NextPage = () => {
   return (
     <div className={styles.base}>
       <Head>
-        <title>Maximilian Luz</title>
+        <title>Page not found | Maximilian Luz</title>
       </Head>
 
+      <PolyBackground className={styles.particles} />
+
       <main className={styles.wrapper}>
-        <p className={styles.notice}>
-          404
-        </p>
-        <p className={styles.referral}>
-          Page not found.
-        </p>
+        <p className={styles.errorcode}>404</p>
+        <p className={styles.errortext}>Page not found!</p>
       </main>
     </div>
   )
