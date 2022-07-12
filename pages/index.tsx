@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/home.module.scss'
 
+import PolyBackground from '../components/PolyBackground';
+
+
 const Home: NextPage = () => {
   return (
     <div className={styles.base}>
@@ -9,6 +12,8 @@ const Home: NextPage = () => {
         <title>Maximilian Luz</title>
         <meta name="description" content="Personal website of Maximilian Luz" />
       </Head>
+
+      <PolyBackground className={styles.particles} />
 
       <main className={styles.wrapper}>
         <p className={styles.notice}>

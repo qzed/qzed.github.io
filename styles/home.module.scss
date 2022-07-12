@@ -28,6 +28,14 @@
   flex-direction: column;
   height: 60vh;
   text-align: center;
+
+  p {
+    z-index: 1;
+  }
+}
+
+.particles {
+  z-index: -1;
 }
 
 .notice {
