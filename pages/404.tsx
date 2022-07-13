@@ -14,9 +14,15 @@ const Error404: NextPage = () => {
 
       <MeshBackground className={styles.particles} />
 
-      <main className={styles.wrapper}>
-        <p className={styles.errorcode}>404</p>
-        <p className={styles.errortext}>Page not found!</p>
+      <main className={styles.main}>
+        <div className={styles.box}>
+          <div className={styles.column}>
+            <div className={styles.text}>
+              <p className={styles.errorcode}>404</p>
+              <p className={styles.errortext}>Page not found!</p>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   )

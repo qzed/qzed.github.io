@@ -2,7 +2,7 @@
 
 .base {
   background-color: #0e1010;
-  color: #c8d4dc;
+  color: #e5eff6;
 
   height: 100vh;
 }
@@ -24,15 +24,43 @@
   z-index: -1000;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  margin-top: 20vh;
+  background-color: rgba(#0a0c0c, 0.85);
+  width: 100vw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column {
+  margin: 0;
+  z-index: 1;
+  text-align: left;
+  text-align: center;
+}
+
+.text {
+  padding: 0em 2em 2.5em 2em;
+}
+
 .errorcode {
   font-family: "Playfair Display", serif;
   font-size: 128px;
   font-weight: bold;
-  margin: 5px;
+  margin: 0 0 5px 0;
+  padding-top: -2em;
 }
 
 .errortext {
   font-family: "Playfair Display", serif;
   font-size: 38px;
-  margin: 5px;
+  margin: 5px 0;
 }
