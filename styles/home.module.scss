@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "common/colors.scss";
+@import "common/fonts.scss";
 
 .base {
-  background-color: #0e1010;
-  color: #e5eff6;
+  background-color: $color-background-main;
+  color: $color-text;
 
   height: 100vh;
 }
@@ -21,7 +20,7 @@
 
 .box {
   margin-top: 25vh;
-  background-color: rgba(#0a0a0a, 0.85);
+  background-color: rgba($color-background-dark, 0.85);
   width: 100vw;
   z-index: 1;
   display: flex;
@@ -42,8 +41,8 @@
 }
 
 .notice {
-  font-family: "Playfair Display", serif;
-  font-weight: bold;
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
   font-size: 24pt;
   text-align: center;
 }
@@ -51,13 +50,13 @@
 .referral {
   text-align: center;
 
-  font-family: "Noto Serif", serif;
+  font-family: $font-family-serif;
+  font-weight: $font-weight-normal;
   font-size: 14pt;
-  font-weight: normal;
 
   a {
     color: #c8d4dc;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     text-decoration: none;
   }
 

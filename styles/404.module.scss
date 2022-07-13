@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import "common/colors.scss";
+@import "common/fonts.scss";
 
 .base {
-  background-color: #0e1010;
-  color: #e5eff6;
+  background-color: $color-background-main;
+  color: $color-text;
 
   height: 100vh;
 }
@@ -32,7 +33,7 @@
 
 .box {
   margin-top: 20vh;
-  background-color: rgba(#0a0a0a, 0.85);
+  background-color: rgba($color-background-dark, 0.85);
   width: 100vw;
   z-index: 1;
   display: flex;
@@ -52,15 +53,18 @@
 }
 
 .errorcode {
-  font-family: "Playfair Display", serif;
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
   font-size: 128px;
-  font-weight: bold;
+
   margin: 0 0 5px 0;
   padding-top: -2em;
 }
 
 .errortext {
-  font-family: "Playfair Display", serif;
+  font-family: $font-family-display;
+  font-weight: $font-weight-normal;
   font-size: 38px;
+
   margin: 5px 0;
 }
