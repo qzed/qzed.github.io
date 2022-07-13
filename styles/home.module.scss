@@ -1,10 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .base {
   background-color: #0e1010;
-  color: #c8d4dc;
+  color: #e5eff6;
 
   height: 100vh;
+}
+
+.particles {
+  z-index: -1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  margin-top: 25vh;
+  background-color: rgba(#0a0a0a, 0.85);
+  width: 100vw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column {
+  width: min(75ch, 100vw);
+  margin: 0;
+  z-index: 1;
+  text-align: left;
+  align-items: center;
+}
+
+.text {
+  margin: 2em;
+}
+
+.notice {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 24pt;
+  text-align: center;
+}
+
+.referral {
+  text-align: center;
+
+  font-family: "Noto Serif", serif;
+  font-size: 14pt;
+  font-weight: normal;
 
   a {
     color: #c8d4dc;
@@ -17,36 +66,6 @@
   }
 
   a:visited {
-    color: #c8d4dc;
+    color: #b4c0c9;
   }
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 60vh;
-  text-align: center;
-
-  p {
-    z-index: 1;
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-}
-
-.particles {
-  z-index: -1;
-}
-
-.notice {
-  font-family: "Source Code pro", monospace;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.referral {
-  font-family: "Source Code pro", monospace;
-  font-size: 17px;
 }

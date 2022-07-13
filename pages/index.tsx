@@ -15,14 +15,20 @@ const Home: NextPage = () => {
 
       <MeshBackground className={styles.particles} />
 
-      <main className={styles.wrapper}>
-        <p className={styles.notice}>
-          Under construction... Check back later.
-        </p>
-        <p className={styles.referral}>
-          In the meantime:
-          Have a look at the <a href="https://www.github.com/qzed">things I&apos;m working on</a>!
-        </p>
+      <main className={styles.main}>
+        <div className={styles.box}>
+          <div className={styles.column}>
+            <div className={styles.text}>
+              <p className={styles.notice}>
+                Under construction... Check back later.
+              </p>
+              <p className={styles.referral}>
+                In the meantime:
+                Have a look at the <a href="https://www.github.com/qzed">things I&apos;m working on</a>!
+              </p>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   )
