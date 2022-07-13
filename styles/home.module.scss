@@ -20,7 +20,7 @@
 
 .box {
   margin-top: 25vh;
-  background-color: rgba($color-background-dark, 0.85);
+  background-color: rgba($color-background-light, 0.85);
   width: 100vw;
   z-index: 1;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .column {
-  width: min(75ch, 100vw);
+  width: min(80ch, 100vw);
   margin: 0;
   z-index: 1;
   text-align: left;
