@@ -44,7 +44,7 @@ const Home: NextPage = () => {
                     Maximilian Luz
                   </p>
                   <ul>
-                    <li>MSc Student in Computer Science</li>
+                    <li>M.Sc. Student in Computer Science</li>
                     <li>Currently looking for a PhD position</li>
                     <li>Linux Kernel Maintainer</li>
                   </ul>
@@ -86,8 +86,8 @@ const Home: NextPage = () => {
                 I&apos;m interested in Computer Vision and Robotics and currently looking for a PhD position.
               </p>
               <p>
-                In my free time, I&apos;m a Linux Kernel maintainer for Microsoft Surface devices.
-                At the moment, I&apos;m trying to make the ARM-based Surface Pro X and its Qualcomm SoC play nice with Linux.
+                In my spare time, I&apos;m a Linux Kernel maintainer for Microsoft Surface devices.
+                Presently, I&apos;m trying to make the ARM-based Surface Pro X and its Qualcomm SoC play nice with Linux.
               </p>
             </div>
           </div>
