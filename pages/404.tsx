@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 import styles from '../styles/404.module.scss'
-
-import MeshBackground from '../components/MeshBackground';
 
 
 const Error404: NextPage = () => {
@@ -12,10 +11,8 @@ const Error404: NextPage = () => {
         <title>Page not found | Maximilian Luz</title>
       </Head>
 
-      <MeshBackground className={styles.particles} />
-
-      <main className={styles.main}>
-        <div className={styles.box}>
+      <main>
+        <div className={`${styles.section} ${styles.error}`}>
           <div className={styles.column}>
             <div className={styles.text}>
               <p className={styles.errorcode}>404</p>
@@ -24,6 +21,8 @@ const Error404: NextPage = () => {
           </div>
         </div>
       </main>
+
+      <Footer/>
     </div>
   )
 }

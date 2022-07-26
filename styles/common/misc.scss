@@ -1,0 +1,13 @@
+@import "colors.scss";
+
+@mixin box-shadow {
+  box-shadow: 0px 0.5px 3px $color-shadow;
+
+  @media (prefers-color-scheme: light) {
+    box-shadow: 0px 0.5px 3px $color-light-shadow;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 0px 0.5px 3px $color-dark-shadow;
+  }
+}

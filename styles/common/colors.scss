@@ -1,4 +1,67 @@
-$color-text: #c5cfd6;
-$color-background-main: #242933;
-$color-background-dark: #1f242c;
-$color-shadow: #0c0e12;
+$color-dark-text: #c5cfd6;
+$color-dark-text-light: #5b646b;
+$color-dark-background-main: #242933;
+$color-dark-background-dark: #1c2027;
+$color-dark-shadow: #0c0e12;
+
+$color-light-text: #213241;
+$color-light-text-light: #76828c;
+$color-light-background-main: #e8edf9;
+$color-light-background-dark: #dbe2ee;
+$color-light-shadow: #bfc2c9;
+
+$color-accent: #007cce;
+
+$color-text: $color-dark-text;
+$color-background-main: $color-dark-background-main;
+$color-background-dark: $color-dark-background-dark;
+$color-shadow: $color-dark-shadow;
+
+
+@mixin color-background-dark {
+  background-color: $color-background-dark;
+
+  @media (prefers-color-scheme: light) {
+    background-color: $color-light-background-dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-dark-background-dark;
+  }
+}
+
+@mixin color-background-main {
+  background-color: $color-background-main;
+
+  @media (prefers-color-scheme: light) {
+    background-color: $color-light-background-main;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-dark-background-main;
+  }
+}
+
+@mixin color-text {
+  color: $color-text;
+
+  @media (prefers-color-scheme: light) {
+    color: $color-light-text;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: $color-dark-text;
+  }
+}
+
+@mixin color-text-light {
+  color: $color-text;
+
+  @media (prefers-color-scheme: light) {
+    color: $color-light-text-light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: $color-dark-text-light;
+  }
+}

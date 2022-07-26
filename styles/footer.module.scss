@@ -1,0 +1,15 @@
+@import "common/colors.scss";
+@import "common/fonts.scss";
+
+
+.footer {
+  @include color-text-light;
+
+  font-family: $font-family-serif;
+  font-weight: $font-weight-normal;
+  font-size: 11pt;
+
+  margin-top: auto;
+  padding: 20px;
+  padding-top: 40px;
+}
