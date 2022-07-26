@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import Footer from '../components/Footer'
+import { makrdownFileToHtml } from '../lib/markdown'
 import styles from '../styles/home.module.scss'
 
 
@@ -14,7 +14,11 @@ function deobfuscate(text: string): string {
 }
 
 
-const Home: NextPage = () => {
+type Props = {
+  about: string
+}
+
+const Home = (props: Props) => {
   const email = "mailto:Maximilian%20Luz<luzmaximilian@gmail.com>";
   const emailObfuscated = obfuscate(email);
                 // <a href="mailto:Maximilian%20Luz<luzmaximilian@gmail.com>"></a>
@@ -76,20 +80,7 @@ const Home: NextPage = () => {
 
         <div className={`${styles.section} ${styles.about}`}>
           <div className={styles.column}>
-            <div className={styles.text}>
-              <h2>About Me</h2>
-              <p>
-                Hi, I&apos;m Maximilian.
-              </p>
-              <p>
-                I just finished my Master&apos;s Thesis in Computer Science at the University of Stuttgart, Germany.
-                I&apos;m interested in Computer Vision and Robotics and currently looking for a PhD position.
-              </p>
-              <p>
-                In my spare time, I&apos;m a Linux Kernel maintainer for Microsoft Surface devices.
-                Presently, I&apos;m trying to make the ARM-based Surface Pro X and its Qualcomm SoC play nice with Linux.
-              </p>
-            </div>
+            <div className={styles.text} dangerouslySetInnerHTML={{ __html: props.about }} />
           </div>
         </div>
       </main>
@@ -100,3 +91,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getStaticProps() {
+  return {
+    props: {
+      about: await makrdownFileToHtml("pages/index.about.md")
+    }
+  }
+}
