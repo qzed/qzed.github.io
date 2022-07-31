@@ -48,7 +48,7 @@ const Home = (props: Props) => {
                     Maximilian Luz
                   </p>
                   <ul>
-                    <li>M.Sc. Student in Computer Science</li>
+                    <li>Research Assistant @ <a href="https://www.vis.uni-stuttgart.de/en/institute/research_group/computer_vision/">Computer Vision Group, <br/> University of Stuttgart</a></li>
                     <li>Currently looking for a PhD position</li>
                     <li>Linux Kernel Maintainer</li>
                   </ul>
