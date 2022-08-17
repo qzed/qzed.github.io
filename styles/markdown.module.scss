@@ -1,0 +1,53 @@
+@import "common/colors.scss";
+@import "common/fonts.scss";
+@import "common/misc.scss";
+
+
+.markdown {
+  font-family: $font-family-serif;
+  font-weight: $font-weight-normal;
+  font-size: 15pt;
+
+  code {
+    font-family: $font-family-monospace;
+    font-weight: $font-weight-normal;
+    font-size: 12pt;
+
+    border-radius: 5px;
+  }
+
+  pre {
+    code {
+      font-family: $font-family-monospace;
+      font-weight: $font-weight-normal;
+      font-size: 11pt;
+    }
+  }
+
+  :global(.autolink-anchor) {
+    position: absolute;
+    margin-left: -0.75em;
+    padding-right: 0.5em;
+    padding-left: 0.1em;
+
+    text-decoration-line: none;
+  }
+
+  :global(.autolink-anchor) {
+    :global(.autolink-icon) {
+      visibility: hidden;
+    }
+  }
+
+  :global(.autolink-anchor):hover {
+    :global(.autolink-icon) {
+      visibility: visible;
+    }
+  }
+
+  *:hover > :global(.autolink-anchor) {
+    :global(.autolink-icon) {
+      visibility: visible;
+    }
+  }
+}

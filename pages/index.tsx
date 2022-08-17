@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Footer from '../components/Footer'
 import { makrdownFileToHtml } from '../lib/markdown'
 import styles from '../styles/home.module.scss'
+import mdstyles from '../styles/markdown.module.scss'
 
 
 function obfuscate(text: string): string {
@@ -80,7 +81,9 @@ const Home = (props: Props) => {
 
         <div className={`${styles.section} ${styles.about}`}>
           <div className={styles.column}>
-            <div className={styles.text} dangerouslySetInnerHTML={{ __html: props.about }} />
+            <div className={styles.text}>
+              <div className={mdstyles.markdown} dangerouslySetInnerHTML={{ __html: props.about }} />
+            </div>
           </div>
         </div>
       </main>
