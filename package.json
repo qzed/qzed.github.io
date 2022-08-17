@@ -10,19 +10,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "katex": "^0.16.0",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/katex": "^0.14.0",
     "@types/node": "18.0.1",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
+    "gray-matter": "^4.0.3",
+    "rehype-highlight": "^5.0.2",
+    "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
     "sass": "^1.53.0",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4",
+    "unified": "^10.1.2"
   }
 }
