@@ -24,6 +24,10 @@
     }
   }
 
+  :global(.hljs-comment), .markdown :global(.hljs-quote) {
+    color: #949ba6 !important;
+  }
+
   :global(.autolink-anchor) {
     position: absolute;
     margin-left: -0.75em;
