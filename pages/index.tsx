@@ -1,7 +1,9 @@
+import { getMDXComponent } from 'mdx-bundler/client'
 import Head from 'next/head'
+import React from 'react'
 import { useEffect } from 'react'
 import Footer from '../components/Footer'
-import { makrdownFileToHtml } from '../lib/markdown'
+import { renderMdxFile } from '../lib/mdx'
 import styles from '../styles/home.module.scss'
 import mdstyles from '../styles/markdown.module.scss'
 
@@ -22,7 +24,7 @@ type Props = {
 const Home = (props: Props) => {
   const email = "mailto:Maximilian%20Luz<luzmaximilian@gmail.com>";
   const emailObfuscated = obfuscate(email);
-                // <a href="mailto:Maximilian%20Luz<luzmaximilian@gmail.com>"></a>
+
   useEffect(() => {
     var elem = document.getElementById("maillink") as HTMLAnchorElement;
 
@@ -30,6 +32,8 @@ const Home = (props: Props) => {
       elem.href=deobfuscate(emailObfuscated);
     }
   });
+
+  const About = React.useMemo(() => getMDXComponent(props.about), [props.about])
 
   return (
     <div className={styles.base}>
@@ -82,7 +86,9 @@ const Home = (props: Props) => {
         <div className={`${styles.section} ${styles.about}`}>
           <div className={styles.column}>
             <div className={styles.text}>
-              <div className={mdstyles.markdown} dangerouslySetInnerHTML={{ __html: props.about }} />
+              <div className={mdstyles.markdown}>
+                <About />
+              </div>
             </div>
           </div>
         </div>
@@ -98,7 +104,7 @@ export default Home
 export async function getStaticProps() {
   return {
     props: {
-      about: await makrdownFileToHtml("pages/index.about.md")
+      about: (await renderMdxFile("pages/index.about.mdx")).code
     }
   }
 }
