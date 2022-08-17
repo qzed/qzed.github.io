@@ -29,29 +29,21 @@
   }
 
   :global(.autolink-anchor) {
-    position: absolute;
-    margin-left: -0.75em;
-    padding-right: 0.5em;
-    padding-left: 0.1em;
-
     text-decoration-line: none;
   }
 
-  :global(.autolink-anchor) {
-    :global(.autolink-icon) {
-      visibility: hidden;
-    }
+  :global(.autolink-anchor)::before {
+    content: '#';
+    position: absolute;
+    margin-left: -0.75em;
+    padding-right: 0.175em;
+    padding-left: 0.1em;
+
+    text-decoration-line: none;
+    visibility: hidden;
   }
 
-  :global(.autolink-anchor):hover {
-    :global(.autolink-icon) {
+  *:hover > :global(.autolink-anchor)::before {
       visibility: visible;
-    }
-  }
-
-  *:hover > :global(.autolink-anchor) {
-    :global(.autolink-icon) {
-      visibility: visible;
-    }
   }
 }

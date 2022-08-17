@@ -28,15 +28,12 @@ export async function renderMdx(source: string, cwd?: string) {
                 [rehypeKatex, {}],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
-                    behavior: "prepend",
+                    behavior: "wrap",
                         properties: {
                             class: 'autolink-anchor',
                             ariaHidden: true,
                             tabIndex: -1
                         },
-                        content: [
-                            h("span.autolink-icon", "#"),
-                        ]
                 }],
             ]
 
