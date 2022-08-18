@@ -3,7 +3,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
-import { h } from "hastscript";
+import remarkGfm from 'remark-gfm'
 
 import type {ProcessorOptions} from '@mdx-js/esbuild/lib'
 import {bundleMDX} from 'mdx-bundler'
@@ -20,6 +20,7 @@ export async function renderMdx(source: string, cwd?: string) {
             options.remarkPlugins = [
                 ...(options.remarkPlugins ?? []),
                 [remarkMath, {}],
+                [remarkGfm, {}],
             ]
 
             options.rehypePlugins = [
