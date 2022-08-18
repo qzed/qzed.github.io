@@ -1,0 +1,64 @@
+---
+title: Source Code Test
+author: Maximilian Luz
+date: '2022-08-17'
+tags:
+    - blog
+    - code
+    - next.js
+abstract: |
+    Use code in blog posts
+
+    Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac [orci phasellus](https://test.com) egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at `tempor`. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing...
+visibility: devel
+---
+
+# Heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+
+
+## Sub-Heading
+
+```c
+/**
+ * ssam_irq_arm_for_wakeup() - Arm the EC IRQ for wakeup, if enabled.
+ * @ctrl: The controller for which the IRQ should be armed.
+ *
+ * Sets up the IRQ so that it can be used to wake the device. Specifically,
+ * this function enables the irq and then, if the device is allowed to wake up
+ * the system, calls enable_irq_wake(). See ssam_irq_disarm_wakeup() for the
+ * corresponding function to disable the IRQ.
+ *
+ * This function is intended to arm the IRQ before entering S2idle suspend.
+ *
+ * Note: calls to ssam_irq_arm_for_wakeup() and ssam_irq_disarm_wakeup() must
+ * be balanced.
+ */
+int ssam_irq_arm_for_wakeup(struct ssam_controller *ctrl)
+{
+    struct device *dev = ssam_controller_device(ctrl);
+    int status;
+
+    enable_irq(ctrl->irq.num);
+
+    if (device_may_wakeup(dev)) {
+        status = enable_irq_wake(ctrl->irq.num);
+        if (status) {
+            ssam_err(ctrl, "failed to enable wake IRQ: %d\n", status);
+            disable_irq(ctrl->irq.num);
+            return status;
+        }
+
+        ctrl->irq.wakeup_enabled = true;
+    } else {
+        ctrl->irq.wakeup_enabled = false;
+    }
+
+    return 0;
+}
+```
+
+Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at `tempor`. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+
+Code can also be `embedded()` inline.
