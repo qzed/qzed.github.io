@@ -8,12 +8,18 @@
   font-weight: $font-weight-normal;
   font-size: 15pt;
 
-  code {
-    font-family: $font-family-monospace;
-    font-weight: $font-weight-normal;
-    font-size: 12pt;
+  p {
+    code {
+      font-family: $font-family-monospace;
+      font-weight: $font-weight-normal;
+      font-size: 12pt;
 
-    border-radius: 5px;
+      border-radius: 3px;
+      padding-left: 2px;
+      padding-right: 2px;
+
+      @include color-background-dark;
+    }
   }
 
   pre {
@@ -21,6 +27,8 @@
       font-family: $font-family-monospace;
       font-weight: $font-weight-normal;
       font-size: 11pt;
+
+      border-radius: 5px;
     }
   }
 
