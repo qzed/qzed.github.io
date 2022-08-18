@@ -1,0 +1,135 @@
+@import "common/colors.scss";
+@import "common/fonts.scss";
+@import "common/misc.scss";
+
+
+.base {
+  @include color-background-dark;
+  @include color-text;
+
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family-serif;
+  font-weight: $font-weight-normal;
+  font-size: 15pt;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    text-decoration: underline;
+    color: currentColor;
+  }
+
+  a:visited {
+    color: currentColor;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.title {
+  a {
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  h1 {
+    font-family: $font-family-display;
+    font-weight: $font-weight-semibold;
+    font-size: 36pt;
+
+    @media only screen and (max-width: 640px) {
+      font-size: 28pt;
+    }
+  }
+}
+
+.post {
+  @include color-background-main;
+  @include box-shadow;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 1em;
+}
+
+.column {
+  width: min(90ch, 97vw);
+  text-align: left;
+}
+
+.text {
+  margin-top: 0em;
+  margin-bottom: 0.75em;
+  margin-left: 3em;
+  margin-right: 3em;
+
+  padding-bottom: 1.75em;
+  padding-top: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: 10px;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  @include color-background-dark;
+
+  font-family: $font-family-sans;
+  font-weight: $font-weight-light;
+  font-size: 11pt;
+  border-radius: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  white-space: nowrap;
+}
+
+.date {
+  @include color-text-light;
+
+  font-family: $font-family-sans;
+  font-weight: $font-weight-light;
+  font-size: 11pt;
+  border-radius: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  white-space: nowrap;
+
+  margin-left: auto;
+}
