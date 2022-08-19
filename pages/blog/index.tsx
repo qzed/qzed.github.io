@@ -10,6 +10,7 @@ import { getMDXComponent } from 'mdx-bundler/client'
 
 import 'katex/dist/katex.css';
 import 'highlight.js/styles/nord.css';
+import Link from 'next/link'
 
 type Props = {
   posts: Post[]
@@ -36,9 +37,9 @@ const BlogIndex = ({ posts }: Props) => {
                   <div>
                     <div>
                       <div className={styles.title}>
-                        <a href={`/blog/posts/${post.slug}`}>
-                          <h1>{post.title}</h1>
-                        </a>
+                        <h1>
+                          <Link href={`/blog/posts/${post.slug}`}>{post.title}</Link>
+                        </h1>
                       </div>
                       <div className={styles.meta}>
                         <div className={styles.tags}>
@@ -62,7 +63,7 @@ const BlogIndex = ({ posts }: Props) => {
                         <MdxAbstract/>
                       </div>
                       <div>
-                        <a href={`/blog/posts/${post.slug}`}>Read more...</a>
+                        <Link href={`/blog/posts/${post.slug}`}>Read more...</Link>
                       </div>
                     </div>
                   </div>
