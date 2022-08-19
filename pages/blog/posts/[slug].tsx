@@ -6,6 +6,7 @@ import Post from '../../../types/blog/post'
 import Footer from '../../../components/Footer'
 import styles from '../../../styles/blog-post.module.scss'
 import { getAllPosts, getPostBySlug } from '../../../lib/blog'
+import NavBar from '../../../components/NavBar'
 
 import mdstyles from '../../../styles/markdown.module.scss'
 
@@ -34,6 +35,8 @@ const BlogPost = ({ post }: Props) => {
         <title>{title}</title>
         <meta name="description" content="Blog of Maximilian Luz" />
       </Head>
+
+      <NavBar/>
 
       <main>
         <div className={styles.topspace}></div>

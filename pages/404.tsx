@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import NavBar from '../components/NavBar'
 import styles from '../styles/404.module.scss'
 
 
@@ -10,6 +11,8 @@ const Error404: NextPage = () => {
       <Head>
         <title>Page not found | Maximilian Luz</title>
       </Head>
+
+      <NavBar/>
 
       <main>
         <div className={`${styles.section} ${styles.error}`}>

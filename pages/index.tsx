@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import { useEffect } from 'react'
 import Footer from '../components/Footer'
+import NavBar from '../components/NavBar'
 import { renderMdxFile } from '../lib/mdx'
 import styles from '../styles/home.module.scss'
 import mdstyles from '../styles/markdown.module.scss'
@@ -82,6 +83,8 @@ const Home = (props: Props) => {
             </div>
           </div>
         </div>
+
+        <NavBar/>
 
         <div className={`${styles.section} ${styles.about}`}>
           <div className={styles.column}>

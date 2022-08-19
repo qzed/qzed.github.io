@@ -11,6 +11,7 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import 'katex/dist/katex.css';
 import 'highlight.js/styles/nord.css';
 import Link from 'next/link'
+import NavBar from '../../components/NavBar'
 
 type Props = {
   posts: Post[]
@@ -25,6 +26,8 @@ const BlogIndex = ({ posts }: Props) => {
         <title>Blog | Maximilian Luz</title>
         <meta name="description" content="Blog of Maximilian Luz" />
       </Head>
+
+      <NavBar/>
 
       <main>
         {sorted.map((post) => {
