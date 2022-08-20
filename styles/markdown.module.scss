@@ -54,4 +54,59 @@
   *:hover > :global(.autolink-anchor)::before {
       visibility: visible;
   }
+
+  table {
+    display: block;
+    max-width: fit-content;
+    overflow-x: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 0.5em;
+    border-radius: 3px;
+
+    @include color-background-dark;
+
+    border-spacing: 0px;
+
+    th, td {
+      padding: 0.25em;
+      margin: 0;
+    }
+
+    thead {
+      th {
+        border-bottom: 1px solid $color-text;
+
+        @media (prefers-color-scheme: light) {
+          border-color: $color-light-text;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          border-color: $color-dark-text;
+        }
+      }
+    }
+
+    tbody {
+      td {
+        border-bottom: 1px solid $color-text;
+
+        @media (prefers-color-scheme: light) {
+          border-color: $color-light-text-light;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          border-color:$color-light-text-light;
+        }
+      }
+
+      tr:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
 }
