@@ -5,8 +5,8 @@ import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 
-import type {ProcessorOptions} from '@mdx-js/esbuild/lib'
-import {bundleMDX} from 'mdx-bundler'
+import type { ProcessorOptions } from '@mdx-js/esbuild/lib'
+import { bundleMDX } from 'mdx-bundler'
 
 import fs from 'fs'
 import { dirname, join } from 'path'
@@ -16,7 +16,7 @@ import { rehypeCite } from './cite/rehype'
 
 
 export async function renderMdx(source: string, cwd?: string) {
-    const {code, frontmatter} = await bundleMDX({
+    const { code, frontmatter } = await bundleMDX({
         source: source,
         cwd: cwd,
         mdxOptions: (options: ProcessorOptions, frontmatter: { [key: string]: any; }) => {
@@ -36,16 +36,16 @@ export async function renderMdx(source: string, cwd?: string) {
                 [rehypeCite, {
                     bibliography: bibliography,
                 }],
-                [rehypeHighlight, {plainText: ['txt', 'text']}],
+                [rehypeHighlight, { plainText: ['txt', 'text'] }],
                 [rehypeKatex, {}],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
                     behavior: "wrap",
-                        properties: {
-                            class: 'autolink-anchor',
-                            ariaHidden: true,
-                            tabIndex: -1
-                        },
+                    properties: {
+                        class: 'autolink-anchor',
+                        ariaHidden: true,
+                        tabIndex: -1
+                    },
                 }],
             ]
 
@@ -57,10 +57,20 @@ export async function renderMdx(source: string, cwd?: string) {
             }
 
             return options
-        }
+        },
+        esbuildOptions: options => {
+            options.define = {
+              "process.env.__NEXT_TRAILING_SLASH": JSON.stringify(process.env.__NEXT_TRAILING_SLASH),
+              "process.env.__NEXT_IMAGE_OPTS": JSON.stringify(process.env.__NEXT_IMAGE_OPTS),
+              "process.env.__NEXT_REACT_ROOT": JSON.stringify(process.env.__NEXT_REACT_ROOT),
+              "process.env.__NEXT_OPTIMIZE_FONTS": JSON.stringify(process.env.__NEXT_OPTIMIZE_FONTS)
+            };
+
+            return options
+        },
     })
 
-    return {code, frontmatter}
+    return { code, frontmatter }
 }
 
 export async function renderMdxFile(file: string) {
