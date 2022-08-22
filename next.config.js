@@ -13,12 +13,6 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')]
   },
 
-  experimental: {
-    images: {
-        unoptimized: true,
-    },
-  },
-
   exportPathMap: async function (defaultPathMap, {dev, dir, outDir, distDir, buildId}) {
     if (dev) {
       return defaultPathMap
