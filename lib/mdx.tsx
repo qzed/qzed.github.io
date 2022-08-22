@@ -11,20 +11,31 @@ import {bundleMDX} from 'mdx-bundler'
 import fs from 'fs'
 import { dirname, join } from 'path'
 
+import { remarkCite } from './cite/remark'
+import { rehypeCite } from './cite/rehype'
+
 
 export async function renderMdx(source: string, cwd?: string) {
     const {code, frontmatter} = await bundleMDX({
         source: source,
         cwd: cwd,
         mdxOptions: (options: ProcessorOptions, frontmatter: { [key: string]: any; }) => {
+            const bibliography = frontmatter?.bibliography
+                ? join(cwd || '', frontmatter?.bibliography)
+                : undefined
+
             options.remarkPlugins = [
                 ...(options.remarkPlugins ?? []),
                 [remarkMath, {}],
+                [remarkCite, {}],
                 [remarkGfm, {}],
             ]
 
             options.rehypePlugins = [
                 ...(options.rehypePlugins ?? []),
+                [rehypeCite, {
+                    bibliography: bibliography,
+                }],
                 [rehypeHighlight, {plainText: ['txt', 'text']}],
                 [rehypeKatex, {}],
                 [rehypeSlug, {}],
@@ -37,6 +48,13 @@ export async function renderMdx(source: string, cwd?: string) {
                         },
                 }],
             ]
+
+            options.remarkRehypeOptions = {
+                passThrough: [
+                    'cite',
+                    'bibliography'
+                ]
+            }
 
             return options
         }

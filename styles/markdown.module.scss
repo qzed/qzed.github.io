@@ -36,6 +36,27 @@
     color: #949ba6 !important;
   }
 
+  :global(.csl-bib-body) {
+    font-family: $font-family-serif;
+    font-size: 14pt;
+  }
+
+  :global(.csl-entry) {
+    text-indent: -1em;
+    padding-left: 1em;
+    padding-bottom: 0.75em;
+  }
+
+  :global(.csl-ref) {
+    a {
+      text-decoration-line: none;
+    }
+
+    a:hover {
+      text-decoration-line: underline;
+    }
+  }
+
   :global(.autolink-anchor) {
     text-decoration-line: none;
   }
