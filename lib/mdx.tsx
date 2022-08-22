@@ -36,7 +36,7 @@ export async function renderMdx(source: string, cwd?: string) {
                 [rehypeCite, {
                     bibliography: bibliography,
                 }],
-                [rehypeHighlight, { plainText: ['txt', 'text'] }],
+                [rehypeHighlight, { plainText: ['plain'] }],
                 [rehypeKatex, {}],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
