@@ -14,7 +14,8 @@
 
   font-family: $font-family-serif;
   font-weight: $font-weight-normal;
-  font-size: 15pt;
+  font-size: 100%;
+  line-height: 1.5;
 
   display: flex;
   flex-direction: column;
@@ -31,7 +32,7 @@
 }
 
 .column {
-  width: min(90ch, 97vw);
+  width: min(80ch, 97vw);
   text-align: center;
 }
 
@@ -46,7 +47,7 @@
 .errorcode {
   font-family: $font-family-display;
   font-weight: $font-weight-bold;
-  font-size: 128px;
+  font-size: 850%;
 
   margin: 0 0 5px 0;
   padding-top: -2em;
@@ -55,7 +56,7 @@
 .errortext {
   font-family: $font-family-display;
   font-weight: $font-weight-normal;
-  font-size: 38px;
+  font-size: 250%;
 
   margin: 5px 0;
 }

@@ -46,13 +46,6 @@ const BlogIndex = ({ posts }: Props) => {
                         </h1>
                       </div>
                       <div className={styles.meta}>
-                        <div className={styles.tags}>
-                          {
-                            post.tags?.map((tag) => {
-                              return (<p className={styles.tag} key={tag}>#{tag}</p>)
-                            })
-                          }
-                        </div>
                         <p className={styles.date}>
                           {
                             new Date(post.date).toLocaleDateString('en-us', {
@@ -62,6 +55,13 @@ const BlogIndex = ({ posts }: Props) => {
                             })
                           }
                         </p>
+                        <div className={styles.tags}>
+                          {
+                            post.tags?.map((tag) => {
+                              return (<p className={styles.tag} key={tag}>#{tag}</p>)
+                            })
+                          }
+                        </div>
                       </div>
                       <div className={mdstyles.markdown}>
                         <MdxAbstract/>

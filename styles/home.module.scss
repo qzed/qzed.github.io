@@ -14,7 +14,8 @@
 
   font-family: $font-family-serif;
   font-weight: $font-weight-normal;
-  font-size: 15pt;
+  font-size: 100%;
+  line-height: 1.5;
 
   display: flex;
   flex-direction: column;
@@ -45,22 +46,15 @@
 }
 
 .column {
-  width: min(90ch, 97vw);
+  width: min(80ch, 97vw);
   text-align: left;
 }
 
 .text {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  margin-left: 3em;
-  margin-right: 3em;
-
-
-  h1, h2, h3 {
-    font-family: $font-family-serif;
-    font-weight: $font-weight-semibold;
-    font-size: 28pt;
-  }
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
 }
 
 .about {
@@ -109,11 +103,14 @@
   text-align: right;
   font-family: $font-family-serif;
   font-weight: $font-weight-normal;
-  font-size: 13pt;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 0.5em;
-  margin-bottom: 0.75em;
+  font-size: 90%;
+  line-height: 1.4;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+
   white-space: nowrap;
 }
 
@@ -121,7 +118,7 @@
   margin: 0;
   font-family: $font-family-display;
   font-weight: $font-weight-semibold;
-  font-size: 36pt;
+  font-size: 350%;
 }
 
 .profileImage {
@@ -132,10 +129,10 @@
   border-style: solid;
   border-width: 8px;
 
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 1.0em;
-  margin-bottom: 0.5em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1.0rem;
+  margin-bottom: 0.5rem;
 }
 
 .profileLinks {

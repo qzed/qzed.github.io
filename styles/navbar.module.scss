@@ -5,9 +5,10 @@
 .base {
   font-family: $font-family-serif;
   font-weight: $font-weight-normal;
-  font-size: 15pt;
+  font-size: 100%;
+  line-height: 1.5;
 
-  width: min(90ch, 97vw);
+  width: min(80ch, 97vw);
   text-align: left;
 
   margin: 0;
@@ -19,22 +20,22 @@
   @include box-shadow;
 
   margin: 0;
-  padding-top: 0.33em;
-  padding-bottom: 0.5em;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  gap: 0.33em;
+  gap: 0.33rem;
 
   .item {
     list-style: none;
     font-family: $font-family-serif;
     font-weight: $font-weight-semibold;
-    font-size: 15pt;
+    font-size: 110%;
 
     text-align: center;
 

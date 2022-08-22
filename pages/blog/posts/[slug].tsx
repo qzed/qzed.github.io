@@ -45,6 +45,7 @@ const BlogPost = ({ post }: Props) => {
             <div className={styles.text}>
               <h1 className={styles.title}>{post.title}</h1>
               <div className={styles.meta}>
+                <p className={styles.date}>{date}</p>
                 <div className={styles.tags}>
                   {
                     post.tags?.map((tag) => {
@@ -52,7 +53,6 @@ const BlogPost = ({ post }: Props) => {
                     })
                   }
                 </div>
-                <p className={styles.date}>{date}</p>
               </div>
               <div className={mdstyles.markdown}>
                 <MdxContent/>
