@@ -9,7 +9,8 @@ import React from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 
 import 'katex/dist/katex.css';
-import 'highlight.js/styles/nord.css';
+import 'prism-themes/themes/prism-nord.css'
+
 import Link from 'next/link'
 import NavBar from '../../components/NavBar'
 

@@ -11,7 +11,7 @@ import NavBar from '../../../components/NavBar'
 import mdstyles from '../../../styles/markdown.module.scss'
 
 import 'katex/dist/katex.css';
-import 'highlight.js/styles/nord.css';
+import 'prism-themes/themes/prism-nord.css'
 
 
 type Props = {

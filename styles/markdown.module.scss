@@ -32,7 +32,50 @@
     }
   }
 
-  :global(.hljs-comment), .markdown :global(.hljs-quote) {
+  pre {
+    overflow-x: auto;
+  }
+
+  :global(.code-highlight) {
+    float: left;
+    min-width: 100%;
+  }
+  
+  :global(.code-line) {
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-left: 4px solid rgba(0, 0, 0, 0);
+  }
+  
+  :global(.code-line.inserted) {
+    background-color: rgba(11, 139, 96, 0.15);
+  }
+  
+  :global(.code-line.deleted) {
+    background-color: rgba(183, 53, 53, 0.15);
+  }
+  
+  :global(.highlight-line) {
+    margin-left: -16px;
+    margin-right: -16px;
+    background-color: rgba(55, 65, 81, 0.5);
+    border-left: 4px solid rgb(213, 177, 47);
+  }
+  
+  :global(.line-number::before) {
+    display: inline-block;
+    width: 1rem;
+    text-align: right;
+    margin-right: 16px;
+    margin-left: -8px;
+    color: #949ba6;
+    content: attr(line);
+  }
+
+  :global(.token.comment) {
     color: #949ba6 !important;
   }
 

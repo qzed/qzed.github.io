@@ -1,4 +1,4 @@
-import rehypeHighlight from 'rehype-highlight'
+import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
@@ -36,7 +36,7 @@ export async function renderMdx(source: string, cwd?: string) {
                 [rehypeCite, {
                     bibliography: bibliography,
                 }],
-                [rehypeHighlight, { plainText: ['plain'] }],
+                [rehypePrism],
                 [rehypeKatex, {}],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
