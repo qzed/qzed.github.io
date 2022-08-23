@@ -42,6 +42,15 @@
     overflow-x: auto;
   }
 
+  img {
+    max-width: 95%;
+
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   :global(.code-highlight) {
     float: left;
     min-width: 100%;
