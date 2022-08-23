@@ -15,16 +15,17 @@ export async function getPostBySlug(slug: string) {
     const fullPath = join(postsDirectory, `${realSlug}.mdx`)
     const source = fs.readFileSync(fullPath, 'utf8')
 
-    const {code, frontmatter} = await renderMdx(source, dirname(fullPath))
+    const {code: content, frontmatter} = await renderMdx(source, dirname(fullPath))
+    const {code: abstract} = await renderMdx(frontmatter.abstract, dirname(fullPath))
 
     return {
         slug: realSlug,
         title: frontmatter.title,
         author: frontmatter.author,
         date: Date.parse(frontmatter.date),
-        abstract: frontmatter.abstract,
+        abstract: abstract,
         tags: frontmatter.tags ? frontmatter.tags : null,
-        content: code,
+        content: content,
     }
 }
 
