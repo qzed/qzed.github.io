@@ -51,6 +51,11 @@
     margin-right: auto;
   }
 
+  :global(.katex-display) {
+    overflow: auto hidden;
+    display: block;
+  }
+
   :global(.code-highlight) {
     float: left;
     min-width: 100%;
