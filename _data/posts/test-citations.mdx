@@ -1,0 +1,49 @@
+---
+title: Pandoc-Like Citations
+author: Maximilian Luz
+date: '2022-08-20'
+tags:
+    - test
+    - pandoc
+    - bibtex
+abstract: |
+    TODO
+bibliography: test-citations.bib
+visibility: devel
+---
+
+
+# Citations
+
+This is a citation [@abbeelApprenticeshipLearningInverse2004] test
+
+[@abbeelApprenticeshipLearningInverse2004{abc}]
+
+[@abbeelApprenticeshipLearningInverse2004{abc}]
+
+[@abbeelApprenticeshipLearningInverse2004{sec. vi} a]
+
+[@abbeelApprenticeshipLearningInverse2004{} b]
+
+[@abbeelApprenticeshipLearningInverse2004{abc}, c]
+
+[@{abbeelApprenticeshipLearningInverse2004}, d]
+
+[@{abbeelApprenticeshipLearningInverse2004} e]
+
+[@{abbeelApprenticeshipLearningInverse2004} p. 10]
+
+[see @abbeelApprenticeshipLearningInverse2004, {sec. 1.3}; and @aliVisualObjectTracking2016, pp.44882-55006]
+
+[see @abbeelApprenticeshipLearningInverse2004, {sec. 1.3}; and @aliVisualObjectTracking2016, pp. 44882-55006]
+
+[@ziebartMaximumEntropyInverse2008; @ziebartPrincipleMaximumCausal2013]
+
+[@abbeelApprenticeshipLearningInverse2004]
+
+[-@abbeelApprenticeshipLearningInverse2004]
+
+
+# References
+
+[^bibliography]
