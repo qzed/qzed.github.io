@@ -59,6 +59,7 @@ export async function renderMdx(source: string, cwd?: string) {
             return options
         },
         esbuildOptions: options => {
+            options.platform = "node"
             options.define = {
               "process.env.__NEXT_TRAILING_SLASH": JSON.stringify(process.env.__NEXT_TRAILING_SLASH),
               "process.env.__NEXT_IMAGE_OPTS": JSON.stringify(process.env.__NEXT_IMAGE_OPTS),
