@@ -37,7 +37,14 @@ export async function renderMdx(source: string, cwd?: string) {
                     bibliography: bibliography,
                 }],
                 [rehypePrism],
-                [rehypeKatex, {}],
+                [rehypeKatex, {
+                    trust: (context: any) => ['\\htmlId', '\\href'].includes(context.command),
+                    macros: {
+                        "\\eqref": "\\href{###1}{(\\text{#1})}",
+                        "\\ref": "\\href{###1}{\\text{#1}}",
+                        "\\label": "\\htmlId{#1}{}"
+                    },
+                }],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
                     behavior: "wrap",

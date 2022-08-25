@@ -84,6 +84,14 @@
     display: block;
   }
 
+  :global(a.eq-ref) {
+    text-decoration-line: none;
+  }
+
+  :global(a.eq-ref:hover) {
+    text-decoration-line: underline;
+  }
+
   :global(.code-highlight) {
     float: left;
     min-width: 100%;
