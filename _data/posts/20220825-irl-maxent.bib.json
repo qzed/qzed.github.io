@@ -1,0 +1,292 @@
+[
+  {
+    "id": "abbeelApprenticeshipLearningInverse2004",
+    "citation-key": "abbeelApprenticeshipLearningInverse2004",
+    "title": "Apprenticeship learning via inverse reinforcement learning",
+    "author": [
+      { "family": "Abbeel", "given": "Pieter" },
+      { "family": "Ng", "given": "Andrew Y." }
+    ],
+    "DOI": "10.1145/1015330.1015430",
+    "container-title": "Twenty-first international conference on Machine learning - ICML '04",
+    "event-place": "Banff, Alberta, Canada",
+    "issued": { "date-parts": [ [ 2004 ] ] },
+    "language": "en",
+    "publisher": "ACM Press",
+    "publisher-place": "Banff, Alberta, Canada",
+    "type": "paper-conference"
+  },
+  {
+    "id": "aghasadeghiMaximumEntropyInverse2011",
+    "author": [
+      {
+        "family": "Aghasadeghi",
+        "given": "Navid"
+      },
+      {
+        "family": "Bretl",
+        "given": "Timothy"
+      }
+    ],
+    "citation-key": "aghasadeghiMaximumEntropyInverse2011",
+    "container-title": "2011 IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "DOI": "10.1109/IROS.2011.6094679",
+    "event-title": "2011 IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "ISSN": "2153-0866",
+    "issued": {
+      "date-parts": [ [ 2011, 9 ] ]
+    },
+    "page": "1561-1566",
+    "source": "IEEE Xplore",
+    "title": "Maximum entropy inverse reinforcement learning in continuous state spaces with path integrals",
+    "type": "paper-conference"
+  },
+  {
+    "id": "bishopPatternRecognitionMachine2006",
+    "author": [
+      { "family": "Bishop", "given": "Christopher M." }
+    ],
+    "call-number": "Q327 .B52 2006",
+    "citation-key": "bishopPatternRecognitionMachine2006",
+    "collection-title": "Information science and statistics",
+    "event-place": "New York",
+    "ISBN": "978-0-387-31073-2",
+    "issued": { "date-parts": [ [ 2006 ] ] },
+    "language": "en",
+    "number-of-pages": "738",
+    "publisher": "Springer",
+    "publisher-place": "New York",
+    "source": "Library of Congress ISBN",
+    "title": "Pattern Recognition and Machine Learning",
+    "type": "book",
+    "URL": "https://link.springer.com/book/9780387310732"
+  },
+  {
+    "id": "boulariasRelativeEntropyInverse2011",
+    "author": [
+      { "family": "Boularias", "given": "Abdeslam" },
+      { "family": "Kober", "given": "Jens" },
+      { "family": "Peters", "given": "Jan" }
+    ],
+    "citation-key": "boulariasRelativeEntropyInverse2011",
+    "container-title": "Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics",
+    "event-title": "Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics",
+    "ISSN": "1938-7228",
+    "issued": {
+      "date-parts": [
+        [
+          2011,
+          6,
+          14
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "182-189",
+    "publisher": "JMLR Workshop and Conference Proceedings",
+    "source": "proceedings.mlr.press",
+    "title": "Relative Entropy Inverse Reinforcement Learning",
+    "type": "paper-conference",
+    "URL": "https://proceedings.mlr.press/v15/boularias11a.html"
+  },
+  {
+    "id": "jaynesInformationTheoryStatistical1957",
+    "author": [
+      { "family": "Jaynes", "given": "E. T." }
+    ],
+    "citation-key": "jaynesInformationTheoryStatistical1957",
+    "container-title": "Physical Review",
+    "container-title-short": "Phys. Rev.",
+    "DOI": "10.1103/PhysRev.106.620",
+    "issue": "4",
+    "issued": {
+      "date-parts": [ [ 1957, 5, 15 ] ]
+    },
+    "page": "620-630",
+    "publisher": "American Physical Society",
+    "source": "APS",
+    "title": "Information Theory and Statistical Mechanics",
+    "type": "article-journal",
+    "URL": "https://link.aps.org/doi/10.1103/PhysRev.106.620",
+    "volume": "106"
+  },
+  {
+    "id": "kalakrishnanLearningObjectiveFunctions2013",
+    "author": [
+      { "family": "Kalakrishnan", "given": "Mrinal" },
+      { "family": "Pastor", "given": "Peter" },
+      { "family": "Righetti", "given": "Ludovic" },
+      { "family": "Schaal", "given": "Stefan" }
+    ],
+    "citation-key": "kalakrishnanLearningObjectiveFunctions2013",
+    "container-title": "2013 IEEE International Conference on Robotics and Automation",
+    "DOI": "10.1109/ICRA.2013.6630743",
+    "event-title": "2013 IEEE International Conference on Robotics and Automation",
+    "ISSN": "1050-4729",
+    "issued": {
+      "date-parts": [ [ 2013, 5 ] ]
+    },
+    "page": "1331-1336",
+    "source": "IEEE Xplore",
+    "title": "Learning objective functions for manipulation",
+    "type": "paper-conference"
+  },
+  {
+    "id": "ngPolicyInvarianceReward1999",
+    "author": [
+      { "family": "Ng", "given": "Andrew Y." },
+      { "family": "Harada", "given": "Daishi" },
+      { "family": "Russell", "given": "Stuart J." }
+    ],
+    "citation-key": "ngPolicyInvarianceReward1999",
+    "collection-title": "ICML '99",
+    "container-title": "Proceedings of the Sixteenth International Conference on Machine Learning",
+    "event-place": "San Francisco, CA, USA",
+    "ISBN": "978-1-55860-612-8",
+    "issued": {
+      "date-parts": [ [ 1999, 6, 27 ] ]
+    },
+    "page": "278–287",
+    "publisher": "Morgan Kaufmann Publishers Inc.",
+    "publisher-place": "San Francisco, CA, USA",
+    "source": "ACM Digital Library",
+    "title": "Policy Invariance Under Reward Transformations: Theory and Application to Reward Shaping",
+    "title-short": "Policy Invariance Under Reward Transformations",
+    "URL": "https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf",
+    "type": "paper-conference"
+  },
+  {
+    "id": "osaAlgorithmicPerspectiveImitation2018",
+    "author": [
+      { "family": "Osa", "given": "Takayuki" },
+      { "family": "Pajarinen", "given": "Joni" },
+      { "family": "Neumann", "given": "Gerhard" },
+      { "family": "Bagnell", "given": "J. Andrew" },
+      { "family": "Abbeel", "given": "Pieter" },
+      { "family": "Peters", "given": "Jan" }
+    ],
+    "citation-key": "osaAlgorithmicPerspectiveImitation2018",
+    "container-title": "Foundations and Trends in Robotics",
+    "container-title-short": "FNT in Robotics",
+    "DOI": "10.1561/2300000053",
+    "ISSN": "1935-8253, 1935-8261",
+    "issue": "1-2",
+    "issued": {
+      "date-parts": [ [ 2018 ] ]
+    },
+    "language": "en",
+    "page": "1-179",
+    "source": "DOI.org (Crossref)",
+    "title": "An Algorithmic Perspective on Imitation Learning",
+    "type": "article-journal",
+    "URL": "http://www.nowpublishers.com/article/Details/ROB-053",
+    "volume": "7"
+  },
+  {
+    "id": "snoswellRevisitingMaximumEntropy2020",
+    "author": [
+      { "family": "Snoswell", "given": "Aaron J." },
+      { "family": "Singh", "given": "Surya P. N." },
+      { "family": "Ye", "given": "Nan" }
+    ],
+    "citation-key": "snoswellRevisitingMaximumEntropy2020",
+    "container-title": "2020 IEEE Symposium Series on Computational Intelligence (SSCI)",
+    "DOI": "10.1109/SSCI47803.2020.9308391",
+    "event-title": "2020 IEEE Symposium Series on Computational Intelligence (SSCI)",
+    "issued": {
+      "date-parts": [ [ 2020, 12 ] ]
+    },
+    "page": "241-249",
+    "source": "IEEE Xplore",
+    "title": "Revisiting Maximum Entropy Inverse Reinforcement Learning: New Perspectives and Algorithms",
+    "title-short": "Revisiting Maximum Entropy Inverse Reinforcement Learning",
+    "type": "paper-conference"
+  },
+  {
+    "id": "wulfmeierMaximumEntropyDeep2016",
+    "author": [
+      { "family": "Wulfmeier", "given": "Markus" },
+      { "family": "Ondruska", "given": "Peter" },
+      { "family": "Posner", "given": "Ingmar" }
+    ],
+    "citation-key": "wulfmeierMaximumEntropyDeep2016",
+    "DOI": "10.48550/arXiv.1507.04888",
+    "issued": {
+      "date-parts": [ [ 2016, 3, 11 ] ]
+    },
+    "number": "arXiv:1507.04888",
+    "source": "arXiv.org",
+    "title": "Maximum Entropy Deep Inverse Reinforcement Learning",
+    "type": "article",
+    "URL": "http://arxiv.org/abs/1507.04888"
+  },
+  {
+    "id": "ziebartMaximumEntropyInverse2008",
+    "author": [
+      { "family": "Ziebart", "given": "Brian D." },
+      { "family": "Maas", "given": "Andrew" },
+      { "family": "Bagnell", "given": "J. Andrew" },
+      { "family": "Dey", "given": "Anind K." }
+    ],
+    "citation-key": "ziebartMaximumEntropyInverse2008",
+    "collection-title": "AAAI'08",
+    "container-title": "Proceedings of the 23rd National Conference on Artificial Intelligence - Volume 3",
+    "event-place": "Chicago, Illinois",
+    "ISBN": "978-1-57735-368-3",
+    "issued": {
+      "date-parts": [ [ 2008, 7, 13 ] ]
+    },
+    "language": "en",
+    "page": "1433–1438",
+    "publisher": "AAAI Press",
+    "publisher-place": "Chicago, Illinois",
+    "source": "ACM Digital Library",
+    "title": "Maximum Entropy Inverse Reinforcement Learning",
+    "URL": "https://www.aaai.org/Library/AAAI/2008/aaai08-227.php",
+    "type": "paper-conference"
+  },
+  {
+    "id": "ziebartModelingPurposefulAdaptive2010",
+    "author": [
+      { "family": "Ziebart", "given": "Brian D." }
+    ],
+    "citation-key": "ziebartModelingPurposefulAdaptive2010",
+    "event-place": "USA",
+    "genre": "phd",
+    "issued": {
+      "date-parts": [ [ 2010 ] ]
+    },
+    "note": "AAI3438449\nISBN-13: 9781124414218",
+    "number-of-pages": "216",
+    "publisher": "Carnegie Mellon University",
+    "publisher-place": "USA",
+    "source": "ACM Digital Library",
+    "title": "Modeling purposeful adaptive behavior with the principle of maximum causal entropy",
+    "type": "thesis",
+    "URL": "https://www.cs.cmu.edu/~bziebart/publications/thesis-bziebart.pdf"
+  },
+  {
+    "id": "ziebartPrincipleMaximumCausal2013",
+    "author": [
+      { "family": "Ziebart", "given": "Brian D." },
+      { "family": "Bagnell", "given": "J. Andrew" },
+      { "family": "Dey", "given": "Anind K." }
+    ],
+    "citation-key": "ziebartPrincipleMaximumCausal2013",
+    "container-title": "IEEE Transactions on Information Theory",
+    "DOI": "10.1109/TIT.2012.2234824",
+    "event-title": "IEEE Transactions on Information Theory",
+    "issued": {
+      "date-parts": [ [ 2013, 4 ] ]
+    },
+    "language": "en",
+    "note": "Print ISSN: 0018-9448\nElectronic ISSN: 1557-9654",
+    "page": "1966-1980",
+    "publisher": "IEEE",
+    "source": "DOI.org (Crossref)",
+    "title": "The Principle of Maximum Causal Entropy for Estimating Interacting Processes",
+    "type": "paper-conference",
+    "URL": "http://ieeexplore.ieee.org/document/6479340/",
+    "volume": "59"
+  }
+]
