@@ -34,7 +34,7 @@
       font-weight: $font-weight-normal;
       font-size: 85%;
 
-      border-radius: 5px;
+      border-radius: 2px;
     }
   }
 
@@ -45,10 +45,38 @@
   img {
     max-width: 95%;
 
+    border-radius: 2px;
+
     display: block;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  :global(.note) {
+    @include color-background-dark;
+
+    padding: 1em;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    border-radius: 2px;
+    border-left: $color-accent-blue solid 4px;
+
+    font-style: italic;
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.todo) {
+    border-left: $color-accent-red solid 4px;
   }
 
   :global(.katex-display) {
@@ -82,7 +110,7 @@
     margin-left: -16px;
     margin-right: -16px;
     background-color: rgba(55, 65, 81, 0.5);
-    border-left: 4px solid rgb(213, 177, 47);
+    border-left: 4px solid $color-accent-yellow;
   }
   
   :global(.line-number::before) {

@@ -10,7 +10,12 @@ $color-light-background-main: #f1f4f6;
 $color-light-background-dark: #dbe0e9;
 $color-light-shadow: #bfc2c9;
 
-$color-accent: #007cce;
+$color-accent-blue: #007cce;
+$color-accent-green: #008171;
+$color-accent-yellow: #d5b12f;
+$color-accent-red: #d53d2f;
+
+$color-accent: $color-accent-blue;
 
 $color-text: $color-dark-text;
 $color-background-main: $color-dark-background-main;
