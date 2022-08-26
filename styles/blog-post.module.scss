@@ -60,6 +60,11 @@
   padding-top: 0.25rem;
   padding-bottom: 2.5rem;
 
+  @media only screen and (max-width: 500px) {
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+  }
+
   .title {
     font-family: $font-family-display;
     font-weight: $font-weight-semibold;
