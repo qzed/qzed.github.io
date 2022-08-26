@@ -82,6 +82,8 @@
   :global(.katex-display) {
     overflow: auto hidden;
     display: block;
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
   :global(a.eq-ref) {
