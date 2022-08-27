@@ -107,7 +107,7 @@ export default Home
 export async function getStaticProps() {
   return {
     props: {
-      about: (await renderMdxFile("pages/index.about.mdx")).code
+      about: (await renderMdxFile("_data/about.mdx")).code
     }
   }
 }
