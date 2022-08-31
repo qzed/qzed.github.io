@@ -402,16 +402,17 @@ We then iterate these four steps until convergence.
 Maximum entropy IRL is a clever and ― all in all ― fairly simple solution to the general inverse reinforcement learning problem.
 However, it does have some drawbacks and limitations:
 
-In particular, it assumes that the transition dynamics, i.e., the probability distribution $p(s_{t+1} \mid s_t, a_t)$, are known.
-This may not be the case in many real-world scenarios.
-Further, it assumes a linear parametrization of the reward $R(s) = \omega^\intercal \phi(s)$.
+First and foremost, the algorithm as explained in this post requires us “solving” the MDP once per iteration.
+As a result, it is fairly limited in the size of the discrete state-action-spaces that it can (reasonably) be applied to.
+Extensions to continuous state spaces, for example via Monte-Carlo sampling or via path integrals, have been proposed [see e.g., @aghasadeghiMaximumEntropyInverse2011;@kalakrishnanLearningObjectiveFunctions2013].
+The assumption that the transition dynamics of the environment, i.e., the probability distribution $p(s_{t+1} \mid s_t, a_t)$, are known, however, further limits its applicability.
+
+It also assumes a linear parametrization of the reward $R(s) = \omega^\intercal \phi(s)$.
 This can be somewhat mitigated by our choice of features $\phi(s)$, but feature expectation matching also only guarantees performance-parity with a linear reward parametrization.
-Lastly, maximum entropy IRL is constrained to limited transition randomness, i.e., fairly deterministic transition dynamics $p(s_{t+1} \mid s_t, a_t)$, due to the reward bias introduced by our probability approximation.
+An extension to model nonlinear reward functions via neural networks has been suggested by Wulfmeier et al. [@wulfmeierMaximumEntropyDeep2016].
 
-The latter can be avoided via the maximum _causal_ entropy IRL approach, proposed subsequently by Ziebart [@ziebartModelingPurposefulAdaptive2010;@ziebartPrincipleMaximumCausal2013].
-Multiple other extensions to this algorithm have been suggested, for example for nonlinear reward functions via neural networks [@wulfmeierMaximumEntropyDeep2016].
-
-While the algorithm shown here is limited to somewhat smaller discrete state- and action-spaces, it can be extended to continuous state spaces, for example via Monte-Carlo sampling or via path integrals [see e.g., @aghasadeghiMaximumEntropyInverse2011;@kalakrishnanLearningObjectiveFunctions2013].
+Lastly, maximum entropy IRL is constrained to limited transition randomness, i.e., fairly deterministic transition dynamics $p(s_{t+1} \mid s_t, a_t)$.
+As noted above, this is due to the reward bias introduced by our probability approximation and can be avoided via the maximum _causal_ entropy IRL approach, proposed subsequently by Ziebart [@ziebartModelingPurposefulAdaptive2010;@ziebartPrincipleMaximumCausal2013].
 
 A somewhat similar, yet model-free approach is relative entropy IRL by Boularias et al. [@boulariasRelativeEntropyInverse2011].
 See the paper by Snoswell et al. [@snoswellRevisitingMaximumEntropy2020] for a perspective on both relative and maximum entropy IRL approaches.
