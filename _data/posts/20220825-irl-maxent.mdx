@@ -409,13 +409,13 @@ The assumption that the transition dynamics of the environment, i.e., the probab
 
 It also assumes a linear parametrization of the reward $R(s) = \omega^\intercal \phi(s)$.
 This can be somewhat mitigated by our choice of features $\phi(s)$, but feature expectation matching also only guarantees performance-parity with a linear reward parametrization.
-An extension to model nonlinear reward functions via neural networks has been suggested by Wulfmeier et al. [@wulfmeierMaximumEntropyDeep2016].
+An extension to model nonlinear reward functions via neural networks has been suggested by Wulfmeier et al. [-@wulfmeierMaximumEntropyDeep2016].
 
 Lastly, maximum entropy IRL is constrained to limited transition randomness, i.e., fairly deterministic transition dynamics $p(s_{t+1} \mid s_t, a_t)$.
 As noted above, this is due to the reward bias introduced by our probability approximation and can be avoided via the maximum _causal_ entropy IRL approach, proposed subsequently by Ziebart [@ziebartModelingPurposefulAdaptive2010;@ziebartPrincipleMaximumCausal2013].
 
-A somewhat similar, yet model-free approach is relative entropy IRL by Boularias et al. [@boulariasRelativeEntropyInverse2011].
-See the paper by Snoswell et al. [@snoswellRevisitingMaximumEntropy2020] for a perspective on both relative and maximum entropy IRL approaches.
+A somewhat similar, yet model-free approach is relative entropy IRL by Boularias et al. [-@boulariasRelativeEntropyInverse2011].
+See the paper by Snoswell et al. [-@snoswellRevisitingMaximumEntropy2020] for a perspective on both relative and maximum entropy IRL approaches.
 
 
 # References
