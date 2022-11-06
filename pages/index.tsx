@@ -23,7 +23,7 @@ type Props = {
 }
 
 const Home = (props: Props) => {
-  const email = "mailto:Maximilian%20Luz<luzmaximilian@gmail.com>";
+  const email = "mailto:Maximilian%20Luz<m@mxnluz.io>";
   const emailObfuscated = obfuscate(email);
 
   useEffect(() => {
