@@ -68,7 +68,7 @@ const Home = (props: Props) => {
                   </svg>
                 </a>
                 <a href="https://twitter.com/mxnluz">
-                  <svg className={styles.icon} viewBox="0 0 16 16">
+                  <svg className={styles.icon} viewBox="-1.5 -1.5 18 18">
                     <title>Twitter</title>
                     <use href="/assets/social-icons.svg#twitter"></use>
                   </svg>
