@@ -8,5 +8,5 @@ See https://mxnluz.io.
 - Install dependencies via `yarn install`
 - Update dependencies via `yarn upgrade`.
 - Build via `yarn build`.
-- Export via `yarn export`-
+- Export via `yarn export`.
 - Run locally via `yarn dev`.
