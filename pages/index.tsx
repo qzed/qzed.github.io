@@ -73,6 +73,12 @@ const Home = (props: Props) => {
                     <use href="/assets/social-icons.svg#twitter"></use>
                   </svg>
                 </a>
+                <a href="https://scholar.google.com/citations?user=6AO18q8AAAAJ">
+                  <svg className={styles.icon} viewBox="38 38 436 436">
+                    <title>Goolge Scholar</title>
+                    <use href="/assets/social-icons.svg#google-scholar"></use>
+                  </svg>
+                </a>
                 <a href="" id="maillink">
                   <svg className={styles.icon} viewBox="0 0 24 24">
                     <title>E-Mail</title>
