@@ -79,7 +79,7 @@ const Home = (props: Props) => {
                     <use href="/assets/social-icons.svg#google-scholar"></use>
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/maximilian-luz-33a2b1278">
+                <a href="https://www.linkedin.com/in/mxnluz">
                   <svg className={styles.icon} viewBox="-3.0 -3.0 22 22">
                     <title>LinkedIn</title>
                     <use href="/assets/social-icons.svg#linkedin"></use>
