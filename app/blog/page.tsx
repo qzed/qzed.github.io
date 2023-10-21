@@ -9,6 +9,7 @@ import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'
 
 import Link from 'next/link'
+import NavBar from '../../components/NavBar'
 
 import { Metadata } from 'next'
 
@@ -24,6 +25,8 @@ export default async function BlogIndex() {
 
   return (
     <main>
+      <NavBar />
+
       {sorted.map((post) => {
         const MdxAbstract = getMDXComponent(post.abstract)
 
