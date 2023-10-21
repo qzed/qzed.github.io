@@ -1,8 +1,7 @@
-import { getMDXComponent } from 'mdx-bundler/client'
 import React from 'react'
 import NavBar from '../components/NavBar'
 import ObfuscatedLink from '../components/ObfuscatedLink'
-import { renderMdxFile } from '../lib/mdx'
+import { renderMdxComponent } from '../lib/mdx'
 import styles from '../styles/home.module.scss'
 import mdstyles from '../styles/markdown.module.scss'
 import { Metadata } from 'next'
@@ -14,9 +13,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const about_mdx = (await renderMdxFile("_data/about.mdx")).code
-  // const About = React.useMemo(() => getMDXComponent(about_mdx), [about_mdx])
-  const About = getMDXComponent(about_mdx)
+  const About = await renderMdxComponent("_data/about.mdx")
 
   return (
       <main>

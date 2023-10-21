@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 
 import type { ProcessorOptions } from '@mdx-js/esbuild/lib'
 import { bundleMDX } from 'mdx-bundler'
+import { getMDXComponent } from 'mdx-bundler/client'
 
 import fs from 'fs'
 import { dirname, join } from 'path'
@@ -68,11 +69,11 @@ export async function renderMdx(source: string, cwd?: string) {
         esbuildOptions: options => {
             options.platform = "node"
             options.define = {
-              "process.env.__NEXT_TRAILING_SLASH": JSON.stringify(process.env.__NEXT_TRAILING_SLASH),
-              "process.env.__NEXT_IMAGE_OPTS": JSON.stringify(process.env.__NEXT_IMAGE_OPTS),
-              "process.env.__NEXT_REACT_ROOT": JSON.stringify(process.env.__NEXT_REACT_ROOT),
-              "process.env.__NEXT_OPTIMIZE_FONTS": JSON.stringify(process.env.__NEXT_OPTIMIZE_FONTS),
-              "process.env": JSON.stringify(process.env)
+                "process.env.__NEXT_TRAILING_SLASH": JSON.stringify(process.env.__NEXT_TRAILING_SLASH),
+                "process.env.__NEXT_IMAGE_OPTS": JSON.stringify(process.env.__NEXT_IMAGE_OPTS),
+                "process.env.__NEXT_REACT_ROOT": JSON.stringify(process.env.__NEXT_REACT_ROOT),
+                "process.env.__NEXT_OPTIMIZE_FONTS": JSON.stringify(process.env.__NEXT_OPTIMIZE_FONTS),
+                "process.env": JSON.stringify(process.env)
             };
 
             return options
@@ -85,4 +86,8 @@ export async function renderMdx(source: string, cwd?: string) {
 export async function renderMdxFile(file: string) {
     const data = fs.readFileSync(file, 'utf8')
     return await renderMdx(data, join(process.cwd(), dirname(file)))
+}
+
+export async function renderMdxComponent(file: string) {
+    return getMDXComponent((await renderMdxFile(file)).code)
 }
