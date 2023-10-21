@@ -1,8 +1,10 @@
 import fs from 'fs'
 import { join, dirname } from 'path'
+
 import matter from "gray-matter";
-import { renderMdx } from './mdx'
-import { Post, PostMetadata } from '../types/blog/post';
+
+import { renderMdx } from '@/lib/mdx'
+import { Post, PostMetadata } from '@/types/blog/post';
 
 const postsDirectory = join(process.cwd(), '_data', 'posts')
 

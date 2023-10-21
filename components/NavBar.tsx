@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import styles from '../styles/navbar.module.scss'
+
+import styles from '@/styles/navbar.module.scss'
 
 
 const navlinks = [

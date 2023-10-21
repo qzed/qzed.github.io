@@ -4,7 +4,6 @@ import { citeFromMarkdown, citeToMarkdown } from "@benrbray/mdast-util-cite";
 
 import { codes } from 'micromark-util-symbol/codes.js'
 import { visit } from 'unist-util-visit'
-import { stringify } from "querystring";
 
 
 const bibInsertMicromark = {

@@ -1,11 +1,12 @@
-import styles from '../../styles/blog-index.module.scss'
-import mdstyles from '../../styles/markdown.module.scss'
-
-import { getAllPosts } from '../../lib/blog'
 import React from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
 import { Metadata } from 'next'
 import Link from 'next/link'
+
+import { getMDXComponent } from 'mdx-bundler/client'
+import { getAllPosts } from '@/lib/blog'
+
+import styles from '@/styles/blog-index.module.scss'
+import mdstyles from '@/styles/markdown.module.scss'
 
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'

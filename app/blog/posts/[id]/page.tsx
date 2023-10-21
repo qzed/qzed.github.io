@@ -1,10 +1,11 @@
 import React from 'react'
 
-import styles from '../../../../styles/blog-post.module.scss'
-import { getAllPosts, getPostById } from '../../../../lib/blog'
-import MdxComponent from '../../../../components/MdxComponent'
+import { getAllPosts, getPostById } from '@/lib/blog'
 
-import mdstyles from '../../../../styles/markdown.module.scss'
+import MdxComponent from '@/components/MdxComponent'
+
+import styles from '@/styles/blog-post.module.scss'
+import mdstyles from '@/styles/markdown.module.scss'
 
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'

@@ -1,9 +1,12 @@
 import React from 'react'
-import ObfuscatedLink from '../components/ObfuscatedLink'
-import { renderMdxComponent } from '../lib/mdx'
-import styles from '../styles/home.module.scss'
-import mdstyles from '../styles/markdown.module.scss'
 import { Metadata } from 'next'
+
+import { renderMdxComponent } from '@/lib/mdx'
+
+import ObfuscatedLink from '@/components/ObfuscatedLink'
+
+import styles from '@/styles/home.module.scss'
+import mdstyles from '@/styles/markdown.module.scss'
 
 
 export const metadata: Metadata = {

@@ -12,8 +12,8 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import fs from 'fs'
 import { dirname, join } from 'path'
 
-import { remarkCite } from './cite/remark'
-import { rehypeCite } from './cite/rehype'
+import { remarkCite } from '@/lib/cite/remark'
+import { rehypeCite } from '@/lib/cite/rehype'
 
 
 export async function renderMdx(source: string, cwd?: string) {

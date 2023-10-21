@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import styles from '../styles/not-found.module.scss'
+
+import styles from '@/styles/not-found.module.scss'
 
 export const metadata: Metadata = {
   title: 'Page not found | Maximilian Luz',

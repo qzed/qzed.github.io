@@ -1,7 +1,7 @@
 import fs from 'fs'
-import { visit } from 'unist-util-visit'
-import { h } from 'hastscript'
 
+import { h } from 'hastscript'
+import { visit } from 'unist-util-visit'
 import { unified } from 'unified'
 import rehypeParse from 'rehype-parse'
 
