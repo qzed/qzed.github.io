@@ -4,14 +4,11 @@ import mdstyles from '../../styles/markdown.module.scss'
 import { getAllPosts } from '../../lib/blog'
 import React from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
+import { Metadata } from 'next'
+import Link from 'next/link'
 
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'
-
-import Link from 'next/link'
-import NavBar from '../../components/NavBar'
-
-import { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
@@ -25,8 +22,6 @@ export default async function BlogIndex() {
 
   return (
     <main>
-      <NavBar />
-
       {sorted.map((post) => {
         const MdxAbstract = getMDXComponent(post.abstract)
 

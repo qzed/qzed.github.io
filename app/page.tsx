@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
 import ObfuscatedLink from '../components/ObfuscatedLink'
 import { renderMdxComponent } from '../lib/mdx'
 import styles from '../styles/home.module.scss'
@@ -67,8 +66,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
-      <NavBar />
 
       <div className={`${styles.section} ${styles.about}`}>
         <div className={styles.column}>
