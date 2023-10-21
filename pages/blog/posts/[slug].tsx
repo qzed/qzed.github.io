@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import {getMDXComponent} from 'mdx-bundler/client'
 
-import Post from '../../../types/blog/post'
+import { Post } from '../../../types/blog/post'
 import Footer from '../../../components/Footer'
 import styles from '../../../styles/blog-post.module.scss'
 import { getAllPosts, getPostBySlug } from '../../../lib/blog'
@@ -19,9 +19,9 @@ type Props = {
 }
 
 const BlogPost = ({ post }: Props) => {
-  const title = `${post.title} | ${post.author}`;
+  const title = `${post.meta.title} | ${post.meta.author}`;
 
-  const date = new Date(post.date).toLocaleDateString('en-us', {
+  const date = new Date(post.meta.date).toLocaleDateString('en-us', {
     month: 'long',
     day: 'numeric',
     year: 'numeric'
@@ -43,12 +43,12 @@ const BlogPost = ({ post }: Props) => {
         <div className={styles.page}>
           <div className={styles.column}>
             <div className={styles.text}>
-              <h1 className={styles.title}>{post.title}</h1>
+              <h1 className={styles.title}>{post.meta.title}</h1>
               <div className={styles.meta}>
                 <p className={styles.date}>{date}</p>
                 <div className={styles.tags}>
                   {
-                    post.tags?.map((tag) => {
+                    post.meta.tags?.map((tag) => {
                       return (<p className={styles.tag} key={tag}>#{tag}</p>)
                     })
                   }

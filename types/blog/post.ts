@@ -1,4 +1,4 @@
-type Post = {
+export type PostMetadata = {
   slug: string
   title: string
   author: string
@@ -6,7 +6,9 @@ type Post = {
   abstract: string
   tags: [string]
   visibility: string
-  content: string
 }
 
-export default Post
+export type Post = {
+  meta: PostMetadata
+  content: string
+}
