@@ -2,7 +2,6 @@ import React from 'react'
 
 import styles from '../../../../styles/blog-post.module.scss'
 import { getAllPosts, getPostById } from '../../../../lib/blog'
-import NavBar from '../../../../components/NavBar'
 import MdxComponent from '../../../../components/MdxComponent'
 
 import mdstyles from '../../../../styles/markdown.module.scss'
@@ -26,8 +25,6 @@ export default async function BlogPost({ params }: { params: Params }) {
 
   return (
     <main>
-      <NavBar />
-
       <div className={styles.topspace}></div>
       <div className={styles.page}>
         <div className={styles.column}>
