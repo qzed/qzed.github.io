@@ -31,14 +31,14 @@ export default async function BlogIndex() {
         const MdxAbstract = getMDXComponent(post.abstract)
 
         return (
-          <div className={styles.post} key={post.slug}>
+          <div className={styles.post} key={post.id}>
             <div className={styles.column}>
               <div className={styles.text}>
                 <div>
                   <div>
                     <div className={styles.title}>
                       <h1>
-                        <Link href={`/blog/posts/${post.slug}`}>{post.title}</Link>
+                        <Link href={`/blog/posts/${post.id}`}>{post.title}</Link>
                       </h1>
                     </div>
                     <div className={styles.meta}>
@@ -63,7 +63,7 @@ export default async function BlogIndex() {
                       <MdxAbstract />
                     </div>
                     <div>
-                      <Link href={`/blog/posts/${post.slug}`}>Read more...</Link>
+                      <Link href={`/blog/posts/${post.id}`}>Read more...</Link>
                     </div>
                   </div>
                 </div>

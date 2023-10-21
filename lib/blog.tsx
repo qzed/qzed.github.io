@@ -11,9 +11,8 @@ export function getPostSlugs() {
         .filter((path) => /\.mdx?$/.test(path))
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-    const realSlug = slug.replace(/\.mdx$/, '')
-    const fullPath = join(postsDirectory, `${realSlug}.mdx`)
+export async function getPostById(id: string): Promise<Post> {
+    const fullPath = join(postsDirectory, `${id}.mdx`)
     const source = fs.readFileSync(fullPath, 'utf8')
 
     const { code: content, frontmatter } = await renderMdx(source, dirname(fullPath))
@@ -21,7 +20,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
     return {
         meta: {
-            slug: realSlug,
+            id: id,
             title: frontmatter.title,
             author: frontmatter.author,
             date: Date.parse(frontmatter.date),
@@ -43,7 +42,7 @@ export async function getAllPosts() {
             const { code } = await renderMdx(data.abstract)
 
             return {
-                slug: file.replace(/\.mdx$/, ''),
+                id: file.replace(/\.mdx$/, ''),
                 title: data.title,
                 author: data.author,
                 date: Date.parse(data.date),

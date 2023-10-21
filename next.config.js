@@ -18,6 +18,10 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
+
+  experimental: {
+    serverComponentsExternalPackages: ["mdx-bundler"],
+  }
 }
 
 module.exports = nextConfig

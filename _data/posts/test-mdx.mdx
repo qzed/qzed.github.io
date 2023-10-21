@@ -12,8 +12,37 @@ abstract: |
 visibility: devel
 ---
 
+import { Counter } from './test-mdx-Counter'
 
-import Image from 'next/image';
+Adding a counter button component:
+
+<Counter />
+
+The code in this `.mdx` file is
+```jsx
+import { Counter } from './test-mdx-Counter'
+
+<Counter />
+```
+with the imported `./test-mdx-Counter.tsx` containing 
+```jsx
+'use client'
+
+import React from "react"
+
+export const initialCounterState = 4;
+
+export function Counter() {
+    const [counter, setCounter] = React.useState(initialCounterState);
+    return (
+        <button onClick={() => setCounter((c) => c + 1)}>
+            Increment {counter}
+        </button>
+    );
+};
+```
+
+Writing comments comments:
 
 {/* this is a comment */}
 
@@ -22,17 +51,6 @@ import Image from 'next/image';
     test
 */}
 
-This is an image via `next.js/image`:
-
-<Image src="/assets/profile.png" width="100" height="100" />
-
-The code used was
-```jsx
-<Image src="/assets/profile.png" width="100" height="100" />
-```
-
-
-Write comments:
 ```jsx
 {/* This is a comment. */}
 
