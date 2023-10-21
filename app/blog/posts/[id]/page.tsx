@@ -1,5 +1,4 @@
 import React from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
 
 import styles from '../../../../styles/blog-post.module.scss'
 import { getAllPosts, getPostById } from '../../../../lib/blog'
