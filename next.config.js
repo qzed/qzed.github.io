@@ -9,6 +9,10 @@ const copyFile = promisify(fs.copyFile)
 const nextConfig = {
   reactStrictMode: true,
 
+  images: {
+    unoptimized: true,
+  },
+
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },

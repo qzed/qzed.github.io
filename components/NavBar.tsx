@@ -20,11 +20,9 @@ const NavItem = ({name, path}: NavProps) => {
   return (
     <li className={`${styles.item} ${active}`}>
       <Link href={path}>
-        <a>
-          <div>
-            {name}
-          </div>
-        </a>
+        <div>
+          {name}
+        </div>
       </Link>
     </li>
   )
