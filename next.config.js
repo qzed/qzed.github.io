@@ -9,6 +9,7 @@ const copyFile = promisify(fs.copyFile)
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
+  poweredByHeader: false,
 
   images: {
     unoptimized: true,
@@ -17,17 +18,6 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
-
-  exportPathMap: async function (defaultPathMap, {dev, dir, outDir, distDir, buildId}) {
-    if (dev) {
-      return defaultPathMap
-    }
-
-    await copyFile(join(dir, 'CNAME'), join(outDir, 'CNAME'))
-    await copyFile(join(dir, '.nojekyll'), join(outDir, '.nojekyll'))
-
-    return defaultPathMap
-  }
 }
 
 module.exports = nextConfig

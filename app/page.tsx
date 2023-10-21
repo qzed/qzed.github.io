@@ -1,54 +1,30 @@
 import { getMDXComponent } from 'mdx-bundler/client'
-import Head from 'next/head'
 import React from 'react'
-import { useEffect } from 'react'
-import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
+import ObfuscatedLink from '../components/ObfuscatedLink'
 import { renderMdxFile } from '../lib/mdx'
 import styles from '../styles/home.module.scss'
 import mdstyles from '../styles/markdown.module.scss'
+import { Metadata } from 'next'
 
 
-function obfuscate(text: string): string {
-  return Buffer.from(text).toString('base64')
+export const metadata: Metadata = {
+  title: 'Maximilian Luz',
+  description: 'Personal website of Maximilian Luz',
 }
 
-function deobfuscate(text: string): string {
-  return Buffer.from(text, 'base64').toString('utf-8')
-}
-
-
-type Props = {
-  about: string
-}
-
-const Home = (props: Props) => {
-  const email = "mailto:Maximilian%20Luz<m@mxnluz.io>";
-  const emailObfuscated = obfuscate(email);
-
-  useEffect(() => {
-    var elem = document.getElementById("maillink") as HTMLAnchorElement;
-
-    if (elem !== null) {
-      elem.href=deobfuscate(emailObfuscated);
-    }
-  });
-
-  const About = React.useMemo(() => getMDXComponent(props.about), [props.about])
+export default async function Home() {
+  const about_mdx = (await renderMdxFile("_data/about.mdx")).code
+  // const About = React.useMemo(() => getMDXComponent(about_mdx), [about_mdx])
+  const About = getMDXComponent(about_mdx)
 
   return (
-    <div className={styles.base}>
-      <Head>
-        <title>Maximilian Luz</title>
-        <meta name="description" content="Personal website of Maximilian Luz" />
-      </Head>
-
       <main>
         <div className={`${styles.section} ${styles.profile}`}>
           <div className={styles.column}>
             <div className={styles.profileCard}>
               <div className={styles.profileMain}>
-                <img className={styles.profileImage} src="/assets/profile.png" alt="Profile Picture"/>
+                <img className={styles.profileImage} src="/assets/profile.png" alt="Profile Picture" />
                 <div className={styles.profileText}>
                   <p className={styles.profileName}>
                     Maximilian Luz
@@ -84,18 +60,18 @@ const Home = (props: Props) => {
                     <use href="/assets/social-icons.svg#linkedin"></use>
                   </svg>
                 </a>
-                <a href="" id="maillink">
+                <ObfuscatedLink href="bWFpbHRvOk1heGltaWxpYW4lMjBMdXo8bUBteG5sdXouaW8+">
                   <svg className={styles.icon} viewBox="0 0 24 24">
                     <title>E-Mail</title>
                     <use href="/assets/social-icons.svg#email"></use>
                   </svg>
-                </a>
+                </ObfuscatedLink>
               </div>
             </div>
           </div>
         </div>
 
-        <NavBar/>
+        <NavBar />
 
         <div className={`${styles.section} ${styles.about}`}>
           <div className={styles.column}>
@@ -107,18 +83,5 @@ const Home = (props: Props) => {
           </div>
         </div>
       </main>
-
-      <Footer/>
-    </div>
   )
-}
-
-export default Home
-
-export async function getStaticProps() {
-  return {
-    props: {
-      about: (await renderMdxFile("_data/about.mdx")).code
-    }
-  }
 }
