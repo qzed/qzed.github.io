@@ -3,7 +3,7 @@ type NoteProps = {
   children: JSX.Element,
 }
 
-const Note = ({type, children}: NoteProps) => {
+export default function Note({ type, children }: NoteProps) {
   let cls = "note"
   if (type) {
     cls += " " + type
@@ -14,6 +14,4 @@ const Note = ({type, children}: NoteProps) => {
       {children}
     </div>
   )
-};
-
-export default Note;
+}
