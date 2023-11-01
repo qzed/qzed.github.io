@@ -11,18 +11,60 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/assets/icon-dark.svg',
-        href: '/assets/icon-dark.svg',
+        url: '/assets/icons/dark/favicon.svg',
       },
       {
         media: '(prefers-color-scheme: light)',
-        url: '/assets/icon-dark.svg',
-        href: '/assets/icon-dark.svg',
+        url: '/assets/icons/dark/favicon.svg',
       },
       {
         media: '(prefers-color-scheme: dark)',
-        url: '/assets/icon-light.svg',
-        href: '/assets/icon-light.svg',
+        url: '/assets/icons/light/favicon.svg',
+      },
+    ],
+    apple: [
+      {
+        url: '/assets/icons/dark/apple-touch-icon.png',
+      },
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/assets/icons/dark/apple-touch-icon.png',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/assets/icons/light/apple-touch-icon.png',
+      },
+    ],
+    shortcut: [
+      {
+        url: '/assets/icons/dark/favicon.png',
+      },
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/assets/icons/dark/favicon.png',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/assets/icons/light/favicon.png',
+      },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/assets/icons/black/favicon.png',
+        color: "#06060b",
+      },
+      {
+        rel: 'mask-icon',
+        media: '(prefers-color-scheme: light)',
+        url: '/assets/icons/black/favicon.png',
+        color: "#06060b",
+      },
+      {
+        rel: 'mask-icon',
+        media: '(prefers-color-scheme: dark)',
+        url: '/assets/icons/black/favicon.png',
+        color: "#ffffff",
       },
     ]
   },
