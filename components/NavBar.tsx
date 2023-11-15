@@ -7,7 +7,7 @@ import styles from '@/styles/navbar.module.scss'
 
 
 const navlinks = [
-  { name: "Home", path: "/" },
+  { name: "About", path: "/" },
   { name: "Blog", path: "/blog" },
 ]
 
