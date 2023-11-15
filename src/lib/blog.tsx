@@ -6,7 +6,7 @@ import matter from "gray-matter";
 import { renderMdx } from '@/lib/mdx'
 import { Post, PostMetadata } from '@/types/blog/post';
 
-const postsDirectory = join(process.cwd(), '_data', 'posts')
+const postsDirectory = join(process.cwd(), 'data', 'posts')
 
 export function getPostSlugs() {
     return fs.readdirSync(postsDirectory)

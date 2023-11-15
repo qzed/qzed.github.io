@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const About = await renderMdxComponent("_data/about.mdx")
+  const About = await renderMdxComponent("data/about.mdx")
 
   return (
     <main>
