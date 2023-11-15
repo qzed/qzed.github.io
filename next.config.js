@@ -1,9 +1,4 @@
-const fs = require('fs')
 const path = require('path')
-const {join} = require('path')
-const {promisify} = require('util')
-
-const copyFile = promisify(fs.copyFile)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
