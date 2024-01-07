@@ -5,6 +5,7 @@ import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 
+// @ts-ignore
 import type { ProcessorOptions } from '@mdx-js/esbuild/lib'
 import { bundleMDX } from 'mdx-bundler'
 import { getMDXComponent } from 'mdx-bundler/client'
@@ -12,8 +13,8 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import fs from 'fs'
 import { dirname, join } from 'path'
 
-import { remarkCite } from '@/lib/cite/remark'
-import { rehypeCite } from '@/lib/cite/rehype'
+// @ts-ignore
+import rehypeCitation from 'rehype-citation'
 
 
 export async function renderMdx(source: string, cwd?: string) {
@@ -28,16 +29,11 @@ export async function renderMdx(source: string, cwd?: string) {
             options.remarkPlugins = [
                 ...(options.remarkPlugins ?? []),
                 [remarkMath, {}],
-                [remarkCite, {}],
                 [remarkGfm, {}],
             ]
 
             options.rehypePlugins = [
                 ...(options.rehypePlugins ?? []),
-                [rehypeCite, {
-                    bibliography: bibliography,
-                }],
-                [rehypePrism],
                 [rehypeKatex, {
                     trust: (context: any) => ['\\htmlId', '\\href'].includes(context.command),
                     macros: {
@@ -46,6 +42,12 @@ export async function renderMdx(source: string, cwd?: string) {
                         "\\label": "\\htmlId{#1}{}"
                     },
                 }],
+                [rehypeCitation, {
+                    bibliography: bibliography,
+                    linkCitations: true,
+                    inlineClass: ['csl-ref'],
+                }],
+                [rehypePrism],
                 [rehypeSlug, {}],
                 [rehypeAutolinkHeadings, {
                     behavior: "wrap",
@@ -69,11 +71,11 @@ export async function renderMdx(source: string, cwd?: string) {
         esbuildOptions: options => {
             options.platform = "node"
             options.define = {
-                "process.env.__NEXT_TRAILING_SLASH": JSON.stringify(process.env.__NEXT_TRAILING_SLASH),
-                "process.env.__NEXT_IMAGE_OPTS": JSON.stringify(process.env.__NEXT_IMAGE_OPTS),
-                "process.env.__NEXT_REACT_ROOT": JSON.stringify(process.env.__NEXT_REACT_ROOT),
-                "process.env.__NEXT_OPTIMIZE_FONTS": JSON.stringify(process.env.__NEXT_OPTIMIZE_FONTS),
-                "process.env": JSON.stringify(process.env)
+                "process.env.__NEXT_TRAILING_SLASH": String(JSON.stringify(process.env.__NEXT_TRAILING_SLASH)),
+                "process.env.__NEXT_IMAGE_OPTS": String(JSON.stringify(process.env.__NEXT_IMAGE_OPTS)),
+                "process.env.__NEXT_REACT_ROOT": String(JSON.stringify(process.env.__NEXT_REACT_ROOT)),
+                "process.env.__NEXT_OPTIMIZE_FONTS": String(JSON.stringify(process.env.__NEXT_OPTIMIZE_FONTS)),
+                "process.env": String(JSON.stringify(process.env))
             };
 
             return options
