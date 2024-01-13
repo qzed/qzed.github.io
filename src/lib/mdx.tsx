@@ -35,10 +35,9 @@ export async function renderMdx(source: string, cwd?: string) {
             options.rehypePlugins = [
                 ...(options.rehypePlugins ?? []),
                 [rehypeKatex, {
-                    trust: (context: any) => ['\\htmlId', '\\href'].includes(context.command),
+                    trust: (context: any) => ['\\htmlId'].includes(context.command),
+                    strict: false,
                     macros: {
-                        "\\eqref": "\\href{###1}{(\\text{#1})}",
-                        "\\ref": "\\href{###1}{\\text{#1}}",
                         "\\label": "\\htmlId{#1}{}"
                     },
                 }],
