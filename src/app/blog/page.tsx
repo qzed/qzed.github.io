@@ -2,18 +2,71 @@ import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
-import { getMDXComponent } from 'mdx-bundler/client'
-import { getAllPosts } from '@/lib/blog'
-
-import styles from '@/styles/blog-index.module.scss'
-import mdstyles from '@/styles/markdown.module.scss'
-
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'
 
+import { getAllPosts } from '@/lib/blog'
+
+import Prose from '@/components/Prose'
+import { MdxFromSource } from '@/components/Mdx'
+import { PostMetadata } from '@/types/blog/post'
+
+
+function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
+  return (
+    <div className=''>
+      <h1 className="text-xl sm:text-2xl font-bold">{title}</h1>
+      {subtitle ? <h2 className='text-lg sm:text-xl mt-1'>{subtitle}</h2> : <></>}
+    </div>
+  )
+}
+
+function PostDate({ date }: { date: number }) {
+  const displayDate = new Date(date).toLocaleDateString('en-us', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
+
+  return (
+    <p className='mb-1 text-xs sm:text-sm text-gray-500 dark:text-gray-500'>
+      {displayDate}
+    </p>
+  )
+}
+
+function PostHeader({ post }: { post: PostMetadata }) {
+  return (
+    <div className='mb-4'>
+      <PostDate date={post.date} />
+      <PostTitle title={post.title} subtitle={post.subtitle} />
+    </div>
+  )
+}
+
+function PostAbstract({ abstract }: { abstract: string }) {
+  return (
+    <Prose>
+      <MdxFromSource source={abstract} />
+    </Prose>
+  )
+}
+
+function PostPreview({ post }: { post: PostMetadata }) {
+  const fragment = post.id.join('/')
+  const url = `/blog/posts/${fragment}`
+
+  return (
+    <Link href={url} className='hover:text-sky-800 dark:hover:text-slate-100'>
+      <PostHeader post={post} />
+      <PostAbstract abstract={post.abstract} />
+    </Link>
+  )
+}
+
 
 export const metadata: Metadata = {
-  title: 'Blog | Maximilian Luz',
+  title: 'Maximilian Luz | Blog',
   description: 'Blog of Maximilian Luz',
 }
 
@@ -23,51 +76,16 @@ export default async function BlogIndex() {
 
   return (
     <main>
-      {sorted.map((post) => {
-        const MdxAbstract = getMDXComponent(post.abstract)
-
-        return (
-          <div className={styles.post} key={post.id}>
-            <div className={styles.column}>
-              <div className={styles.text}>
-                <div>
-                  <div>
-                    <div className={styles.title}>
-                      <h1>
-                        <Link href={`/blog/posts/${post.id}`}>{post.title}</Link>
-                      </h1>
-                    </div>
-                    <div className={styles.meta}>
-                      <p className={styles.date}>
-                        {
-                          new Date(post.date).toLocaleDateString('en-us', {
-                            month: 'long',
-                            day: 'numeric',
-                            year: 'numeric'
-                          })
-                        }
-                      </p>
-                      <div className={styles.tags}>
-                        {
-                          post.tags?.map((tag) => {
-                            return (<p className={styles.tag} key={tag}>#{tag}</p>)
-                          })
-                        }
-                      </div>
-                    </div>
-                    <div className={mdstyles.markdown}>
-                      <MdxAbstract />
-                    </div>
-                    <div>
-                      <Link href={`/blog/posts/${post.id}`}>Read more...</Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })}
+      <div className='py-8 sm:py-12 lg:py-16 px-8'>
+        <div className='mx-auto max-w-prose flex flex-col gap-10'>
+          {
+            sorted.map((post) => <>
+              <PostPreview post={post} key={post.id.join('/')} />
+              <hr className='last:hidden h-px bg-slate-300 dark:bg-slate-700 border-0' />
+            </>)
+          }
+        </div>
+      </div>
     </main>
   )
 }

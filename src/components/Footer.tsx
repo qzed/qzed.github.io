@@ -1,10 +1,16 @@
-import styles from '@/styles/footer.module.scss'
-
-
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      Copyright © 2023 &ndash; 2024 Maximilian Luz
+    <footer className="
+      absolute bottom-0
+      w-full h-14
+      flex items-center
+    ">
+      <div className="
+        w-fit h-fit mx-auto
+        text-xs text-slate-500 dark:text-slate-600
+      ">
+        Copyright © 2024 Maximilian Luz
+      </div>
     </footer>
   )
 }

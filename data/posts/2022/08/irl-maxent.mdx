@@ -12,15 +12,11 @@ abstract: |
 
     _Maximum entropy IRL_ is a comparatively simple but clever method of solving the general IRL problem for discrete Markov decision processes.
     In this blog post, I will lay out the theoretical foundation of this approach, including the principle of maximum entropy, and derive the maximum entropy IRL algorithm.
-bibliography: 20220825-irl-maxent.bib.json
+bibliography: data/posts/2022/08/irl-maxent.bib.json
 ---
 
-import EqRef from '../../src/components/blog/EqRef.tsx'
-import Note from '../../src/components/blog/Note.tsx'
-import katex from 'katex'
 
-
-<Note>
+<Note type="important">
     **Disclaimer:** This post is an adapted version of the theoretical part of a Jupyter Notebook that I wrote in 2019 for a seminar on Imitation Learning.
     You can find it, an accompanying presentation, and a small framework at [github.com/qzed/irl-maxent](https://github.com/qzed/irl-maxent).
 
@@ -28,7 +24,7 @@ import katex from 'katex'
 </Note>
 
 
-# Context and Motivation
+## Context and Motivation
 
 Let us start with some context and a brief overview of the problem we're trying to solve:
 _Reinforcement learning (RL)_ aims to provide a framework for finding the optimal behavior (i.e., an optimal policy) of intelligent agents regarding some environment they interact with by directing them via a reward signal, measuring their performance. 
@@ -43,7 +39,7 @@ Maximum entropy (MaxEnt) inverse reinforcement learning [@ziebartMaximumEntropyI
 Having discussed the “why”, let us now get to the “how”:
 
 
-# A More Mathematical Introduction
+## A More Mathematical Introduction
 
 While I assume some familiarity with the basics of reinforcement and inverse reinforcement learning, here's a short overview:
 In both settings, we describe our world using a Markov decision process (MDP).
@@ -65,7 +61,7 @@ Features are, in this case, defined as a function $\phi: S \to \mathbb{R}^d$, ma
 In general, we assume that $\phi(\tau) = \sum_{t = 1}^{|\tau|} \phi(s_t)$ where $|\tau|$ denotes the length of the trajectories (visited states), i.e., that the features of a trajectory $\tau$ are the sum of the features of the states visited by this trajectory, counting repetitions.
 
 
-# The Principle of Maximum Entropy
+## The Principle of Maximum Entropy
 
 The general idea of Maximum Entropy Inverse Reinforcement Learning is based on feature-expectation matching [@abbeelApprenticeshipLearningInverse2004]:
 The expected visitation-frequency of features in the demonstrations provided by the expert should equal the expected visitation-frequency of features visited by the agent following the recovered reward function.
@@ -149,7 +145,7 @@ By choosing the solution with maximum entropy, we choose the solution with minim
 Note that all solutions already satisfy our constraints; thus we actually pick the solution that best fits our information with a minimal bias.
 
 
-# Deriving the Maximum Entropy Inverse Reinforcement Learning Algorithm
+## Deriving the Maximum Entropy Inverse Reinforcement Learning Algorithm
 
 Applying our findings from the previous section to feature-expectation matching directly results in a constrained optimization problem:
 
@@ -200,7 +196,7 @@ To make the dependency on the reward parameters explicit, we write $p(\tau \mid 
 </Note>
 
 
-## Solution and Partition Function
+### Solution and Partition Function
 
 Solving the above mathematical program for MDPs with deterministic transition dynamics (i.e., MDPs where all actions have predetermined deterministic outcomes) using the method of Lagrange multipliers leads to the observation that
 
@@ -232,7 +228,7 @@ $$
 </Note>
 
 
-## Optimization
+### Optimization
 
 We now know the parameterized form of the distribution, so how can we optimize the parameters?
 The answer is fairly straightforward: We can maximize the log-likelihood over all demonstrated trajectories $\mathcal{D} = \{\tau_i\}_{i=1}^{N}$, i.e.,
@@ -288,7 +284,7 @@ which we can express in terms of the state-visitation frequency $D_{s_i}$ with <
 </Note>
 
 
-## Computing the State-Visitation Frequency
+### Computing the State-Visitation Frequency
 
 Now, we have only one remaining question:
 How do we compute the state-visitation frequency $D_{s_i}$?
@@ -297,7 +293,7 @@ First, we compute a (stochastic) policy $\pi_{\text{ME}}(a \mid s, \omega)$, ref
 Thereafter, we compute the state-visitation frequency under this policy with a simple forward pass.
 
 
-### Backward Pass: Computing the Local Action Policy
+#### Backward Pass: Computing the Local Action Policy
 
 The basic idea of the first pass is to remember our earlier observation about the learner policy $\pi^L(a \mid s)$ made in <EqRef label="eq:policy" num="2"/>, i.e.,
 
@@ -331,7 +327,7 @@ Setting the state-partition function $Z_{s_i} = 1$ for terminal states and then 
 </Note>
 
 
-### Forward Pass: Inferring State-Visitation Frequency from $\pi_{\text{ME}}$
+#### Forward Pass: Inferring State-Visitation Frequency from $\pi_{\text{ME}}$
 
 As we now know the policy $\pi_{\text{ME}}(a_j \mid s_i, \omega)$, inferring the state-visitation frequency $D_{s_i}$ becomes fairly easy:
 Remember that the policy is a probability distribution that tells us, given a state $s_i$, with which probability the agent should take a certain action $a_j$, which then leads to a new state $s_k$ according to our MDP transition model.
@@ -363,7 +359,7 @@ $$
 $$
 
 
-# The Algorithm
+## The Algorithm
 
 With a plan for computation of the state-visitation frequency, we now have everything we need to state the full algorithm.
 To derive that, however, let us first recap our findings:
@@ -397,7 +393,7 @@ We then iterate these four steps until convergence.
 </Note>
 
 
-# Some Last Words…
+## Some Last Words…
 
 Maximum entropy IRL is a clever and ― all in all ― fairly simple solution to the general inverse reinforcement learning problem.
 However, it does have some drawbacks and limitations:
@@ -418,6 +414,6 @@ A somewhat similar, yet model-free approach is relative entropy IRL by Boularias
 See the paper by Snoswell et al. [-@snoswellRevisitingMaximumEntropy2020] for a perspective on both relative and maximum entropy IRL approaches.
 
 
-# References
+## References
 
 [^ref]

@@ -1,9 +1,11 @@
-import { Metadata } from 'next'
+import '@/styles/common/tailwind.css'
 
 import Footer from '@/components/Footer'
-import NavBar from '@/components/NavBar'
+import Header from '@/components/Header'
 
-import styles from '@/styles/home.module.scss'
+import { Metadata } from 'next'
+import { SidebarProvider } from '@/components/SidebarContext'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
   title: 'Maximilian Luz',
@@ -76,10 +78,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={styles.base} >
-        <NavBar />
-        {children}
+    <html lang="en" className='scroll-pt-[4rem] lg:scroll-pt-[5rem]'>
+      <body className="
+        relative min-h-dvh
+        bg-slate-100 dark:bg-slate-900
+        text-slate-800 dark:text-slate-300
+      ">
+        <SidebarProvider>
+          <Sidebar />
+          <Header />
+        </SidebarProvider>
+        <div className="pt-12 lg:pt-14 pb-14 min-h-dvh">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

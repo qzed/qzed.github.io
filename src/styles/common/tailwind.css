@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .autolink-anchor {
+        @apply no-underline
+            hover:before:content-["#"]
+            hover:before:inline-block
+            hover:before:translate-x-[-1em]
+            hover:before:absolute;
+    }
+
+    .csl-ref > a {
+        @apply no-underline hover:underline;
+    }
+}
+
+.csl-bib-body {
+    @apply flex flex-col gap-2 font-light text-sm text-slate-950 dark:text-slate-50 px-3;
+
+}
+
+.csl-entry {
+    @apply list-item;
+}
+
+.csl-entry::marker {
+    @apply text-xs text-slate-300 dark:text-slate-600;
+}
+
+.code-highlight {
+    @apply block p-0 m-0 min-w-fit;
+}
+
+.code-line {
+    @apply block border-l-4 border-transparent box-border w-full px-4;
+}
+
+/*
+ * .code-line.inserted {
+ *     @apply bg-green-800 bg-opacity-25;
+ * }
+ * 
+ * .code-line.deleted {
+ *     @apply bg-red-900 bg-opacity-25;
+ * }
+ */
+
+.highlight-line {
+    @apply bg-slate-600 bg-opacity-50 border-l-4 border-l-amber-500;
+}
+
+.token.comment {
+    color: #949ba6 !important;
+}
+
+pre[class*="language-"] {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.line-number::before {
+    @apply inline-block text-right w-4 mr-4 ml-[-0.5rem];
+    color: #949ba6;
+    content: attr(line);
+}

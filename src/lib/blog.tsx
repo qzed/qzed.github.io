@@ -1,56 +1,76 @@
 import fs from 'fs'
-import { join, dirname } from 'path'
+import path from 'path'
+import { join } from 'path'
 
-import matter from "gray-matter";
+import { read } from 'to-vfile'
+import { matter } from "vfile-matter";
 
-import { renderMdx } from '@/lib/mdx'
 import { Post, PostMetadata } from '@/types/blog/post';
 
 const postsDirectory = join(process.cwd(), 'data', 'posts')
 
-export function getPostSlugs() {
-    return fs.readdirSync(postsDirectory)
-        .filter((path) => /\.mdx?$/.test(path))
+
+async function getAllFilesRecursive(dir: string): Promise<Array<string>> {
+    const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
+    const files = await Promise.all(dirents.map((dirent) => {
+        const res = path.resolve(dir, dirent.name);
+        return dirent.isDirectory() ? getAllFilesRecursive(res) : res;
+    }));
+    return Array.prototype.concat(...files);
 }
 
-export async function getPostById(id: string): Promise<Post> {
-    const fullPath = join(postsDirectory, `${id}.mdx`)
-    const source = fs.readFileSync(fullPath, 'utf8')
+export async function getPostSlugs() {
+    return (await getAllFilesRecursive(postsDirectory))
+        .filter((p) => /\.mdx?$/.test(p))
+        .map((p) => path.relative(postsDirectory, p))
+}
 
-    const { code: content, frontmatter } = await renderMdx(source, dirname(fullPath))
-    const { code: abstract } = await renderMdx(frontmatter.abstract, dirname(fullPath))
+export async function getPostById(id: Array<string>): Promise<Post> {
+    const fullPath = join(postsDirectory, `${id.join('/')}.mdx`)
+    const file = await read(fullPath)
+
+    matter(file, { strip: false })
+
+    const meta: Record<string, any> = file.data.matter as any
 
     return {
         meta: {
             id: id,
-            title: frontmatter.title,
-            author: frontmatter.author,
-            date: Date.parse(frontmatter.date),
-            abstract: abstract,
-            tags: frontmatter.tags ? frontmatter.tags : null,
-            visibility: frontmatter.visibility ? frontmatter.visibility : 'default',
+            title: meta.title,
+            subtitle: meta.subtitle,
+            author: meta.author,
+            date: Date.parse(meta.date),
+            abstract: meta.abstract,
+            tags: meta.tags || null,
+            visibility: meta.visibility || 'default',
+            path: fullPath,
         },
-        content: content,
+        file: file,
     }
 }
 
 export async function getAllPosts() {
-    const posts = await Promise.all(getPostSlugs()
+    const slugs = await getPostSlugs()
+
+    const posts = await Promise.all(slugs
         .map(async (file: string): Promise<PostMetadata> => {
             const path = join(postsDirectory, file)
-            const source = fs.readFileSync(path, 'utf8')
-            const { data } = matter(source)
+            const vf = await read(path)
 
-            const { code } = await renderMdx(data.abstract)
+            matter(vf, { strip: false })
+
+            const meta: Record<string, any> = vf.data.matter as any
 
             return {
-                id: file.replace(/\.mdx$/, ''),
-                title: data.title,
-                author: data.author,
-                date: Date.parse(data.date),
-                abstract: code,
-                tags: data.tags ? data.tags : null,
-                visibility: data.visibility ? data.visibility : 'default',
+                id: file.replace(/\.mdx$/, '').split('/'),
+                title: meta.title,
+                subtitle: meta.subtitle,
+                author: meta.author,
+                date: Date.parse(meta.date),
+                abstract: meta.abstract,
+                tags: meta.tags || null,
+                visibility: meta.visibility || 'default',
+                path: path,
             }
         }))
 

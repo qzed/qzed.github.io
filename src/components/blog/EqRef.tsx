@@ -7,7 +7,5 @@ type EqRefProps = {
 export default function EqRef({ label, num, text }: EqRefProps) {
   const txt = text || "Equation"
 
-  return (
-    <a className="eq-ref" href={`#${label}`}>{`${txt} (${num})`}</a>
-  )
+  return <a href={`#${label}`} className='no-underline hover:underline'>{`${txt} (${num})`}</a>
 }
