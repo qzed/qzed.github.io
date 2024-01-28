@@ -1,5 +1,5 @@
 type Props = {
-  children: JSX.Element,
+  children: JSX.Element | string,
 }
 
 export default function Prose({ children }: Props) {

@@ -8,7 +8,6 @@ import 'prism-themes/themes/prism-nord.css'
 import { getAllPosts } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
-import { MdxFromSource } from '@/components/Mdx'
 import { PostMetadata } from '@/types/blog/post'
 
 
@@ -47,7 +46,7 @@ function PostHeader({ post }: { post: PostMetadata }) {
 function PostAbstract({ abstract }: { abstract: string }) {
   return (
     <Prose>
-      <MdxFromSource source={abstract} />
+      {abstract}
     </Prose>
   )
 }
