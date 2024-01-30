@@ -27,7 +27,7 @@ export default function NotFound() {
         <div className='text-9xl font-bold mb-6'>
           404
         </div>
-        <p className='text-lg mb-1'>
+        <p className='text-base sm:text-lg mb-1 text-center'>
           Sorry. The page you are looking for does not exist.
         </p>
         <HomeButton />
