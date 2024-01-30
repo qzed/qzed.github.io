@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
-import { MdxFromFile } from '@/components/Mdx'
 import Prose from '@/components/Prose'
 
 import socials from '@/components/links/socials'
@@ -60,7 +59,16 @@ function SocialLinks() {
 function Biography() {
   return (
     <Prose>
-      <MdxFromFile path="data/biography.mdx" />
+      <p>
+        I'm interested in Computer Vision, Robotics and Machine Learning in
+        general, working as a PhD student at the <a href="https://rl.uni-freiburg.de">
+        Robot Learning Lab of the University of Freiburg</a>.
+      </p>
+      <p>
+        In my spare time, I'm a Linux Kernel maintainer for Microsoft Surface
+        devices. Presently, I'm trying to make the ARM-based Surface Pro X and
+        its Qualcomm SoC play nice with Linux.
+      </p>
     </Prose>
   )
 }
