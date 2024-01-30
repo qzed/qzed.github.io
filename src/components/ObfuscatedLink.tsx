@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from "react"
+import { useEffect, useId } from "react"
 
 type Props = {
   href: string,
@@ -13,13 +13,15 @@ function deobfuscate(text: string): string {
 }
 
 export default function ObfuscatedLink({ href, children, className }: Props) {
+  const id = useId();
+
   useEffect(() => {
-    var elem = document.getElementById("obflink") as HTMLAnchorElement;
+    var elem = document.getElementById(id) as HTMLAnchorElement;
     elem.href = deobfuscate(href);
   });
 
   return (
-    <a href="" id="obflink" className={className}>
+    <a href="" id={id} className={className}>
       {children}
     </a>
   )
