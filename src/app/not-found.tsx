@@ -1,6 +1,21 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
+
+function HomeButton() {
+  return (
+    <Link href="/" className='
+      mt-8 px-5 py-3
+      rounded-full border border-transparent
+      bg-slate-300 dark:bg-slate-800
+      hover:border-slate-400 dark:hover:border-slate-600
+    '>
+      Home
+    </Link>
+  )
+}
+
+
 export const metadata: Metadata = {
   title: 'Maximilian Luz | Page not found',
 }
@@ -15,14 +30,7 @@ export default function NotFound() {
         <p className='text-lg mb-1'>
           Sorry. The page you are looking for does not exist.
         </p>
-        <Link href="/" className='
-          mt-8 px-5 py-3
-          rounded-full border border-transparent
-          bg-slate-300 dark:bg-slate-800
-          hover:border-slate-400 dark:hover:border-slate-600
-        '>
-          Home
-        </Link>
+        <HomeButton />
       </div>
     </main>
   )
