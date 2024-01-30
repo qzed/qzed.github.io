@@ -47,13 +47,21 @@ function SocialLink({ Icon, href }: { Icon: any, href: string }) {
 
 function SocialLinks() {
   return (
-    <div className='flex items-center gap-3 w-fit mx-auto'>
+    <div className='flex items-center gap-3 w-fit mx-auto my-12'>
       {
         socials.map((entry) => {
           return <SocialLink Icon={entry.icon} href={entry.link} key={entry.title} />
         })
       }
     </div>
+  )
+}
+
+function Biography() {
+  return (
+    <Prose>
+      <MdxFromFile path="data/biography.mdx" />
+    </Prose>
   )
 }
 
@@ -69,12 +77,8 @@ export default async function Home() {
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
         <div className='mx-auto max-w-prose'>
           <Profile />
-          <div className='my-12'>
-            <SocialLinks />
-          </div>
-          <Prose>
-            <MdxFromFile path="data/biography.mdx" />
-          </Prose>
+          <SocialLinks />
+          <Biography />
         </div>
       </div>
     </main >
