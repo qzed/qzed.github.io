@@ -32,12 +32,10 @@ function SocialLink({ Icon, href }: { Icon: any, href: string }) {
     <Link href={href} className='
       p-2
       rounded
-    bg-slate-200 dark:bg-slate-800
-    text-slate-700 dark:text-slate-200
-    hover:text-sky-700 dark:hover:text-sky-500
-      border border-slate-300 dark:border-slate-700
-      hover:order-slate-400 dark:hover:border-slate-600
-
+      bg-slate-300 dark:bg-slate-800
+      text-slate-700 dark:text-slate-200
+      border border-transparent
+      hover:border-slate-400 dark:hover:border-slate-600
     '>
       <Icon className='size-10' />
     </Link>
