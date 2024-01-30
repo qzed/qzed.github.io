@@ -27,9 +27,11 @@ function Profile() {
   )
 }
 
-function SocialLink({ Icon, href }: { Icon: any, href: string }) {
+function SocialLink({ Anchor, Icon, href }: { Anchor?: any, Icon: any, href: string }) {
+  const LinkComponent = Anchor || Link;
+
   return (
-    <Link href={href} className='
+    <LinkComponent href={href} className='
       p-2
       rounded
       bg-slate-300 dark:bg-slate-800
@@ -38,7 +40,7 @@ function SocialLink({ Icon, href }: { Icon: any, href: string }) {
       hover:border-slate-400 dark:hover:border-slate-600
     '>
       <Icon className='size-10' />
-    </Link>
+    </LinkComponent>
   )
 }
 
@@ -47,7 +49,12 @@ function SocialLinks() {
     <div className='flex items-center gap-3 w-fit mx-auto my-12'>
       {
         socials.map((entry) => {
-          return <SocialLink Icon={entry.icon} href={entry.link} key={entry.title} />
+          return <SocialLink
+            Anchor={entry.anchor}
+            Icon={entry.icon}
+            href={entry.link}
+            key={entry.title}
+          />
         })
       }
     </div>
