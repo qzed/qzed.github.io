@@ -2,7 +2,7 @@ import Logo from '@/components/Logo'
 import NavLink from "@/components/NavLink"
 import SidebarButton from '@/components/SidebarButton'
 
-import pages from './links/pages'
+import pages from '@data/links/pages'
 
 function MenuItem({ href, children }: { href?: any, children?: JSX.Element | string }) {
   return (

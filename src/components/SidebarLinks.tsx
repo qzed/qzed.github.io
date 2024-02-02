@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import NavLink from "@/components/NavLink"
 
-import pages from './links/pages'
-import socials from './links/socials'
+import pages from '@data/links/pages'
+import socials from '@data/links/socials'
 
 
 function PageLink({

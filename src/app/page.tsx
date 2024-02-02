@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import Prose from '@/components/Prose'
 
-import socials from '@/components/links/socials'
+import socials from '@data/links/socials'
 
 
 function Profile() {
