@@ -30,7 +30,7 @@ const options: any = {
                 path: process.cwd(),
                 linkCitations: true,
                 inlineClass: ['csl-ref'],
-                csl: "data/acm-siggraph.csl",
+                csl: "data/blog/acm-siggraph.csl",
             }],
             [rehypeKatex as any, {
                 trust: (context: any) => ['\\htmlId'].includes(context.command),

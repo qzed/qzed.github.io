@@ -7,7 +7,7 @@ import { matter } from "vfile-matter";
 
 import { Post, PostMetadata } from '@/types/blog/post';
 
-const postsDirectory = join(process.cwd(), 'data', 'posts')
+const postsDirectory = join(process.cwd(), 'data', 'blog', 'posts')
 
 
 async function getAllFilesRecursive(dir: string): Promise<Array<string>> {
