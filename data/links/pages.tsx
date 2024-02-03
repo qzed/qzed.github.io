@@ -11,6 +11,11 @@ const pages = [
         link: "/blog",
         icon: icons.EditDocument,
     },
+    {
+        title: "Publications",
+        link: "/publications",
+        icon: icons.LibraryBooks,
+    },
 ]
 
 export default pages
