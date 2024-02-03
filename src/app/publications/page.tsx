@@ -125,10 +125,15 @@ function Group({ title, publications }: { title: string, publications: any[] }) 
     <div>
       <h1 className='text-2xl text-slate-500'>{title}</h1>
       <hr className='border-none h-px bg-slate-500' />
-      <div className='flex flex-col gap-8 pt-8'>
+      <div className='flex flex-col gap-6 pt-8'>
         {
           publications.map((entry) => {
-            return <Publication data={entry} key={entry.title} />
+            return (
+              <>
+              <Publication data={entry} key={entry.title} />
+              <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
+              </>
+            )
           })
         }
       </div>
