@@ -87,6 +87,11 @@ const publications = [
                 link: "https://openaccess.thecvf.com/content/WACV2024/html/Jahedi_CCMR_High_Resolution_Optical_Flow_Estimation_via_Coarse-To-Fine_Context-Guided_Motion_WACV_2024_paper.html",
                 icon: icons.Description,
             },
+            {
+                title: "Code",
+                link: "https://github.com/cv-stuttgart/CCMR",
+                icon: icons.Code,
+            },
         ]
     },
     {
@@ -121,6 +126,11 @@ const publications = [
                 title: "PDF",
                 link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
                 icon: icons.Description,
+            },
+            {
+                title: "Code",
+                link: "https://github.com/cv-stuttgart/MS_RAFT_plus",
+                icon: icons.Code,
             },
         ],
     },
