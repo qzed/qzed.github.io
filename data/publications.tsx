@@ -46,6 +46,11 @@ const publications = [
                 link: "http://amodal-flow.cs.uni-freiburg.de/",
                 icon: icons.Language,
             },
+            {
+                title: "Video",
+                link: "https://www.youtube.com/watch?v=tzeQ0h9ttYM",
+                icon: icons.Movie,
+            },
         ]
     },
     {
