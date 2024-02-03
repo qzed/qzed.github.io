@@ -80,7 +80,7 @@ export default async function BlogIndex() {
           {
             sorted.map((post) => <>
               <PostPreview post={post} key={post.id.join('/')} />
-              <hr className='last:hidden h-px bg-slate-300 dark:bg-slate-700 border-0' />
+              <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
             </>)
           }
         </div>
