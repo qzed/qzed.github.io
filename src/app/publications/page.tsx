@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Fragment } from 'react'
 
 import publications from '@data/publications'
 
@@ -58,7 +59,7 @@ function Authors({ authors }: { authors: any[] }) {
     elems = <>
       {
         authors.slice(0, -1).map((author) => {
-          return <><Author author={author} />, </>
+          return <Fragment key={author.name}><Author author={author} />, </Fragment>
         })
       }
       <>and <Author author={authors[authors.length - 1]} /></>
@@ -129,10 +130,10 @@ function Group({ title, publications }: { title: string, publications: any[] }) 
         {
           publications.map((entry) => {
             return (
-              <>
-              <Publication data={entry} key={entry.title} />
-              <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
-              </>
+              <Fragment key={entry.title} >
+                <Publication data={entry} />
+                <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
+              </Fragment>
             )
           })
         }

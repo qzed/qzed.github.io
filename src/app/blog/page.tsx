@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -78,10 +78,10 @@ export default async function BlogIndex() {
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
         <div className='mx-auto max-w-prose flex flex-col gap-10'>
           {
-            sorted.map((post) => <>
-              <PostPreview post={post} key={post.id.join('/')} />
+            sorted.map((post) => <Fragment key={post.id.join('/')} >
+              <PostPreview post={post} />
               <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
-            </>)
+            </Fragment>)
           }
         </div>
       </div>
