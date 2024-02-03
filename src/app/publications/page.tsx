@@ -9,7 +9,9 @@ const me = "Maximilian Luz"
 function Title({ title, link }: { title: string, link: string }) {
   return (
     <h2 className='mb-1'>
-      <a href={link} className='font-bold'>{title}</a>
+      <a href={link} className='font-bold hover:text-sky-800 dark:hover:text-slate-100'>
+        {title}
+      </a>
     </h2>
   )
 }
