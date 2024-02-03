@@ -108,7 +108,7 @@ const publications = [
                 link: "https://www.vis.uni-stuttgart.de/en/institute/team/Bruhn-00001/",
             },
         ],
-        published: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+        published: "International Journal of Computer Vision (IJCV)",
         type: "journal",
         link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
         links: [
