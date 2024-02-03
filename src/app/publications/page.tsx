@@ -85,7 +85,7 @@ function Published({ published, year }: { published: string, year: number }) {
 function Link({ title, link, Icon }: { title: string, link: string, Icon: any }) {
   return (
     <a href={link} className='
-      py-1 px-2 text-sm font-light whitespace-nowrap
+      py-1 px-2 text-xs sm:text-sm font-light whitespace-nowrap
       rounded-full border border-transparent
       bg-slate-300 dark:bg-slate-800
       hover:border-slate-400 dark:hover:border-slate-600
@@ -111,7 +111,7 @@ function Links({ links }: { links: any[] }) {
 
 function Publication({ data }: { data: any }) {
   return (
-    <div className=''>
+    <div className='text-sm sm:text-base'>
       <Title title={data.title} link={data.link} />
       <Authors authors={data.authors} />
       <Published published={data.published} year={data.year} />
@@ -123,9 +123,9 @@ function Publication({ data }: { data: any }) {
 function Group({ title, publications }: { title: string, publications: any[] }) {
   return (
     <div>
-      <h1 className='text-2xl text-slate-500'>{title}</h1>
+      <h1 className='text-lg sm:text-2xl text-slate-500'>{title}</h1>
       <hr className='border-none h-px bg-slate-500' />
-      <div className='flex flex-col gap-6 pt-8'>
+      <div className='flex flex-col gap-5 sm:gap-6 pt-5 sm:pt-8'>
         {
           publications.map((entry) => {
             return (
