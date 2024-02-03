@@ -23,6 +23,11 @@ const socials = [
         icon: icons.LinkedIn,
     },
     {
+        title: "Lab Website",
+        link: "https://rl.uni-freiburg.de/people/luz",
+        icon: icons.School,
+    },
+    {
         title: "E-Mail",
         link: "bWFpbHRvOk1heGltaWxpYW4lMjBMdXo8bUBteG5sdXouaW8",
         icon: icons.Email,
