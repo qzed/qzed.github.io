@@ -8,7 +8,11 @@ export default function Prose({ children }: Props) {
       prose max-w-none prose-slate dark:prose-invert
       prose-sm sm:prose-base
 
-      text-pretty break-words hyphens-auto
+      text-pretty
+      text-optimize-legibility
+      break-words
+      hyphens-auto
+      subpixel-antialiased
 
       prose-img:rounded prose-img:border
       prose-img:border-slate-200 dark:prose-img:border-slate-800

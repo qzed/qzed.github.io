@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       maxWidth: {
-        'prose': '70ch',
+        'prose': '75ch',
       },
       typography: {
         DEFAULT: {
