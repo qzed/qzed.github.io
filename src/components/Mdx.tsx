@@ -6,40 +6,26 @@ import dynamic from 'next/dynamic'
 
 // @ts-ignore
 import rehypeCitation from 'rehype-citation'
-import rehypePrism from 'rehype-prism-plus'
+import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 
-import { MDXRemote } from '@alisowski/next-mdx-remote/rsc'
-
-import katex from 'katex'
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
 
 
 const options: any = {
     parseFrontmatter: true,
     mdxOptions: {
+        baseUrl: import.meta.url,
+        development: false,
         remarkPlugins: [
             [remarkMath, {}],
             [remarkGfm, {}],
         ],
         rehypePlugins: [
-            [rehypeCitation, {
-                path: process.cwd(),
-                linkCitations: true,
-                inlineClass: ['csl-ref'],
-                csl: "data/blog/acm-siggraph.csl",
-            }],
-            [rehypeKatex as any, {
-                trust: (context: any) => ['\\htmlId'].includes(context.command),
-                strict: false,
-                macros: {
-                    "\\label": "\\htmlId{#1}{}"
-                },
-            }],
-            [rehypePrism as any, {}],
             [rehypeSlug, {}],
             [rehypeAutolinkHeadings, {
                 behavior: "wrap",
@@ -49,20 +35,28 @@ const options: any = {
                     tabIndex: -1
                 },
             }],
+            [rehypeKatex as any, {
+                trust: (context: any) => ['\\htmlId'].includes(context.command),
+                strict: false,
+                macros: {
+                    "\\label": "\\htmlId{#1}{}"
+                },
+            }],
+            [rehypeCitation, {
+                path: process.cwd(),
+                linkCitations: true,
+                inlineClass: ['csl-ref'],
+                csl: "data/blog/acm-siggraph.csl",
+            }],
+            [rehypePrismPlus, {}],
         ],
     },
-    scope: {
-        // TODO: replace @alisowski/next-mdx-remote with original
-        //       next-mdx-remote once it supports mdx 3
-        //       see https://github.com/hashicorp/next-mdx-remote/pull/425
-        // TODO: once next-mdx-remote supports MDX3 we should be able to
-        //       replace this with direct imports in the .mdx files
-        katex: katex,
-    }
 }
 
-// TODO: once next-mdx-remote supports MDX3 we should be able to replace this
-//       with direct imports in the .mdx files
+// TODO: Theoretically we support imports. But those are currently only
+//       supported for javascript. So there is no automatic transpiling for tsx
+//       etc. enabled. Until we figure that out, just re-export the components
+//       here.
 const components: any = {
     EqRef: dynamic(() => import('./blog/EqRef')),
     Note: dynamic(() => import('./blog/Note')),
