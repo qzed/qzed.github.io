@@ -51,6 +51,11 @@ const publications = [
                 link: "https://www.youtube.com/watch?v=tzeQ0h9ttYM",
                 icon: icons.Movie,
             },
+            {
+                title: "Code",
+                link: "https://github.com/robot-learning-freiburg/amodal-optical-flow",
+                icon: icons.Code,
+            },
         ]
     },
     {
