@@ -8,7 +8,7 @@ import { SidebarContext } from './SidebarContext'
 export default function Sidebar() {
   const { isVisible, setVisible } = useContext(SidebarContext)
 
-  const clsSidebar = isVisible ? "" : "-left-52"
+  const clsSidebar = isVisible ? "" : "-right-52"
   const clsLigthbox = isVisible ? "block" : "hidden"
 
   return (
@@ -27,14 +27,14 @@ export default function Sidebar() {
       />
       <div className={`
         fixed inset-0 h-full top-12 lg:top-14
-        right-auto z-10
-        sm:-left-52 ${clsSidebar}
+        left-auto z-10
+        ${clsSidebar}
         transition-all
         duration-300
       `} onClick={() => setVisible(false)}>
         <div className="
           w-52 h-full
-          border-r border-slate-200 dark:border-slate-800
+          border-l border-slate-200 dark:border-slate-800
           backdrop-blur-lg
           before:content-['']
           before:absolute before:top-0 before:left-0 before:inset-0
