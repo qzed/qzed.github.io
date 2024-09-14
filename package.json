@@ -59,6 +59,6 @@
     "unified": "^11.0.4",
     "vfile": "^6.0.1",
     "vfile-matter": "^5.0.0",
-    "webpack": "^5.89.0"
+    "webpack": "^5.94.0"
   }
 }
