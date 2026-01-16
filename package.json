@@ -13,7 +13,7 @@
     "@fontsource/playfair-display": "^5.0.18",
     "@fontsource/raleway": "^5.0.16",
     "@fontsource/source-code-pro": "^5.0.16",
-    "katex": "^0.16.10",
+    "katex": "^0.16.21",
     "next": "14.2.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
