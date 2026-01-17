@@ -1,12 +1,15 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-@theme {
-  --width-prose: 75ch;
-}
-
 @utility text-optimize-legibility {
     text-rendering: optimizeLegibility;
+}
+
+/* Override max-w-prose */
+@layer utilities {
+    .max-w-prose {
+        max-width: 75ch;
+    }
 }
 
 @layer components {
