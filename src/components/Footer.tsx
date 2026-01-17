@@ -9,7 +9,7 @@ export default function Footer() {
         w-fit h-fit mx-auto
         text-xs text-slate-500 dark:text-slate-600
       ">
-        Copyright © 2024 Maximilian Luz
+        Copyright © 2026 Maximilian Luz
       </div>
     </footer>
   )
