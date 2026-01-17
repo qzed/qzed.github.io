@@ -1,10 +1,12 @@
+import type { ReactNode } from 'react'
+
 import Logo from '@/components/Logo'
 import NavLink from "@/components/NavLink"
 import SidebarButton from '@/components/SidebarButton'
 
 import pages from '@data/links/pages'
 
-function MenuItem({ href, children }: { href?: any, children?: JSX.Element | string }) {
+function MenuItem({ href, children }: { href?: any, children?: ReactNode }) {
   return (
     <NavLink
       inactiveClassName='

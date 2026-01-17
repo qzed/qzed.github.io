@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import NavLink from "@/components/NavLink"
+import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 import pages from '@data/links/pages'
 import socials from '@data/links/socials'
@@ -8,7 +9,7 @@ import socials from '@data/links/socials'
 function PageLink({
   Icon, href, children
 }: {
-  Icon: any, href: string, children?: JSX.Element | string
+  Icon: any, href: string, children?: ReactNode,
 }) {
   return (
     <NavLink
@@ -45,7 +46,7 @@ function PageLink({
 function SocialLink({
   Icon, href, Anchor, children
 }: {
-  Icon: any, href: string, Anchor?: any, children?: JSX.Element | string
+  Icon: any, href: string, Anchor?: any, children?: ReactNode,
 }) {
   let LinkComponent = Anchor || Link;
 

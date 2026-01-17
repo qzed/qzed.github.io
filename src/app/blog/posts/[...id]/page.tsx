@@ -77,8 +77,8 @@ type Params = {
   id: string[]
 }
 
-export default function BlogPost({ params }: { params: Params }) {
-  const post = getPostById(params.id)
+export default async function BlogPost({ params }: { params: Promise<Params> }) {
+  const post = getPostById((await params).id)
 
   if (!post) {
     notFound()
@@ -98,8 +98,8 @@ export default function BlogPost({ params }: { params: Params }) {
   )
 }
 
-export function generateMetadata({ params }: { params: Params }) {
-  const post = getPostById(params.id)
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
+  const post = getPostById((await params).id)
 
   if (!post) {
     return {

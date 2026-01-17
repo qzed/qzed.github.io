@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
+
 type NoteProps = {
   type?: string,
-  children: JSX.Element,
+  children: ReactNode,
 }
 
 export default function Note({ type, children }: NoteProps) {

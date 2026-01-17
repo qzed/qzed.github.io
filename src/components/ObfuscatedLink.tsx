@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useId } from "react"
+import { ReactNode, useEffect, useId } from "react";
 
 type Props = {
   href: string,
-  children?: JSX.Element,
+  children?: ReactNode,
   className?: string,
 }
 

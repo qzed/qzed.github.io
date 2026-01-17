@@ -1,25 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --width-prose: 75ch;
+}
+
+@utility text-optimize-legibility {
+    text-rendering: optimizeLegibility;
+}
 
 @layer components {
-    .autolink-anchor {
-        @apply no-underline
-            hover:before:content-["#"]
-            hover:before:inline-block
-            hover:before:translate-x-[-1em]
-            hover:before:absolute;
-    }
+    .mdprose {
+        @apply prose;
+        @apply prose-headings:no-underline;
 
-    .csl-ref > a {
-        @apply no-underline hover:underline;
+        & .autolink-anchor {
+            @apply no-underline
+                hover:before:content-["#"]
+                hover:before:inline-block
+                hover:before:translate-x-[-1em]
+                hover:before:absolute;
+        }
+
+        & .task-list-item input[type="checkbox"] {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+        }
+
+        & .data-footnote-backref {
+          text-decoration: none;
+        }
+        & .data-footnote-backref:hover {
+          text-decoration: underline;
+        }
+
+        & sup > a[data-footnote-ref="true"] {
+          text-decoration: none;
+        }
+        & sup > a[data-footnote-ref="true"]:hover {
+          text-decoration: underline;
+        }
     }
 }
 
-@layer utilities {
-    .text-optimize-legibility {
-        text-rendering: optimizeLegibility;
-    }
+.csl-ref > a {
+    @apply no-underline hover:underline;
 }
 
 .csl-bib-body {
@@ -45,16 +70,16 @@
 
 /*
  * .code-line.inserted {
- *     @apply bg-green-800 bg-opacity-25;
+ *     @apply bg-green-800/25;
  * }
  * 
  * .code-line.deleted {
- *     @apply bg-red-900 bg-opacity-25;
+ *     @apply bg-red-900/25;
  * }
  */
 
 .highlight-line {
-    @apply bg-slate-600 bg-opacity-50 border-l-4 border-l-amber-500;
+    @apply bg-slate-600/50 border-l-4 border-l-amber-500;
 }
 
 .token.comment {

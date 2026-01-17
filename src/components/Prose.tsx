@@ -1,11 +1,14 @@
+import type { ReactNode } from 'react'
+
 type Props = {
-  children: JSX.Element[] | JSX.Element | string,
+  children: ReactNode[] | ReactNode,
 }
 
 export default function Prose({ children }: Props) {
   return (
     <div className='
-      prose max-w-none prose-slate dark:prose-invert
+      mdprose
+      max-w-none prose-slate dark:prose-invert
       prose-sm sm:prose-base
 
       text-pretty
