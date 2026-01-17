@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfig, s } from 'velite'
+import yaml from 'yaml'
+import { defineConfig, defineLoader, s } from 'velite'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
@@ -8,38 +9,62 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
-import type { Root as HastRoot } from 'hast'
 import type { VFile } from 'vfile'
+import type { Root as HastRoot } from 'hast'
+
+// Cache for parsed frontmatter, keyed by absolute file path
+const frontmatterCache = new Map<string, Record<string, unknown>>()
+
+// Custom matter loader that caches frontmatter for rehype plugins to access
+// Based on https://github.com/zce/velite/blob/main/src/loaders/matter.ts
+const MATTER_RE = /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/
+
+const matterLoader = defineLoader({
+  test: /\.mdx$/,
+  load: file => {
+    const value = file.toString().trim()
+    const match = value.match(MATTER_RE)
+    const matter = match == null ? null : match[1]
+    const data = matter == null ? {} : (yaml.parse(matter) ?? {})
+    const content = match == null ? value : value.slice(match[0].length).trim()
+
+    // Cache the frontmatter for rehype plugins
+    if (file.path) {
+      frontmatterCache.set(file.path, data)
+    }
+
+    return { data, content }
+  }
+})
 
 // Custom rehype plugin to inject bibliography path for rehype-citation
-// Velite doesn't pass frontmatter to MDX processing, so we infer the
-// bibliography path from the file path (checking for .bib or .bib.json)
-// TODO: can we store the bibliography in the frontmatter somehow
 function rehypeInjectBibliography() {
   return (_tree: HastRoot, file: VFile) => {
-    if (!file.dirname || !file.stem) return
+    if (!file.path) return
 
-    // Check for bibliography files in the same directory
-    const bibPaths = [
-      path.join(file.dirname, `${file.stem}.bib`),
-      path.join(file.dirname, `${file.stem}.bib.json`),
-    ]
+    // Get cached frontmatter from our custom loader
+    const fm = frontmatterCache.get(file.path)
+    if (!fm?.bibliography || typeof fm.bibliography !== 'string') return
 
-    for (const bibPath of bibPaths) {
-      if (fs.existsSync(bibPath)) {
-        // Inject the bibliography path where rehype-citation expects it
-        // Use path relative to cwd since rehype-citation resolves paths against its `path` option
-        const relativeBibPath = path.relative(process.cwd(), bibPath)
-        file.data.frontmatter = file.data.frontmatter || {}
-        ;(file.data.frontmatter as Record<string, unknown>).bibliography = relativeBibPath
-        break
-      }
+    // Resolve relative to the file's directory
+    const bibPath = path.isAbsolute(fm.bibliography)
+      ? fm.bibliography
+      : path.join(file.dirname || '', fm.bibliography)
+
+    if (!fs.existsSync(bibPath)) {
+      console.warn(`Bibliography file not found: ${bibPath}`)
+      return
     }
+
+    const relativeBibPath = path.relative(process.cwd(), bibPath)
+    file.data.frontmatter = file.data.frontmatter || {}
+    ;(file.data.frontmatter as Record<string, unknown>).bibliography = relativeBibPath
   }
 }
 
 export default defineConfig({
   root: 'data/blog',
+  loaders: [matterLoader],
   output: {
     data: '.velite',
     assets: 'public/static',
