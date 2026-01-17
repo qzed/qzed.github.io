@@ -1,5 +1,3 @@
-import { VFile } from 'vfile'
-
 export type PostMetadata = {
   id: string[]
   title: string
@@ -7,12 +5,7 @@ export type PostMetadata = {
   author: string
   date: number
   abstract: string
-  tags: [string]
+  tags: string[] | null
   visibility: string
   path: string
-}
-
-export type Post = {
-  meta: PostMetadata
-  file: VFile
 }

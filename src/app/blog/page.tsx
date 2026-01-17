@@ -8,6 +8,7 @@ import 'prism-themes/themes/prism-nord.css'
 import { getAllPosts } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
+import { Mdx } from '@/components/Mdx'
 import { PostMetadata } from '@/types/blog/post'
 
 
@@ -46,7 +47,7 @@ function PostHeader({ post }: { post: PostMetadata }) {
 function PostAbstract({ abstract }: { abstract: string }) {
   return (
     <Prose>
-      {abstract}
+      <Mdx code={abstract} />
     </Prose>
   )
 }
@@ -56,10 +57,16 @@ function PostPreview({ post }: { post: PostMetadata }) {
   const url = `/blog/posts/${fragment}`
 
   return (
-    <Link href={url} className='hover:text-sky-800 dark:hover:text-slate-100'>
-      <PostHeader post={post} />
-      <PostAbstract abstract={post.abstract} />
-    </Link>
+    <article className='relative group'>
+      {/* Invisible link overlay for the entire card */}
+      <Link href={url} className='absolute inset-0 z-10' aria-label={post.title}>
+        <span className='sr-only'>{post.title}</span>
+      </Link>
+      <div className='group-hover:text-sky-800 dark:group-hover:text-slate-100'>
+        <PostHeader post={post} />
+        <PostAbstract abstract={post.abstract} />
+      </div>
+    </article>
   )
 }
 
@@ -69,8 +76,8 @@ export const metadata: Metadata = {
   description: 'Blog of Maximilian Luz',
 }
 
-export default async function BlogIndex() {
-  const posts = await getAllPosts()
+export default function BlogIndex() {
+  const posts = getAllPosts()
   const sorted = posts.sort((a, b) => b.date - a.date)
 
   return (

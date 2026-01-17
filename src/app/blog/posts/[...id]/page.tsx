@@ -1,11 +1,12 @@
-import { getAllPosts, getPostById } from '@/lib/blog'
+import { notFound } from 'next/navigation'
+
+import { getAllPostsRaw, getPostById } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
-import { MdxFromSource } from '@/components/Mdx'
+import { Mdx } from '@/components/Mdx'
 
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'
-import { PostMetadata } from '@/types/blog/post';
 
 
 function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
@@ -17,7 +18,7 @@ function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
   )
 }
 
-function PostDate({ date }: { date: number }) {
+function PostDate({ date }: { date: string }) {
   const displayDate = new Date(date).toLocaleDateString('en-us', {
     month: 'long',
     day: 'numeric',
@@ -53,7 +54,15 @@ function PostTags({ tags }: { tags?: string[] }) {
   )
 }
 
-function PostHeader({ meta }: { meta: PostMetadata }) {
+type PostMeta = {
+  title: string
+  subtitle?: string
+  author: string
+  date: string
+  tags?: string[]
+}
+
+function PostHeader({ meta }: { meta: PostMeta }) {
   return (
     <div className='mb-10'>
       <PostDate date={meta.date} />
@@ -68,16 +77,20 @@ type Params = {
   id: string[]
 }
 
-export default async function BlogPost({ params }: { params: Params }) {
-  const post = await getPostById(params.id)
+export default function BlogPost({ params }: { params: Params }) {
+  const post = getPostById(params.id)
+
+  if (!post) {
+    notFound()
+  }
 
   return (
     <main>
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
         <article className='mx-auto max-w-prose'>
-          <PostHeader meta={post.meta} />
+          <PostHeader meta={post} />
           <Prose>
-            <MdxFromSource source={post.file} />
+            <Mdx code={post.code} />
           </Prose>
         </article>
       </div>
@@ -85,17 +98,23 @@ export default async function BlogPost({ params }: { params: Params }) {
   )
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
-  const post = await getPostById(params.id)
+export function generateMetadata({ params }: { params: Params }) {
+  const post = getPostById(params.id)
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    }
+  }
 
   return {
-    title: `${post.meta.author} | ${post.meta.title}`,
-    description: `${post.meta.title} - A blog post by ${post.meta.author}`,
+    title: `${post.author} | ${post.title}`,
+    description: `${post.title} - A blog post by ${post.author}`,
   }
 }
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts()
+export function generateStaticParams() {
+  const posts = getAllPostsRaw()
 
   return posts.map((post) => {
     return { id: post.id }

@@ -27,7 +27,7 @@ export default function Sidebar() {
       />
       <div className={`
         fixed inset-0 h-full top-12 lg:top-14
-        left-auto z-10
+        left-auto z-30
         ${clsSidebar}
         transition-all
         duration-300

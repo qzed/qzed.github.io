@@ -14,11 +14,7 @@ abstract: |
     essence using its domain knowledge for our needs. Maximum entropy IRL is a
     comparatively simple but clever method of solving the general IRL problem
     for discrete Markov decision processes.
-bibliography: data/blog/posts/2022/08/irl-maxent.bib.json
 ---
-
-import katex from 'katex'
-
 
 <Note type="important">
     **Disclaimer:** This post is an adapted version of the theoretical part of a Jupyter Notebook that I wrote in 2019 for a seminar on Imitation Learning.
@@ -250,12 +246,7 @@ using gradient ascent (or any other gradient-based optimization technique) as th
 <Note>
     **Note:** Maximizing the log-likelihood is equivalent to minimizing the Kullback-Leibler divergence [@bishopPatternRecognitionMachine2006]
 
-    <div className="math math-display" dangerouslySetInnerHTML={{
-        __html: katex.renderToString(
-            "D_{KL}\\big(p^E(\\tau) \\,\\|\\, p(\\tau \\mid \\omega)\\big).",
-            { displayMode: true }
-        )
-    }}></div>
+    <KatexMath math="D_{KL}\big(p^E(\tau) \,\|\, p(\tau \mid \omega)\big)." />
 
     It can therefore also be interpreted as the M-projection onto the manifold of the maximum entropy distribution [see e.g., @osaAlgorithmicPerspectiveImitation2018].
 </Note>
