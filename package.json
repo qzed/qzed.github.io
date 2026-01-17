@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"node scripts/velite.mjs\" \"next dev\"",
-    "build": "NODE_ENV=production node scripts/velite.mjs && next build"
+    "build": "NODE_ENV=production node scripts/velite.mjs && next build",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@fontsource/lora": "^5.0.8",

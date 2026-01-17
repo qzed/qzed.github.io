@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import Link from 'next/link'
 
 import Logo from '@/components/Logo'
 import NavLink from "@/components/NavLink"
@@ -84,9 +85,9 @@ export default function Header() {
           px-8 max-w-screen-xl mx-auto h-full
           text-slate-900 dark:text-slate-100
         '>
-          <a className='mr-auto' href='/'>
+          <Link className='mr-auto' href='/'>
             <LogoBlock />
-          </a>
+          </Link>
           <nav className='h-full font-medium text-base lg:text-[1.025rem] hidden sm:inline-block'>
             <Menu />
           </nav>

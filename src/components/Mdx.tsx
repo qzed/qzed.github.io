@@ -17,5 +17,6 @@ const useMDXComponent = (code: string) => {
 
 export function Mdx({ code }: { code: string }) {
   const MDXContent = useMDXComponent(code)
+  // eslint-disable-next-line react-hooks/static-components
   return <MDXContent components={components} />
 }
