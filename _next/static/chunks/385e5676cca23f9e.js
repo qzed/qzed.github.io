@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,48067,e=>{"use strict";var n=e.i(43476);function i({label:e,num:i,text:r}){return(0,n.jsx)("a",{href:`#${e}`,className:"no-underline hover:underline",children:`${r||"Equation"} (${i})`})}e.s(["default",()=>i])},6185,e=>{e.n(e.i(48067))}]);
