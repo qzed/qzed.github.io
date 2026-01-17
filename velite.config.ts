@@ -8,26 +8,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
-import type { Root } from 'mdast'
 import type { Root as HastRoot } from 'hast'
 import type { VFile } from 'vfile'
-
-// Custom remark plugin to strip import/export statements from MDX
-// These will be provided through the component scope instead
-function remarkStripImports() {
-  return (tree: Root) => {
-    const nodesToRemove: number[] = []
-    tree.children.forEach((node, index) => {
-      if (node.type === 'mdxjsEsm') {
-        nodesToRemove.push(index)
-      }
-    })
-    // Remove in reverse order to maintain correct indices
-    for (let i = nodesToRemove.length - 1; i >= 0; i--) {
-      tree.children.splice(nodesToRemove[i], 1)
-    }
-  }
-}
 
 // Custom rehype plugin to inject bibliography path for rehype-citation
 // Velite doesn't pass frontmatter to MDX processing, so we infer the
@@ -67,7 +49,6 @@ export default defineConfig({
   },
   mdx: {
     remarkPlugins: [
-      remarkStripImports,
       remarkMath,
       remarkGfm,
     ],
