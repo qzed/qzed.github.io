@@ -2,6 +2,55 @@ import icons from "@/components/icons"
 
 const publications = [
     {
+        title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
+        year: 2026,
+        authors: [
+            {
+                name: "Maximilian Luz",
+            },
+            {
+                name: "Rohit Mohan",
+                link: "https://rl.uni-freiburg.de/people/mohan",
+            },
+            {
+                name: "Thomas Nürnberg",
+                link: "https://scholar.google.com/citations?user=tJj06xYAAAAJ&hl=en",
+            },
+            {
+                name: "Yakov Miron",
+                link: "https://scholar.google.com/citations?hl=en&user=sVVAo00AAAAJ",
+            },
+            {
+                name: "Daniele Cattaneo",
+                link: "https://rl.uni-freiburg.de/people/cattaneo",
+            },
+            {
+                name: "Abhinav Valada",
+                link: "https://rl.uni-freiburg.de/people/valada",
+            },
+        ],
+        published: "IEEE Robotics and Automation Letters (RA-L)",
+        type: "journal",
+        link: "https://lags.cs.uni-freiburg.de/",
+        links: [
+            {
+                title: "arXiv",
+                link: "https://arxiv.org/abs/2602.23172",
+                icon: icons.Description,
+            },
+            {
+                title: "IEEE Xplore",
+                link: "https://ieeexplore.ieee.org/document/11568514/",
+                icon: icons.LibraryBooks,
+            },
+            {
+                title: "Website",
+                link: "https://lags.cs.uni-freiburg.de/",
+                icon: icons.Language,
+            },
+        ],
+    },
+    {
         title: "Amodal Optical Flow",
         year: 2024,
         authors: [
