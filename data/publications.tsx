@@ -2,6 +2,30 @@ import icons from "@/components/icons"
 
 const publications = [
     {
+        title: "Streaming Gaussian Encoding for 4D Panoptic Occupancy Tracking",
+        year: 2026,
+        authors: [
+            {
+                name: "Maximilian Luz",
+            },
+            {
+                name: "Thomas Nürnberg",
+                link: "https://scholar.google.com/citations?user=tJj06xYAAAAJ&hl=en",
+            },
+            {
+                name: "Yakov Miron",
+                link: "https://scholar.google.com/citations?hl=en&user=sVVAo00AAAAJ",
+            },
+            {
+                name: "Abhinav Valada",
+                link: "https://rl.uni-freiburg.de/people/valada",
+            },
+        ],
+        published: "International Conference on Intelligent Robots and Systems (IROS)",
+        type: "conference",
+        links: [],
+    },
+    {
         title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
