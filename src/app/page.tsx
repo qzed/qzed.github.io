@@ -11,7 +11,7 @@ function Profile() {
     <div className='flex flex-wrap items-center justify-center'>
       <img
         className='size-32 mx-5 mt-4 mb-1 rounded-full border-[3px] border-slate-300 dark:border-slate-700'
-        src="/assets/profile.png"
+        src="/assets/profile.jpg"
         alt="Profile Picture"
       />
       <div className='text-right mx-5 my-4'>
