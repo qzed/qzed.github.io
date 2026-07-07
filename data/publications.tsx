@@ -127,6 +127,11 @@ const publications = [
                 icon: icons.Description,
             },
             {
+                title: "IEEE Xplore",
+                link: "https://ieeexplore.ieee.org/document/10611314",
+                icon: icons.LibraryBooks,
+            },
+            {
                 title: "Website",
                 link: "http://amodal-flow.cs.uni-freiburg.de/",
                 icon: icons.Language,
@@ -165,7 +170,7 @@ const publications = [
         ],
         published: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
         type: "conference",
-        link: "https://openaccess.thecvf.com/content/WACV2024/html/Jahedi_CCMR_High_Resolution_Optical_Flow_Estimation_via_Coarse-To-Fine_Context-Guided_Motion_WACV_2024_paper.html",
+        link: "https://ieeexplore.ieee.org/abstract/document/10483845",
         links: [
             {
                 title: "arXiv",
@@ -173,9 +178,9 @@ const publications = [
                 icon: icons.Description,
             },
             {
-                title: "PDF",
-                link: "https://openaccess.thecvf.com/content/WACV2024/html/Jahedi_CCMR_High_Resolution_Optical_Flow_Estimation_via_Coarse-To-Fine_Context-Guided_Motion_WACV_2024_paper.html",
-                icon: icons.Description,
+                title: "IEEE Xplore",
+                link: "https://ieeexplore.ieee.org/abstract/document/10483845",
+                icon: icons.LibraryBooks,
             },
             {
                 title: "Code",
@@ -213,9 +218,9 @@ const publications = [
         link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
         links: [
             {
-                title: "PDF",
+                title: "Springer/IJCV",
                 link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
-                icon: icons.Description,
+                icon: icons.LibraryBooks,
             },
             {
                 title: "Code",
