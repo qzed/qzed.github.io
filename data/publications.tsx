@@ -23,7 +23,19 @@ const publications = [
         ],
         published: "International Conference on Intelligent Robots and Systems (IROS)",
         type: "conference",
-        links: [],
+        link: "https://sge.cs.uni-freiburg.de/",
+        links: [
+            {
+                title: "arXiv",
+                link: "https://arxiv.org/abs/2606.30754",
+                icon: icons.Description,
+            },
+            {
+                title: "Website",
+                link: "https://sge.cs.uni-freiburg.de/",
+                icon: icons.Language,
+            },
+        ],
     },
     {
         title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
