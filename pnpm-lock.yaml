@@ -42,6 +42,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.10
         version: 0.5.20(tailwindcss@4.3.2)
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
       '@types/katex':
         specifier: ^0.16.7
         version: 0.16.8
@@ -123,6 +126,9 @@ importers:
       velite:
         specifier: ^0.4.0
         version: 0.4.0
+      vfile:
+        specifier: ^6.0.3
+        version: 6.0.3
       webpack:
         specifier: ^5.94.0
         version: 5.108.4(esbuild@0.28.1)(postcss@8.5.16)
