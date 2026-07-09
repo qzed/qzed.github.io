@@ -5,7 +5,7 @@ See https://mxnluz.io.
 
 ## Build and Export
 
-- Install dependencies via `yarn install`
-- Update dependencies via `yarn upgrade`.
-- Build and export via `yarn build`.
-- Run locally via `yarn dev`.
+- Install dependencies via `pnpm install`
+- Update dependencies via `pnpm update`.
+- Build and export via `pnpm build`.
+- Run locally via `pnpm dev`.

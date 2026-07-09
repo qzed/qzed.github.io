@@ -12,19 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-          cache: "npm"
-
-      - name: Setup Yarn
-        run: npm install --location=global yarn
+          cache: "pnpm"
 
       - name: Build
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          pnpm install --frozen-lockfile
+          pnpm build
 
           # copy additional files
           cp CNAME ./out/

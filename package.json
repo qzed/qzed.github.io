@@ -2,6 +2,7 @@
   "name": "mxnluz.io",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "concurrently \"node scripts/velite.mjs\" \"next dev\"",
     "build": "NODE_ENV=production node scripts/velite.mjs && next build",
@@ -50,5 +51,14 @@
     "velite": "^0.4.0",
     "webpack": "^5.94.0",
     "yaml": "^2.8.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "citation-js",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
