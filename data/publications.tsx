@@ -35,6 +35,11 @@ const publications = [
                 link: "https://sge.cs.uni-freiburg.de/",
                 icon: icons.Language,
             },
+            {
+                title: "Code",
+                link: "https://github.com/robot-learning-freiburg/lags",
+                icon: icons.Code,
+            },
         ],
     },
     {
@@ -83,6 +88,11 @@ const publications = [
                 title: "Website",
                 link: "https://lags.cs.uni-freiburg.de/",
                 icon: icons.Language,
+            },
+            {
+                title: "Code",
+                link: "https://github.com/robot-learning-freiburg/lags",
+                icon: icons.Code,
             },
         ],
     },
