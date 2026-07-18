@@ -90,6 +90,11 @@ const publications = [
                 icon: icons.Language,
             },
             {
+                title: "Video",
+                link: "https://www.youtube.com/watch?v=IfJggD5t7MY",
+                icon: icons.Movie,
+            },
+            {
                 title: "Code",
                 link: "https://github.com/robot-learning-freiburg/lags",
                 icon: icons.Code,
