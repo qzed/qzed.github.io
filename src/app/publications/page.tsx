@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Fragment } from 'react'
 
 import publications from '@data/publications'
+import icons from '@/components/icons'
 
 
 const me = "Maximilian Luz"
@@ -83,6 +84,22 @@ function Published({ published, year }: { published: string, year: number }) {
   )
 }
 
+function Award({ title, link }: { title: string, link: string }) {
+  return (
+    <a href={link} className='
+      py-1 px-2 text-xs sm:text-sm font-light whitespace-nowrap
+      rounded-full border border-transparent
+      bg-amber-100 dark:bg-amber-950/60
+      text-amber-800 dark:text-amber-300
+      hover:border-amber-400 dark:hover:border-amber-700
+      flex items-center gap-1.5
+    '>
+      <icons.Trophy className='size-3.5' />
+      {title}
+    </a>
+  )
+}
+
 function Link({ title, link, Icon }: { title: string, link: string, Icon: any }) {
   return (
     <a href={link} className='
@@ -98,9 +115,10 @@ function Link({ title, link, Icon }: { title: string, link: string, Icon: any })
   )
 }
 
-function Links({ links }: { links: any[] }) {
+function Links({ links, award }: { links: any[], award?: { title: string, link: string } }) {
   return (
     <div className='flex flex-row flex-wrap gap-2 mt-2'>
+      {award && <Award title={award.title} link={award.link} />}
       {
         links.map((entry) => {
           return <Link title={entry.title} link={entry.link} Icon={entry.icon} key={entry.title} />
@@ -116,7 +134,7 @@ function Publication({ data }: { data: any }) {
       <Title title={data.title} link={data.link} />
       <Authors authors={data.authors} />
       <Published published={data.published} year={data.year} />
-      <Links links={data.links} />
+      <Links links={data.links} award={data.award} />
     </div>
   )
 }

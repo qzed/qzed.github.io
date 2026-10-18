@@ -24,6 +24,10 @@ const publications = [
         published: "International Conference on Intelligent Robots and Systems (IROS)",
         type: "conference",
         link: "https://sge.cs.uni-freiburg.de/",
+        award: {
+            title: "Best Paper Award Finalist",
+            link: "/assets/publications/sge-iros2026-best-paper-finalist.pdf",
+        },
         links: [
             {
                 title: "arXiv",
