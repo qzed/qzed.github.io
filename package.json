@@ -64,7 +64,9 @@
       "unrs-resolver"
     ],
     "overrides": {
-      "katex": "$katex"
+      "katex": "$katex",
+      "sharp": "^0.35.5",
+      "postcss-selector-parser": "^7.1.6"
     }
   }
 }
