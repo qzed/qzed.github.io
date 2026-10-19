@@ -57,7 +57,7 @@ function Profile() {
         alt="Profile Picture"
       />
       <div className='text-center sm:text-left'>
-        <h1 className='font-display text-4xl sm:text-5xl font-semibold text-slate-900 dark:text-slate-100'>
+        <h1 className='text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-100'>
           Maximilian Luz
         </h1>
         <div className='mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400'>

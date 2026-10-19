@@ -1,5 +1,4 @@
 import '@/styles/common/tailwind.css'
-import '@fontsource/playfair-display/600.css'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'

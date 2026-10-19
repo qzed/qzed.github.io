@@ -4,10 +4,6 @@
 /* Dark mode via class on <html>, set by the theme script in the root layout */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-    --font-display: "Playfair Display", serif;
-}
-
 .dark {
     color-scheme: dark;
 }
