@@ -64,7 +64,7 @@ function AdjacentPost({ post, direction }: { post: PostMetadata, direction: 'pre
   const Icon = next ? icons.ArrowForward : icons.ArrowBack
 
   return (
-    <Link href={`/blog/posts/${post.path}`} className={`
+    <Link href={`/blog/posts/${post.path}`} title={post.title} className={`
       group flex flex-col gap-1 min-w-0
       ${next ? 'sm:col-start-2 sm:items-end sm:text-right' : ''}
     `}>
@@ -72,14 +72,14 @@ function AdjacentPost({ post, direction }: { post: PostMetadata, direction: 'pre
         {next ? 'Next' : 'Previous'}
       </span>
       <span className={`
-        flex items-center gap-1.5
+        flex items-center gap-1.5 min-w-0 max-w-full
         ${next ? 'sm:flex-row-reverse' : ''}
         text-sm text-slate-600 dark:text-slate-400
         group-hover:text-sky-700 dark:group-hover:text-sky-400
         transition-colors
       `}>
         <Icon className='size-4 shrink-0' />
-        {post.title}
+        <span className='truncate'>{post.title}</span>
       </span>
     </Link>
   )
