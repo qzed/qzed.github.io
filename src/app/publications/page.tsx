@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { Fragment } from 'react'
 
 import Publication from '@/components/Publication'
 import SectionHeading from '@/components/SectionHeading'
@@ -11,15 +10,10 @@ function Group({ title, publications }: { title: string, publications: any[] }) 
   return (
     <div>
       <SectionHeading className='mb-5 sm:mb-6'>{title}</SectionHeading>
-      <div className='flex flex-col gap-5 sm:gap-6'>
+      <div className='flex flex-col gap-7 sm:gap-8'>
         {
           publications.map((entry) => {
-            return (
-              <Fragment key={entry.title} >
-                <Publication data={entry} />
-                <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
-              </Fragment>
-            )
+            return <Publication data={entry} key={entry.title} />
           })
         }
       </div>
