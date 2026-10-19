@@ -10,9 +10,12 @@ export default function Counter() {
   return (
     <button
       className="
-        px-2 py-1
-        rounded border-2 border-black
-        text-slate-800 bg-slate-300"
+        py-1 px-3 text-sm whitespace-nowrap cursor-pointer
+        rounded-full border border-transparent
+        bg-slate-300 dark:bg-slate-800
+        text-slate-800 dark:text-slate-200
+        hover:border-slate-400 dark:hover:border-slate-600
+        tabular-nums"
       onClick={() => setCounter((c) => c + 1)}
     >
       Increment {counter}
