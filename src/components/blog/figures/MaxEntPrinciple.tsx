@@ -28,15 +28,13 @@ function Span({ x, y1, y2 }: { x: number, y1: number, y2: number }) {
 
 export default function MaxEntPrinciple() {
   return (
-    // Keep a minimum width so labels stay readable, scroll horizontally on
-    // narrow screens instead.
-    <figure className='not-prose my-8 overflow-x-auto'>
+    <figure className='not-prose my-8'>
       <svg
         viewBox='0 0 920 365'
         role='img'
         aria-labelledby='mep-title'
         className='
-          w-full min-w-[560px] h-auto
+          w-full h-auto
           stroke-slate-700 dark:stroke-slate-300
           fill-slate-700 dark:fill-slate-300
           text-[22px]
