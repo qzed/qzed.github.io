@@ -24,6 +24,7 @@ export function getAllPosts(): PostMetadata[] {
       date: new Date(post.date).getTime(),
       abstract: post.abstract,
       tags: post.tags || null,
+      readingTime: post.readingTime,
       visibility: post.visibility,
       path: post.slug,
     }))

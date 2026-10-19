@@ -30,16 +30,21 @@ function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
   )
 }
 
-function PostDate({ date }: { date: number }) {
+function PostDate({ date, readingTime }: { date: number, readingTime: number }) {
   const displayDate = new Date(date).toLocaleDateString('en-us', {
     month: 'short',
     day: 'numeric',
   })
 
   return (
-    <span className='sm:w-20 shrink-0 text-sm sm:text-base text-slate-400 dark:text-slate-500 tabular-nums sm:leading-7'>
-      {displayDate}
-    </span>
+    <div className='
+      sm:w-20 shrink-0 flex sm:flex-col gap-x-2
+      text-sm sm:text-base text-slate-400 dark:text-slate-500 tabular-nums sm:leading-7
+    '>
+      <span>{displayDate}</span>
+      <span className='sm:hidden'>·</span>
+      <span className='sm:text-sm'>{readingTime} min</span>
+    </div>
   )
 }
 
@@ -63,7 +68,7 @@ function PostPreview({ post }: { post: PostMetadata }) {
       <Link href={url} className='absolute inset-0 z-10' aria-label={post.title}>
         <span className='sr-only'>{post.title}</span>
       </Link>
-      <PostDate date={post.date} />
+      <PostDate date={post.date} readingTime={post.readingTime} />
       <div className='min-w-0'>
         <PostTitle title={post.title} subtitle={post.subtitle} />
         <Tags tags={post.tags} className='mt-2 mb-3' />

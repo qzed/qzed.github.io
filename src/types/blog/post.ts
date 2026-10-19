@@ -6,6 +6,7 @@ export type PostMetadata = {
   date: number
   abstract: string
   tags: string[] | null
+  readingTime: number
   visibility: string
   path: string
 }

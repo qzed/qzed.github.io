@@ -12,6 +12,28 @@ import remarkGfm from 'remark-gfm'
 import type { VFile } from 'vfile'
 import type { Root as HastRoot } from 'hast'
 
+// Estimate reading time in minutes: Count words of the prose only (without
+// math, code, and markup, which would inflate the count), and add some time
+// for each displayed equation, as these take longer to read.
+function readingTime(content: string): number {
+  const WORDS_PER_MINUTE = 230
+  const SECONDS_PER_EQUATION = 10
+
+  const equations = content.match(/\$\$[\s\S]*?\$\$/g)?.length ?? 0
+
+  const prose = content
+    .replace(/\$\$[\s\S]*?\$\$/g, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/\$[^$\n]+\$/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\[@[^\]]*\]/g, '')
+
+  const words = prose.match(/['\u2019]?[a-zA-Z]+(?:['\u2019]?[a-zA-Z]+)*/g)?.length ?? 0
+  const minutes = words / WORDS_PER_MINUTE + equations * SECONDS_PER_EQUATION / 60
+
+  return Math.max(1, Math.round(minutes))
+}
+
 // Cache for parsed frontmatter, keyed by absolute file path
 const frontmatterCache = new Map<string, Record<string, unknown>>()
 
@@ -113,6 +135,7 @@ export default defineConfig({
         bibliography: s.string().optional(),
         code: s.mdx(),
         toc: s.toc({ maxDepth: 3 }),
+        readingTime: s.raw().transform(readingTime),
         // Use Velite's built-in path helper to get the flattened path
         slug: s.path(),
       }).transform((data) => {
