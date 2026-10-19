@@ -132,28 +132,23 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
   )
 }
 
-// The video, if given, is the path without extension, with both .webm and .mp4
-// versions available.
 function Teaser({ src, video, link, alt }: { src: string, video?: string, link: string, alt: string }) {
   return (
-    <a href={link} className='
+    <a href={link} className={`
       shrink-0 self-start w-full sm:w-44 aspect-[16/9] sm:aspect-[4/3]
-      flex items-center justify-center p-2
+      flex items-center justify-center ${video ? '' : 'p-2'}
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
       hover:border-slate-400 dark:hover:border-slate-500
       transition-colors
-    '>
+    `}>
       {
         video
           ? <video
-              poster={src} aria-label={alt}
+              src={video} poster={src} aria-label={alt}
               autoPlay muted loop playsInline preload='metadata'
-              className='max-w-full max-h-full object-contain'
-            >
-              <source src={`${video}.webm`} type='video/webm' />
-              <source src={`${video}.mp4`} type='video/mp4' />
-            </video>
+              className='w-full h-full object-cover'
+            />
           : <img src={src} alt={alt} loading='lazy' className='max-w-full max-h-full object-contain' />
       }
     </a>
