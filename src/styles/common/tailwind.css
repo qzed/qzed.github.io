@@ -8,6 +8,23 @@
     color-scheme: dark;
 }
 
+/* Briefly highlight elements when navigated to via anchor link */
+@keyframes target-highlight {
+    from {
+        outline-color: var(--color-sky-500);
+    }
+    to {
+        outline-color: transparent;
+    }
+}
+
+.target-highlight:target {
+    outline: 2px solid transparent;
+    outline-offset: 0.5rem;
+    border-radius: 0.25rem;
+    animation: target-highlight 2.5s ease-out;
+}
+
 @utility text-optimize-legibility {
     text-rendering: optimizeLegibility;
 }

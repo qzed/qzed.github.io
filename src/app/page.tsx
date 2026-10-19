@@ -214,7 +214,7 @@ function Awards() {
             const paper = publications.find((p) => p.id == entry.publication)
 
             return (
-              <li className='flex gap-4' key={entry.id}>
+              <li id={`award-${entry.id}`} className='target-highlight flex gap-4' key={entry.id}>
                 <span className='w-20 shrink-0 text-slate-400 dark:text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
                 <div className='flex flex-col gap-1.5 items-start'>
                   <span>
@@ -222,6 +222,19 @@ function Awards() {
                     <>, </>
                     <span className='italic'>{entry.event}</span>
                   </span>
+                  {
+                    paper &&
+                    <span className='text-slate-600 dark:text-slate-400'>
+                      <>for </>
+                      <a href={paper.featured ? `#pub-${paper.id}` : paper.link} className='
+                        font-medium border-b border-slate-300 dark:border-slate-700
+                        hover:border-slate-700 hover:text-slate-800
+                        dark:hover:border-slate-400 dark:hover:text-slate-200
+                      '>
+                        {paper.title}
+                      </a>
+                    </span>
+                  }
                   <div className='flex flex-row flex-wrap gap-2'>
                     <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
                     {

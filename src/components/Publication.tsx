@@ -120,7 +120,7 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
     <div className='flex flex-row flex-wrap gap-2 mt-2'>
       {
         awards.map((entry) => {
-          return <AwardChip title={entry.badge ?? entry.title} link={entry.certificate} key={entry.id} />
+          return <AwardChip title={entry.badge ?? entry.title} link={`/#award-${entry.id}`} key={entry.id} />
         })
       }
       {
@@ -132,13 +132,14 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
   )
 }
 
-// Renders and photos fill the teaser box, figures and diagrams are shown in
-// full with some padding.
+// Renders and photos fill the teaser box and stretch to the height of the
+// publication details, figures and diagrams are shown in full with padding.
 function Teaser({ src, fill, link, alt }: { src: string, fill?: boolean, link: string, alt: string }) {
   return (
     <a href={link} className={`
-      shrink-0 self-start w-full sm:w-44 aspect-[16/9] sm:aspect-[4/3]
-      flex items-center justify-center ${fill ? '' : 'p-2'}
+      shrink-0 w-full sm:w-44 aspect-[16/9]
+      ${fill ? 'sm:aspect-auto sm:self-stretch sm:min-h-33' : 'self-start sm:aspect-[4/3] p-2'}
+      flex items-center justify-center
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
       hover:border-slate-400 dark:hover:border-slate-500
@@ -165,11 +166,11 @@ export default function Publication({ data, teaser = false }: { data: any, tease
   )
 
   if (!teaser || !data.teaser) {
-    return details
+    return <div id={`pub-${data.id}`} className='target-highlight'>{details}</div>
   }
 
   return (
-    <div className='flex flex-col sm:flex-row gap-3 sm:gap-5'>
+    <div id={`pub-${data.id}`} className='target-highlight flex flex-col sm:flex-row gap-3 sm:gap-5'>
       <Teaser
         src={data.teaser} fill={data.teaserFill} link={data.link}
         alt={`Teaser for ${data.short ?? data.title}`}
