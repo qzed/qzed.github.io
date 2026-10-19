@@ -34,6 +34,11 @@
     pointer-events: none;
 }
 
+/* Include the list marker of references */
+.csl-entry.target-highlight::after {
+    left: -1.5rem;
+}
+
 .target-highlight.highlighted::after {
     animation: target-highlight 2.5s ease-out;
 }
@@ -87,8 +92,30 @@
     }
 }
 
-.csl-ref > a {
-    @apply no-underline hover:underline;
+/* Citations and equation references in blog posts: Same weight and color as
+ * the surrounding text, with a subtle underline. */
+.csl-ref > a,
+.eq-ref {
+    font-weight: 400;
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-slate-300);
+    text-underline-offset: 3px;
+}
+
+.csl-ref > a:hover,
+.eq-ref:hover {
+    text-decoration-color: var(--color-slate-600);
+}
+
+.dark .csl-ref > a,
+.dark .eq-ref {
+    text-decoration-color: var(--color-slate-600);
+}
+
+.dark .csl-ref > a:hover,
+.dark .eq-ref:hover {
+    text-decoration-color: var(--color-slate-300);
 }
 
 .csl-bib-body {
