@@ -3,6 +3,7 @@ import icons from "@/components/icons"
 const publications = [
     {
         id: "sge",
+        short: "SGE",
         featured: true,
         title: "Streaming Gaussian Encoding for 4D Panoptic Occupancy Tracking",
         year: 2026,
@@ -46,6 +47,7 @@ const publications = [
     },
     {
         id: "lags",
+        short: "LaGS",
         featured: true,
         title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
@@ -107,6 +109,7 @@ const publications = [
     },
     {
         id: "amodal-flow",
+        short: "Amodal Optical Flow",
         title: "Amodal Optical Flow",
         year: 2024,
         authors: [
@@ -170,6 +173,7 @@ const publications = [
     },
     {
         id: "ccmr",
+        short: "CCMR",
         title: "CCMR: High Resolution Optical Flow Estimation via Coarse-To-Fine Context-Guided Motion Reasoning",
         year: 2024,
         authors: [
@@ -212,6 +216,7 @@ const publications = [
     },
     {
         id: "ms-raft-plus",
+        short: "MS-RAFT+",
         featured: true,
         title: "MS-RAFT+: High Resolution Multi-Scale RAFT",
         year: 2023,

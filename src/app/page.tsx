@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 import CollapsibleList from '@/components/CollapsibleList'
 import Prose from '@/components/Prose'
-import Publication, { LinkChip } from '@/components/Publication'
+import Publication, { AwardChip } from '@/components/Publication'
 import icons from '@/components/icons'
 
 import awards from '@data/awards'
@@ -12,53 +13,32 @@ import publications from '@data/publications'
 import socials from '@data/links/socials'
 
 
-function Profile() {
-  return (
-    <div className='flex flex-wrap items-center justify-center'>
-      <img
-        className='size-32 mx-5 mt-4 mb-1 rounded-full border-[3px] border-slate-300 dark:border-slate-700'
-        src="/assets/profile.jpg"
-        alt="Profile Picture"
-      />
-      <div className='text-right mx-5 my-4'>
-        <p className='text-6xl text-nowrap whitespace-nowrap font-semibold'>
-          Maximilian Luz
-        </p>
-        <ul className='text-sm'>
-          <li>PhD Student @ <a href="https://rl.uni-freiburg.de/">Robot Learning Lab, University of Freiburg</a></li>
-          <li>Linux Kernel Maintainer</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-
-function SocialLink({ Anchor, Icon, href }: { Anchor?: any, Icon: any, href: string }) {
+function SocialLink({ Anchor, Icon, href, title }: { Anchor?: any, Icon: any, href: string, title: string }) {
   const LinkComponent = Anchor || Link;
 
   return (
-    <LinkComponent href={href} className='
-      p-2
-      rounded
-      bg-slate-300 dark:bg-slate-800
-      text-slate-700 dark:text-slate-200
-      border border-transparent
-      hover:border-slate-400 dark:hover:border-slate-600
+    <LinkComponent href={href} title={title} aria-label={title} className='
+      p-1.5 rounded
+      text-slate-500 dark:text-slate-400
+      hover:text-sky-700 dark:hover:text-sky-400
+      hover:bg-slate-200 dark:hover:bg-slate-800
+      transition-colors
     '>
-      <Icon className='size-10' />
+      <Icon className='size-5' />
     </LinkComponent>
   )
 }
 
 function SocialLinks() {
   return (
-    <div className='flex items-center gap-3 w-fit mx-auto my-12'>
+    <div className='flex items-center gap-1 -ml-1.5 mt-4 justify-center sm:justify-start'>
       {
         socials.map((entry) => {
           return <SocialLink
             Anchor={entry.anchor}
             Icon={entry.icon}
             href={entry.link}
+            title={entry.title}
             key={entry.title}
           />
         })
@@ -67,10 +47,70 @@ function SocialLinks() {
   )
 }
 
+function Profile() {
+  return (
+    <div className='flex flex-col sm:flex-row items-center gap-6 sm:gap-8'>
+      <img
+        className='size-28 sm:size-36 shrink-0 rounded-full ring-4 ring-slate-200 dark:ring-slate-800'
+        src="/assets/profile.jpg"
+        alt="Profile Picture"
+      />
+      <div className='text-center sm:text-left'>
+        <h1 className='font-display text-4xl sm:text-5xl font-semibold text-slate-900 dark:text-slate-100'>
+          Maximilian Luz
+        </h1>
+        <div className='mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400'>
+          <p>
+            <span className='whitespace-nowrap'>PhD Student,</span>
+            <> </>
+            <a href="https://rl.uni-freiburg.de/" className='whitespace-nowrap hover:text-sky-700 dark:hover:text-sky-400'>
+              Robot Learning Lab
+            </a>,
+            <> </>
+            <span className='whitespace-nowrap'>University of Freiburg</span>
+          </p>
+          <p>Linux Kernel Maintainer</p>
+        </div>
+        <SocialLinks />
+      </div>
+    </div>
+  )
+}
+
+function SectionHeading({ children, action }: { children: ReactNode, action?: ReactNode }) {
+  return (
+    <h2 className='
+      not-prose mt-14 sm:mt-16 mb-5 sm:mb-6
+      flex items-center gap-4
+      text-xs sm:text-sm font-semibold uppercase tracking-[0.15em]
+      text-sky-800 dark:text-sky-400
+    '>
+      <span className='whitespace-nowrap'>{children}</span>
+      <span className='flex-1 h-px bg-slate-300 dark:bg-slate-700' />
+      {action}
+    </h2>
+  )
+}
+
+function ArrowLink({ href, children, className }: { href: string, children: ReactNode, className?: string }) {
+  const LinkComponent = href.startsWith('/') ? Link : 'a'
+
+  return (
+    <LinkComponent href={href} className={`
+      inline-flex items-center gap-1 whitespace-nowrap
+      text-slate-500 hover:text-sky-700 dark:hover:text-sky-400
+      ${className ?? ''}
+    `}>
+      {children}
+      <icons.ArrowForward className='size-[1.1em]' />
+    </LinkComponent>
+  )
+}
+
 function Biography() {
   return (
     <>
-      <h2>Biography</h2>
+      <SectionHeading>Biography</SectionHeading>
       <p>
         I am interested in Computer Vision, Robotics and Machine Learning in
         general, working as a PhD student at the <a href="https://rl.uni-freiburg.de">
@@ -92,13 +132,13 @@ function formatDate(date: string) {
 function News() {
   return (
     <>
-      <h2>News</h2>
+      <SectionHeading>News</SectionHeading>
       <CollapsibleList visible={3} className='not-prose flex flex-col gap-2'>
         {
           news.map((entry, i) => {
             return (
               <li className='flex gap-4' key={i}>
-                <span className='w-20 shrink-0 text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
+                <span className='w-20 shrink-0 text-slate-400 dark:text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
                 <span className='
                   [&_a]:font-medium [&_a]:underline
                   [&_a]:decoration-slate-400 [&_a:hover]:decoration-slate-700
@@ -118,13 +158,17 @@ function News() {
 function SelectedPublications() {
   return (
     <>
-      <h2 className='flex items-baseline justify-between gap-4'>
-        <span>Selected Publications</span>
-        <Link href="/publications" className='text-sm sm:text-base font-normal whitespace-nowrap'>
-          All publications &rarr;
+      <SectionHeading action={
+        <Link href="/publications" className='
+          whitespace-nowrap normal-case tracking-normal font-normal
+          text-slate-500 hover:text-sky-700 dark:hover:text-sky-400
+        '>
+          All publications
         </Link>
-      </h2>
-      <div className='not-prose flex flex-col gap-5 sm:gap-6'>
+      }>
+        Selected Publications
+      </SectionHeading>
+      <div className='not-prose flex flex-col gap-7 sm:gap-8'>
         {
           publications.filter((entry) => entry.featured).map((entry) => {
             return <Publication data={entry} key={entry.id} />
@@ -136,28 +180,34 @@ function SelectedPublications() {
 }
 
 function Awards() {
+  const sorted = [...awards].sort((a, b) => b.date.localeCompare(a.date))
+
   return (
     <>
-      <h2>Awards &amp; Honors</h2>
-      <ul className='not-prose flex flex-col gap-3'>
+      <SectionHeading>Awards &amp; Honors</SectionHeading>
+      <ul className='not-prose flex flex-col gap-4'>
         {
-          awards.map((entry) => {
+          sorted.map((entry) => {
             const paper = publications.find((p) => p.id == entry.publication)
 
             return (
               <li className='flex gap-4' key={entry.id}>
-                <span className='w-20 shrink-0 text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
+                <span className='w-20 shrink-0 text-slate-400 dark:text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
                 <div className='flex flex-col gap-1.5 items-start'>
                   <span>
                     <span className='font-semibold'>{entry.title}</span>
                     <>, </>
                     <span className='italic'>{entry.event}</span>
                   </span>
-                  <div className='flex flex-row flex-wrap gap-2'>
-                    <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
+                  <div className='flex flex-row flex-wrap items-center gap-x-4 gap-y-2 text-sm'>
+                    <AwardChip title="Certificate" link={entry.certificate} />
                     {
-                      [...(paper?.links ?? []), ...(entry.links ?? [])].map((link) => {
-                        return <LinkChip title={link.title} link={link.link} Icon={link.icon} key={link.title} />
+                      paper &&
+                      <ArrowLink href={paper.link}>{paper.short}</ArrowLink>
+                    }
+                    {
+                      entry.links?.map((link) => {
+                        return <ArrowLink href={link.link} key={link.title}>{link.title}</ArrowLink>
                       })
                     }
                   </div>
@@ -174,7 +224,7 @@ function Awards() {
 function OpenSource() {
   return (
     <>
-      <h2>Open Source</h2>
+      <SectionHeading>Open Source</SectionHeading>
       <p>
         I strive to publish the code for all of my papers. You can find it
         linked with each <Link href="/publications">publication</Link>.
@@ -206,7 +256,6 @@ export default async function Home() {
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
         <div className='mx-auto max-w-prose'>
           <Profile />
-          <SocialLinks />
           <Prose>
             <Biography />
             <News />
