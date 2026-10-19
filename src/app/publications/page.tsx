@@ -4,6 +4,7 @@ import Publication from '@/components/Publication'
 import SectionHeading from '@/components/SectionHeading'
 
 import publications from '@data/publications'
+import { pageMetadata } from '@/lib/metadata'
 
 
 function Group({ title, publications }: { title: string, publications: any[] }) {
@@ -22,10 +23,11 @@ function Group({ title, publications }: { title: string, publications: any[] }) 
 }
 
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Maximilian Luz | Publications',
-  description: 'Publications of Maximilian Luz',
-}
+  description: 'Publications of Maximilian Luz on computer vision, robotics, and machine learning.',
+  path: '/publications',
+})
 
 export default async function Publications() {
   const years = Array.from(new Set(publications.map((entry) => entry.year))).sort().reverse()

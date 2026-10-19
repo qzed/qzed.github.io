@@ -13,6 +13,7 @@ import { Mdx } from '@/components/Mdx'
 
 import 'katex/dist/katex.css';
 import 'prism-themes/themes/prism-nord.css'
+import { pageMetadata } from '@/lib/metadata'
 
 
 function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
@@ -170,10 +171,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     }
   }
 
-  return {
+  return pageMetadata({
     title: `${post.author} | ${post.title}`,
-    description: `${post.title} - A blog post by ${post.author}`,
-  }
+    shareTitle: post.title,
+    description: post.description ?? `${post.title} - A blog post by ${post.author}`,
+    path: post.url,
+    type: 'article',
+    publishedTime: post.date,
+    tags: post.tags,
+    image: `/og/posts/${post.slug}.png`,
+  })
 }
 
 // Only generate pages for known posts, show the not-found page for others

@@ -37,6 +37,27 @@ function readingTime(content: string): number {
 // Cache for parsed frontmatter, keyed by absolute file path
 const frontmatterCache = new Map<string, Record<string, unknown>>()
 
+// Derive a plain-text description from the markdown abstract, e.g., for link
+// previews: Use the first paragraph without markup, shortened to a reasonable
+// length at a word boundary.
+function describe(abstract: string): string {
+  const MAX_LENGTH = 200
+
+  const text = abstract.trim().split(/\n\s*\n/)[0]
+    .replace(/\[@[^\]]*\]/g, '')
+    .replace(/\$[^$]*\$/g, '')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[`*_]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (text.length <= MAX_LENGTH) {
+    return text
+  }
+
+  return text.slice(0, text.lastIndexOf(' ', MAX_LENGTH)).replace(/[,;:.]$/, '') + '…'
+}
+
 // Custom matter loader that caches frontmatter for rehype plugins to access
 // Based on https://github.com/zce/velite/blob/main/src/loaders/matter.ts
 const MATTER_RE = /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/
@@ -49,6 +70,10 @@ const matterLoader = defineLoader({
     const matter = match == null ? null : match[1]
     const data = matter == null ? {} : (yaml.parse(matter) ?? {})
     const content = match == null ? value : value.slice(match[0].length).trim()
+
+    if (data.description == null && typeof data.abstract == 'string') {
+      data.description = describe(data.abstract)
+    }
 
     // Cache the frontmatter for rehype plugins
     if (file.path) {
@@ -130,6 +155,7 @@ export default defineConfig({
         author: s.string(),
         date: s.isodate(),
         abstract: s.mdx(),
+        description: s.string().optional(),
         tags: s.array(s.string()).optional(),
         visibility: s.enum(['default', 'draft', 'devel', 'hidden']).default('default'),
         bibliography: s.string().optional(),

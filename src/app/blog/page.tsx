@@ -12,6 +12,7 @@ import SectionHeading from '@/components/SectionHeading'
 import Tags from '@/components/blog/Tags'
 import { Mdx } from '@/components/Mdx'
 import { PostMetadata } from '@/types/blog/post'
+import { pageMetadata } from '@/lib/metadata'
 
 
 function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
@@ -92,10 +93,11 @@ function Group({ year, posts }: { year: string, posts: PostMetadata[] }) {
 }
 
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Maximilian Luz | Blog',
   description: 'Blog of Maximilian Luz',
-}
+  path: '/blog',
+})
 
 export default function BlogIndex() {
   const posts = getAllPosts()

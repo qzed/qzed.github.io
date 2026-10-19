@@ -12,6 +12,7 @@ import awards from '@data/awards'
 import news from '@data/news'
 import publications from '@data/publications'
 import socials from '@data/links/socials'
+import { pageMetadata } from '@/lib/metadata'
 
 
 function Affiliation() {
@@ -277,10 +278,13 @@ function OpenSource() {
 }
 
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Maximilian Luz',
-  description: 'Personal website of Maximilian Luz',
-}
+  description: 'PhD student at the Robot Learning Lab, University of Freiburg, working on '
+    + 'computer vision, robotics, and machine learning. Linux kernel maintainer for '
+    + 'Microsoft Surface devices.',
+  path: '/',
+})
 
 export default async function Home() {
   return (

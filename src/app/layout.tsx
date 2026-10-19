@@ -5,10 +5,12 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 
 import { Metadata } from 'next'
+import { SITE_URL } from '@/lib/metadata'
 import { SidebarProvider } from '@/components/SidebarContext'
 import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Maximilian Luz',
   description: 'Personal website of Maximilian Luz',
   icons: {
