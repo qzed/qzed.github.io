@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 
 import CollapsibleList from '@/components/CollapsibleList'
 import Prose from '@/components/Prose'
+import SectionHeading from '@/components/SectionHeading'
 import Publication, { LinkChip } from '@/components/Publication'
 import icons from '@/components/icons'
 
@@ -74,21 +75,6 @@ function Profile() {
         <SocialLinks />
       </div>
     </div>
-  )
-}
-
-function SectionHeading({ children, action }: { children: ReactNode, action?: ReactNode }) {
-  return (
-    <h2 className='
-      not-prose mt-14 sm:mt-16 mb-5 sm:mb-6
-      flex items-center gap-4
-      text-xs sm:text-sm font-semibold uppercase tracking-[0.15em]
-      text-sky-800 dark:text-sky-400
-    '>
-      <span className='whitespace-nowrap'>{children}</span>
-      <span className='flex-1 h-px bg-slate-300 dark:bg-slate-700' />
-      {action}
-    </h2>
   )
 }
 
