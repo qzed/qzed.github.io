@@ -143,7 +143,7 @@ function Teaser({ src, fill, link, alt }: { src: string, fill?: boolean, link: s
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
       hover:ring-2 hover:ring-sky-600 dark:hover:ring-sky-400
-      hover:border-transparent
+      hover:border-sky-600 dark:hover:border-sky-400
       transition
     `}>
       <img

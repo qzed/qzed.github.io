@@ -11,17 +11,29 @@
 /* Briefly highlight elements when navigated to via anchor link */
 @keyframes target-highlight {
     from {
-        outline-color: var(--color-sky-500);
+        border-color: var(--color-sky-500);
     }
     to {
-        outline-color: transparent;
+        border-color: transparent;
     }
 }
 
-.target-highlight:target {
-    outline: 2px solid transparent;
-    outline-offset: 0.5rem;
+.target-highlight {
+    position: relative;
+}
+
+/* Use a pseudo-element instead of an outline, as outline corner radii grow
+ * with the offset. */
+.target-highlight::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    border: 2px solid transparent;
     border-radius: 0.25rem;
+    pointer-events: none;
+}
+
+.target-highlight:target::after {
     animation: target-highlight 2.5s ease-out;
 }
 
