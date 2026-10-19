@@ -25,8 +25,9 @@ function Group({ title, publications }: { title: string, publications: any[] }) 
 
 export const metadata: Metadata = pageMetadata({
   title: 'Maximilian Luz | Publications',
-  description: 'Publications of Maximilian Luz on computer vision, robotics, and machine learning.',
+  description: 'Publications of Maximilian Luz',
   path: '/publications',
+  image: '/og/publications.png',
 })
 
 export default async function Publications() {

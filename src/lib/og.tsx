@@ -56,3 +56,26 @@ export function Frame({ children }: { children: ReactNode }) {
     </div>
   )
 }
+
+// Image for a page or post: Header with logo, large title, and a footer line.
+export function PageImage({ header, title, footer }: { header: string, title: string, footer: string }) {
+  // Scale down the title for long titles to keep it within three lines
+  const fontSize = title.length > 60 ? 60 : title.length > 20 ? 72 : 96
+
+  return (
+    <Frame>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 30, color: colors.accent }}>
+        <Logo size={30} />
+        {header}
+      </div>
+      <div style={{ display: 'flex', flex: 1, alignItems: 'center' }}>
+        <div style={{ fontSize, fontWeight: 600, letterSpacing: -1.5, lineHeight: 1.15 }}>
+          {title}
+        </div>
+      </div>
+      <div style={{ display: 'flex', fontSize: 30, color: colors.subtle }}>
+        {footer}
+      </div>
+    </Frame>
+  )
+}

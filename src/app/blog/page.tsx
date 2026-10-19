@@ -97,6 +97,7 @@ export const metadata: Metadata = pageMetadata({
   title: 'Maximilian Luz | Blog',
   description: 'Blog of Maximilian Luz',
   path: '/blog',
+  image: '/og/blog.png',
 })
 
 export default function BlogIndex() {
