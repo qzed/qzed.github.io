@@ -132,15 +132,41 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
   )
 }
 
-export default function Publication({ data }: { data: any }) {
+function Teaser({ src, link, alt }: { src: string, link: string, alt: string }) {
+  return (
+    <a href={link} className='
+      shrink-0 self-start w-full sm:w-44 aspect-[16/9] sm:aspect-[4/3]
+      flex items-center justify-center p-2
+      rounded-lg overflow-hidden bg-white
+      border border-slate-200 dark:border-slate-700
+      hover:border-slate-400 dark:hover:border-slate-500
+      transition-colors
+    '>
+      <img src={src} alt={alt} loading='lazy' className='max-w-full max-h-full object-contain' />
+    </a>
+  )
+}
+
+export default function Publication({ data, teaser = false }: { data: any, teaser?: boolean }) {
   const related = awards.filter((entry) => entry.publication == data.id)
 
-  return (
-    <div className='text-sm sm:text-base'>
+  const details = (
+    <div className='text-sm sm:text-base min-w-0'>
       <Title title={data.title} link={data.link} />
       <Authors authors={data.authors} />
       <Published published={data.published} year={data.year} />
       <Links links={data.links} awards={related} />
+    </div>
+  )
+
+  if (!teaser || !data.teaser) {
+    return details
+  }
+
+  return (
+    <div className='flex flex-col sm:flex-row gap-3 sm:gap-5'>
+      <Teaser src={data.teaser} link={data.link} alt={`Teaser figure for ${data.short ?? data.title}`} />
+      {details}
     </div>
   )
 }

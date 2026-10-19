@@ -26,6 +26,7 @@ const publications = [
         ],
         published: "International Conference on Intelligent Robots and Systems (IROS)",
         type: "conference",
+        teaser: "/assets/publications/teasers/sge.webp",
         link: "https://sge.cs.uni-freiburg.de/",
         links: [
             {
@@ -78,6 +79,7 @@ const publications = [
         ],
         published: "IEEE Robotics and Automation Letters (RA-L)",
         type: "journal",
+        teaser: "/assets/publications/teasers/lags.webp",
         link: "https://lags.cs.uni-freiburg.de/",
         links: [
             {
@@ -142,6 +144,7 @@ const publications = [
         ],
         published: "International Conference on Robotics and Automation (ICRA)",
         type: "conference",
+        teaser: "/assets/publications/teasers/amodal-flow.webp",
         link: "http://amodal-flow.cs.uni-freiburg.de/",
         links: [
             {
@@ -243,6 +246,7 @@ const publications = [
         ],
         published: "International Journal of Computer Vision (IJCV)",
         type: "journal",
+        teaser: "/assets/publications/teasers/ms-raft-plus.webp",
         link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
         links: [
             {
