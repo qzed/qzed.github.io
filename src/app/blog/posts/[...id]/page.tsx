@@ -5,6 +5,7 @@ import { getAllPosts, getAllPostsRaw, getPostById } from '@/lib/blog'
 import { PostMetadata } from '@/types/blog/post'
 
 import Prose from '@/components/Prose'
+import icons from '@/components/icons'
 import CitationPreview from '@/components/blog/CitationPreview'
 import Tags from '@/components/blog/Tags'
 import TableOfContents, { TableOfContentsInline, type TocEntry } from '@/components/blog/TableOfContents'
@@ -58,18 +59,26 @@ function PostHeader({ meta }: { meta: PostMeta }) {
   )
 }
 
-function AdjacentPost({ post, label, align }: { post: PostMetadata, label: string, align: 'left' | 'right' }) {
+function AdjacentPost({ post, direction }: { post: PostMetadata, direction: 'previous' | 'next' }) {
+  const next = direction == 'next'
+  const Icon = next ? icons.ArrowForward : icons.ArrowBack
+
   return (
     <Link href={`/blog/posts/${post.path}`} className={`
       group flex flex-col gap-1 min-w-0
-      ${align == 'right' ? 'sm:col-start-2 sm:text-right' : ''}
+      ${next ? 'sm:col-start-2 sm:items-end sm:text-right' : ''}
     `}>
-      <span className='text-xs uppercase tracking-[0.15em] text-slate-500'>{label}</span>
-      <span className='
-        font-medium text-slate-800 dark:text-slate-200
+      <span className='text-xs text-slate-400 dark:text-slate-500'>
+        {next ? 'Next' : 'Previous'}
+      </span>
+      <span className={`
+        flex items-center gap-1.5
+        ${next ? 'sm:flex-row-reverse' : ''}
+        text-sm text-slate-600 dark:text-slate-400
         group-hover:text-sky-700 dark:group-hover:text-sky-400
         transition-colors
-      '>
+      `}>
+        <Icon className='size-4 shrink-0' />
         {post.title}
       </span>
     </Link>
@@ -78,18 +87,15 @@ function AdjacentPost({ post, label, align }: { post: PostMetadata, label: strin
 
 function PostFooter({ meta, newer, older }: { meta: PostMeta, newer?: PostMetadata, older?: PostMetadata }) {
   return (
-    <footer className='mt-16 border-t border-slate-200 dark:border-slate-800'>
+    <footer className='mt-16 pt-6 flex flex-col gap-6 border-t border-slate-200 dark:border-slate-800'>
       {
         (newer || older) &&
-        <nav aria-label='Adjacent posts' className='
-          grid grid-cols-1 sm:grid-cols-2 gap-6 py-6
-          border-b border-slate-200 dark:border-slate-800
-        '>
-          {older && <AdjacentPost post={older} label='&larr; Previous' align='left' />}
-          {newer && <AdjacentPost post={newer} label='Next &rarr;' align='right' />}
+        <nav aria-label='Adjacent posts' className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+          {older && <AdjacentPost post={older} direction='previous' />}
+          {newer && <AdjacentPost post={newer} direction='next' />}
         </nav>
       }
-      <div className='pt-6 flex flex-wrap justify-between gap-4 text-sm text-slate-500'>
+      <div className='flex flex-wrap justify-between gap-4 text-sm text-slate-500'>
         <Link href='/blog' className='hover:text-sky-700 dark:hover:text-sky-400'>
           All posts
         </Link>
