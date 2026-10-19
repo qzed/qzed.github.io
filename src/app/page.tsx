@@ -225,7 +225,7 @@ function Awards() {
                   <div className='flex flex-row flex-wrap gap-2'>
                     <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
                     {
-                      [...(paper?.links ?? []), ...(entry.links ?? [])].map((link) => {
+                      [...(entry.links ?? []), ...(paper?.links ?? [])].map((link) => {
                         return <LinkChip title={link.title} link={link.link} Icon={link.icon} key={link.title} />
                       })
                     }
