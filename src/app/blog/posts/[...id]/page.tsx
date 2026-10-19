@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { getAllPostsRaw, getPostById } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
+import CitationPreview from '@/components/blog/CitationPreview'
 import Tags from '@/components/blog/Tags'
 import TableOfContents, { TableOfContentsInline, type TocEntry } from '@/components/blog/TableOfContents'
 import { Mdx } from '@/components/Mdx'
@@ -100,6 +101,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
               <Mdx code={post.code} />
             </Prose>
             <PostFooter meta={post} />
+            <CitationPreview />
           </article>
           {
             showToc &&
