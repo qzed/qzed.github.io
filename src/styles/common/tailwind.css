@@ -15,7 +15,7 @@
 /* Override max-w-prose */
 @layer utilities {
     .max-w-prose {
-        max-width: 75ch;
+        max-width: 80ch;
     }
 }
 
