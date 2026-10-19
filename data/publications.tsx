@@ -26,7 +26,7 @@ const publications = [
         link: "https://sge.cs.uni-freiburg.de/",
         award: {
             title: "Best Paper Award Finalist",
-            link: "/assets/publications/sge-iros2026-best-paper-finalist.pdf",
+            link: "/assets/awards/iros2026-best-paper-finalist.pdf",
         },
         links: [
             {
