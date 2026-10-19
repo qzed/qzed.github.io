@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -8,47 +8,48 @@ import 'prism-themes/themes/prism-nord.css'
 import { getAllPosts } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
+import SectionHeading from '@/components/SectionHeading'
+import Tags from '@/components/blog/Tags'
 import { Mdx } from '@/components/Mdx'
 import { PostMetadata } from '@/types/blog/post'
 
 
 function PostTitle({ title, subtitle }: { title: string, subtitle?: string }) {
   return (
-    <div className=''>
-      <h1 className="text-xl sm:text-2xl font-bold">{title}</h1>
-      {subtitle ? <h2 className='text-lg sm:text-xl mt-1'>{subtitle}</h2> : <></>}
+    <div>
+      <h3 className='
+        text-lg sm:text-xl font-semibold
+        text-slate-900 dark:text-slate-100
+        group-hover:text-sky-700 dark:group-hover:text-sky-400
+        transition-colors
+      '>
+        {title}
+      </h3>
+      {subtitle ? <p className='text-base sm:text-lg mt-0.5'>{subtitle}</p> : <></>}
     </div>
   )
 }
 
 function PostDate({ date }: { date: number }) {
   const displayDate = new Date(date).toLocaleDateString('en-us', {
-    month: 'long',
+    month: 'short',
     day: 'numeric',
-    year: 'numeric'
   })
 
   return (
-    <p className='mb-1 text-xs sm:text-sm text-gray-500 dark:text-gray-500'>
+    <span className='sm:w-20 shrink-0 text-sm sm:text-base text-slate-400 dark:text-slate-500 tabular-nums sm:leading-7'>
       {displayDate}
-    </p>
-  )
-}
-
-function PostHeader({ post }: { post: PostMetadata }) {
-  return (
-    <div className='mb-4'>
-      <PostDate date={post.date} />
-      <PostTitle title={post.title} subtitle={post.subtitle} />
-    </div>
+    </span>
   )
 }
 
 function PostAbstract({ abstract }: { abstract: string }) {
   return (
-    <Prose>
-      <Mdx code={abstract} />
-    </Prose>
+    <div className='[&_p]:text-slate-600 dark:[&_p]:text-slate-400'>
+      <Prose>
+        <Mdx code={abstract} />
+      </Prose>
+    </div>
   )
 }
 
@@ -57,16 +58,31 @@ function PostPreview({ post }: { post: PostMetadata }) {
   const url = `/blog/posts/${fragment}`
 
   return (
-    <article className='relative group'>
-      {/* Invisible link overlay for the entire card */}
+    <article className='relative group flex flex-col sm:flex-row gap-1 sm:gap-4'>
+      {/* Invisible link overlay for the entire post */}
       <Link href={url} className='absolute inset-0 z-10' aria-label={post.title}>
         <span className='sr-only'>{post.title}</span>
       </Link>
-      <div className='group-hover:text-sky-800 dark:group-hover:text-slate-100'>
-        <PostHeader post={post} />
+      <PostDate date={post.date} />
+      <div className='min-w-0'>
+        <PostTitle title={post.title} subtitle={post.subtitle} />
+        <Tags tags={post.tags} className='mt-2 mb-3' />
         <PostAbstract abstract={post.abstract} />
       </div>
     </article>
+  )
+}
+
+function Group({ year, posts }: { year: string, posts: PostMetadata[] }) {
+  return (
+    <div>
+      <SectionHeading className='mb-5 sm:mb-6'>{year}</SectionHeading>
+      <div className='flex flex-col gap-8 sm:gap-10'>
+        {
+          posts.map((post) => <PostPreview post={post} key={post.id.join('/')} />)
+        }
+      </div>
+    </div>
   )
 }
 
@@ -80,15 +96,17 @@ export default function BlogIndex() {
   const posts = getAllPosts()
   const sorted = posts.sort((a, b) => b.date - a.date)
 
+  const years = Array.from(new Set(sorted.map((post) => new Date(post.date).getFullYear())))
+  const grouped = years.map((year) => {
+    return { year: String(year), posts: sorted.filter((post) => new Date(post.date).getFullYear() == year) }
+  })
+
   return (
     <main>
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
-        <div className='mx-auto max-w-prose flex flex-col gap-10'>
+        <div className='mx-auto max-w-prose flex flex-col gap-12'>
           {
-            sorted.map((post) => <Fragment key={post.id.join('/')} >
-              <PostPreview post={post} />
-              <hr className='last:hidden h-px bg-slate-200 dark:bg-slate-800 border-0' />
-            </Fragment>)
+            grouped.map(({ year, posts }) => <Group year={year} posts={posts} key={year} />)
           }
         </div>
       </div>
