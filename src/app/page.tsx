@@ -226,7 +226,7 @@ function Awards() {
                     paper &&
                     <span className='text-slate-600 dark:text-slate-400'>
                       <>for </>
-                      <a href={paper.featured ? `#pub-${paper.id}` : paper.link} className='
+                      <a href={`/publications#pub-${paper.id}`} className='
                         font-medium border-b border-slate-300 dark:border-slate-700
                         hover:border-slate-700 hover:text-slate-800
                         dark:hover:border-slate-400 dark:hover:text-slate-200
