@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+import icons from '@/components/icons'
+
 export type TocEntry = {
   title: string
   url: string
@@ -103,5 +105,47 @@ export default function TableOfContents({ toc }: { toc: TocEntry[] }) {
         }
       </ul>
     </nav>
+  )
+}
+
+// Collapsible table of contents shown above the post on smaller screens, where
+// there is no space for it next to the post.
+export function TableOfContentsInline({ toc, className }: { toc: TocEntry[], className?: string }) {
+  const entries = flatten(toc)
+
+  return (
+    <details data-no-highlight className={`
+      group rounded-lg text-sm
+      border border-slate-200 dark:border-slate-800
+      ${className ?? ''}
+    `}>
+      <summary className='
+        flex items-center justify-between gap-4 px-4 py-3
+        cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden
+        text-xs font-semibold uppercase tracking-[0.15em] text-sky-800 dark:text-sky-400
+      '>
+        On this page
+        <icons.ExpandMore className='size-5 transition-transform group-open:rotate-180' />
+      </summary>
+      <nav aria-label='Table of contents' className='px-4 pb-3'>
+        <ul>
+          {
+            entries.map((entry) => {
+              return (
+                <li key={entry.id}>
+                  <a
+                    href={`#${entry.id}`}
+                    style={{ paddingLeft: `${entry.depth * 0.75}rem` }}
+                    className='block py-1 text-slate-600 dark:text-slate-400 hover:text-sky-700 dark:hover:text-sky-400'
+                  >
+                    {entry.title}
+                  </a>
+                </li>
+              )
+            })
+          }
+        </ul>
+      </nav>
+    </details>
   )
 }

@@ -5,7 +5,7 @@ import { getAllPostsRaw, getPostById } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
 import Tags from '@/components/blog/Tags'
-import TableOfContents, { type TocEntry } from '@/components/blog/TableOfContents'
+import TableOfContents, { TableOfContentsInline, type TocEntry } from '@/components/blog/TableOfContents'
 import { Mdx } from '@/components/Mdx'
 
 import 'katex/dist/katex.css';
@@ -95,6 +95,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
           {showToc && <div className='hidden xl:block w-56 shrink-0' />}
           <article className='min-w-0 w-full max-w-[72ch]'>
             <PostHeader meta={post} />
+            {showToc && <TableOfContentsInline toc={toc} className='xl:hidden -mt-2 mb-10' />}
             <Prose>
               <Mdx code={post.code} />
             </Prose>
