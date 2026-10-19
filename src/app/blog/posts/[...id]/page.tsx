@@ -107,6 +107,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   }
 }
 
+// Only generate pages for known posts, show the not-found page for others
+export const dynamicParams = false
+
 export function generateStaticParams() {
   const posts = getAllPostsRaw()
 
