@@ -76,6 +76,11 @@
             margin-bottom: 0px !important;
         }
 
+        /* Inline code: No backticks, subtle background instead */
+        & :not(pre) > code {
+            @apply px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800;
+        }
+
         & .data-footnote-backref {
           text-decoration: none;
         }
@@ -119,8 +124,7 @@
 }
 
 .csl-bib-body {
-    @apply flex flex-col gap-2 font-light text-sm text-slate-950 dark:text-slate-50 px-3;
-
+    @apply flex flex-col gap-2 font-light text-sm text-slate-700 dark:text-slate-300 px-3;
 }
 
 .csl-entry {
@@ -128,7 +132,22 @@
 }
 
 .csl-entry::marker {
-    @apply text-xs text-slate-300 dark:text-slate-600;
+    @apply text-xs;
+    color: var(--color-slate-300);
+}
+
+.dark .csl-entry::marker {
+    color: var(--color-slate-600);
+}
+
+/* Task lists already have checkboxes, don't show bullets and indentation */
+.mdprose ul.contains-task-list {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.mdprose ul.contains-task-list > li {
+    padding-inline-start: 0;
 }
 
 .code-highlight {
@@ -160,6 +179,11 @@
 pre[class*="language-"] {
     padding-left: 0px !important;
     padding-right: 0px !important;
+}
+
+/* Separate code blocks from the similarly dark background in dark mode */
+.dark pre[class*="language-"] {
+    border: 1px solid var(--color-slate-700);
 }
 
 .line-number::before {
