@@ -54,7 +54,11 @@
         @apply prose;
         @apply prose-headings:no-underline;
 
+        /* Headings are wrapped in links, keep their style instead of the
+         * one for links. */
         & .autolink-anchor {
+            font-weight: inherit;
+            color: inherit;
             @apply no-underline
                 hover:before:content-["#"]
                 hover:before:inline-block

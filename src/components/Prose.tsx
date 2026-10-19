@@ -38,6 +38,8 @@ export default function Prose({ children }: Props) {
       last:prose-td:pr-5
 
       prose-code:font-normal
+
+      prose-headings:font-semibold
     '>
       {children}
     </div>
