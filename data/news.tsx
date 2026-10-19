@@ -14,28 +14,28 @@ const news = [
     {
         date: "2026-09",
         content: <>
-            <a href="https://sge.cs.uni-freiburg.de/">SGE</a> was selected as
+            <a href="/publications#pub-sge">SGE</a> was selected as
             a <b>Best Paper Award finalist</b> at IROS 2026.
         </>,
     },
     {
         date: "2026-06",
         content: <>
-            <a href="https://sge.cs.uni-freiburg.de/">SGE</a> was accepted at
+            <a href="/publications#pub-sge">SGE</a> was accepted at
             IROS 2026.
         </>,
     },
     {
         date: "2026-05",
         content: <>
-            <a href="https://lags.cs.uni-freiburg.de/">LaGS</a> was accepted
+            <a href="/publications#pub-lags">LaGS</a> was accepted
             to IEEE Robotics and Automation Letters (RA-L).
         </>,
     },
     {
         date: "2024-01",
         content: <>
-            <a href="http://amodal-flow.cs.uni-freiburg.de/">Amodal Optical
+            <a href="/publications#pub-amodal-flow">Amodal Optical
             Flow</a> was accepted at ICRA 2024.
         </>,
     },
