@@ -8,7 +8,8 @@
     color-scheme: dark;
 }
 
-/* Briefly highlight elements when navigated to via anchor link */
+/* Briefly highlight elements when navigated to via anchor link, triggered by
+ * the AnchorHighlight component */
 @keyframes target-highlight {
     from {
         border-color: var(--color-sky-500);
@@ -33,7 +34,7 @@
     pointer-events: none;
 }
 
-.target-highlight:target::after {
+.target-highlight.highlighted::after {
     animation: target-highlight 2.5s ease-out;
 }
 

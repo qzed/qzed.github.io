@@ -1,5 +1,6 @@
 import '@/styles/common/tailwind.css'
 
+import AnchorHighlight from '@/components/AnchorHighlight'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 
@@ -112,6 +113,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <AnchorHighlight />
       </body>
     </html>
   )
