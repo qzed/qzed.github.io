@@ -249,6 +249,7 @@ const publications = [
         published: "International Journal of Computer Vision (IJCV)",
         type: "journal",
         teaser: "/assets/publications/teasers/ms-raft-plus.webp",
+        teaserFill: true,
         link: "https://link.springer.com/article/10.1007/s11263-023-01930-7",
         links: [
             {
