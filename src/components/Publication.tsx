@@ -134,12 +134,14 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
 
 // Renders and photos fill the teaser box and stretch to the height of the
 // publication details, figures and diagrams are shown in full with padding.
+// Hidden on small screens, where there is not enough space next to the
+// details.
 function Teaser({ src, fill, link, alt }: { src: string, fill?: boolean, link: string, alt: string }) {
   return (
     <a href={link} className={`
-      shrink-0 w-full sm:w-44 aspect-[16/9]
-      ${fill ? 'sm:aspect-auto sm:self-stretch sm:min-h-33' : 'self-start sm:aspect-[4/3] p-2'}
-      flex items-center justify-center
+      shrink-0 self-start w-44 aspect-[4/3]
+      ${fill ? 'sm:aspect-auto sm:self-stretch sm:min-h-33' : 'p-2'}
+      hidden sm:flex items-center justify-center
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
       hover:ring-2 hover:ring-sky-600 dark:hover:ring-sky-400
@@ -171,7 +173,7 @@ export default function Publication({ data, teaser = false }: { data: any, tease
   }
 
   return (
-    <div id={`pub-${data.id}`} className='target-highlight flex flex-col sm:flex-row gap-3 sm:gap-5'>
+    <div id={`pub-${data.id}`} className='target-highlight flex flex-row gap-5'>
       <Teaser
         src={data.teaser} fill={data.teaserFill} link={data.link}
         alt={`Teaser for ${data.short ?? data.title}`}
