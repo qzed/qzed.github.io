@@ -49,7 +49,7 @@ const publications = [
         id: "lags",
         short: "LaGS",
         featured: true,
-        title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
+        title: "Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
             {
