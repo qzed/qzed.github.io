@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,48067,e=>{"use strict";var t=e.i(16736);e.s(["default",0,function({label:e,num:i,text:n}){return(0,t.jsx)("a",{href:`#${e}`,className:"eq-ref",children:`${n||"Equation"} (${i})`})}])},6185,function(e){e.n(e.i(48067))}]);
