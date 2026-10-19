@@ -8,6 +8,7 @@ const components = {
   Note: dynamic(() => import('./blog/Note')),
   Counter: dynamic(() => import('./blog/Counter')),
   KatexMath: dynamic(() => import('./blog/KatexMath')),
+  MaxEntPrinciple: dynamic(() => import('./blog/figures/MaxEntPrinciple')),
 }
 
 const useMDXComponent = (code: string) => {
