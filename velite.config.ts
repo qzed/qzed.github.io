@@ -112,6 +112,7 @@ export default defineConfig({
         visibility: s.enum(['default', 'draft', 'devel', 'hidden']).default('default'),
         bibliography: s.string().optional(),
         code: s.mdx(),
+        toc: s.toc({ maxDepth: 3 }),
         // Use Velite's built-in path helper to get the flattened path
         slug: s.path(),
       }).transform((data) => {

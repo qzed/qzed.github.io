@@ -5,6 +5,7 @@ import { getAllPostsRaw, getPostById } from '@/lib/blog'
 
 import Prose from '@/components/Prose'
 import Tags from '@/components/blog/Tags'
+import TableOfContents, { type TocEntry } from '@/components/blog/TableOfContents'
 import { Mdx } from '@/components/Mdx'
 
 import 'katex/dist/katex.css';
@@ -66,6 +67,11 @@ function PostFooter({ meta }: { meta: PostMeta }) {
 }
 
 
+function countTocEntries(toc: TocEntry[]): number {
+  return toc.reduce((count, entry) => count + 1 + countTocEntries(entry.items), 0)
+}
+
+
 type Params = {
   id: string[]
 }
@@ -77,16 +83,32 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
     notFound()
   }
 
+  // Only show a table of contents for posts with enough sections
+  const toc = post.toc ?? []
+  const showToc = countTocEntries(toc) >= 3
+
   return (
     <main>
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
-        <article className='mx-auto max-w-[72ch]'>
-          <PostHeader meta={post} />
-          <Prose>
-            <Mdx code={post.code} />
-          </Prose>
-          <PostFooter meta={post} />
-        </article>
+        <div className='flex justify-center gap-12'>
+          {/* Spacer to keep the post centered next to the table of contents */}
+          {showToc && <div className='hidden xl:block w-56 shrink-0' />}
+          <article className='min-w-0 w-full max-w-[72ch]'>
+            <PostHeader meta={post} />
+            <Prose>
+              <Mdx code={post.code} />
+            </Prose>
+            <PostFooter meta={post} />
+          </article>
+          {
+            showToc &&
+            <aside className='hidden xl:block w-56 shrink-0'>
+              <div className='sticky top-24 max-h-[calc(100dvh-8rem)] overflow-y-auto'>
+                <TableOfContents toc={toc} />
+              </div>
+            </aside>
+          }
+        </div>
       </div>
     </main>
   )

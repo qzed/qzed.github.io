@@ -51,13 +51,28 @@ export default function AnchorHighlight() {
       elem.classList.add('highlighted')
     }
 
+    // Set when a link that should not trigger the highlight has been clicked,
+    // to skip the subsequent hash change.
+    let skipNext = false
+
     function onHashChange() {
+      if (skipNext) {
+        skipNext = false
+        return
+      }
+
       highlight(location.hash)
     }
 
     function onClick(event: MouseEvent) {
       const link = (event.target as Element).closest('a')
       if (!link) {
+        return
+      }
+
+      // Links can opt out of highlighting, e.g., for the table of contents.
+      if (link.closest('[data-no-highlight]')) {
+        skipNext = link.hash != location.hash
         return
       }
 
