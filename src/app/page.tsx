@@ -14,7 +14,24 @@ import publications from '@data/publications'
 import socials from '@data/links/socials'
 
 
-function SocialLink({ Anchor, Icon, href, title }: { Anchor?: any, Icon: any, href: string, title: string }) {
+function Affiliation() {
+  return (
+    <>
+      <p>
+        <span className='whitespace-nowrap'>PhD Student,</span>
+        <> </>
+        <a href="https://rl.uni-freiburg.de/" className='whitespace-nowrap hover:text-sky-700 dark:hover:text-sky-400'>
+          Robot Learning Lab
+        </a>,
+        <> </>
+        <span className='whitespace-nowrap'>University of Freiburg</span>
+      </p>
+      <p>Linux Kernel Maintainer</p>
+    </>
+  )
+}
+
+function SocialIcon({ Anchor, Icon, href, title }: { Anchor?: any, Icon: any, href: string, title: string }) {
   const LinkComponent = Anchor || Link;
 
   return (
@@ -30,49 +47,85 @@ function SocialLink({ Anchor, Icon, href, title }: { Anchor?: any, Icon: any, hr
   )
 }
 
-function SocialLinks() {
+function SocialLabel({ Anchor, Icon, href, title }: { Anchor?: any, Icon: any, href: string, title: string }) {
+  const LinkComponent = Anchor || Link;
+
   return (
-    <div className='flex items-center gap-1 -ml-1.5 mt-4 justify-center sm:justify-start'>
-      {
-        socials.map((entry) => {
-          return <SocialLink
-            Anchor={entry.anchor}
-            Icon={entry.icon}
-            href={entry.link}
-            title={entry.title}
-            key={entry.title}
-          />
-        })
-      }
-    </div>
+    <LinkComponent href={href} title={title} className='
+      flex items-center gap-3 py-1
+      text-slate-600 dark:text-slate-400
+      hover:text-sky-700 dark:hover:text-sky-400
+      transition-colors
+    '>
+      <Icon className='size-4' />
+      {title}
+    </LinkComponent>
   )
 }
 
-function Profile() {
+// Profile shown in the sticky sidebar on large screens.
+function ProfileSidebar() {
   return (
-    <div className='flex flex-col sm:flex-row items-center gap-6 sm:gap-8'>
+    <aside className='hidden lg:block w-60 shrink-0'>
+      <div className='sticky top-24 flex flex-col'>
+        <img
+          className='size-40 rounded-full ring-4 ring-slate-200 dark:ring-slate-800'
+          src="/assets/profile.jpg"
+          alt="Profile Picture"
+        />
+        <h1 className='mt-6 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100'>
+          Maximilian Luz
+        </h1>
+        <div className='mt-2 text-sm text-slate-600 dark:text-slate-400 flex flex-col gap-1'>
+          <Affiliation />
+        </div>
+        <nav className='mt-6 pt-5 border-t border-slate-200 dark:border-slate-800 text-sm flex flex-col'>
+          {
+            socials.map((entry) => {
+              return <SocialLabel
+                Anchor={entry.anchor}
+                Icon={entry.icon}
+                href={entry.link}
+                title={entry.title}
+                key={entry.title}
+              />
+            })
+          }
+        </nav>
+      </div>
+    </aside>
+  )
+}
+
+// Compact profile shown above the content on small and medium screens.
+function ProfileHeader() {
+  return (
+    <div className='lg:hidden flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-12'>
       <img
-        className='size-28 sm:size-36 shrink-0 rounded-full ring-4 ring-slate-200 dark:ring-slate-800'
+        className='size-28 sm:size-32 shrink-0 rounded-full ring-4 ring-slate-200 dark:ring-slate-800'
         src="/assets/profile.jpg"
         alt="Profile Picture"
       />
       <div className='text-center sm:text-left'>
-        <h1 className='text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-100'>
+        <h1 className='text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-100'>
           Maximilian Luz
         </h1>
         <div className='mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400'>
-          <p>
-            <span className='whitespace-nowrap'>PhD Student,</span>
-            <> </>
-            <a href="https://rl.uni-freiburg.de/" className='whitespace-nowrap hover:text-sky-700 dark:hover:text-sky-400'>
-              Robot Learning Lab
-            </a>,
-            <> </>
-            <span className='whitespace-nowrap'>University of Freiburg</span>
-          </p>
-          <p>Linux Kernel Maintainer</p>
+          <Affiliation />
         </div>
-        <SocialLinks />
+        <div className='flex items-center gap-1 -ml-1.5 mt-4 justify-center sm:justify-start'>
+          {
+            socials.map((entry) => {
+              return <SocialIcon
+                Anchor={entry.anchor}
+                Icon={entry.icon}
+                href={entry.link}
+                title={entry.title}
+                key={entry.title}
+              />
+            })
+          }
+        </div>
       </div>
     </div>
   )
@@ -96,11 +149,10 @@ function ArrowLink({ href, children, className }: { href: string, children: Reac
 function Biography() {
   return (
     <>
-      <SectionHeading>Biography</SectionHeading>
-      <p>
-        I am interested in Computer Vision, Robotics and Machine Learning in
-        general, working as a PhD student at the <a href="https://rl.uni-freiburg.de">
-        Robot Learning Lab of the University of Freiburg</a>.
+      <p className='lead'>
+        I am a PhD student at the <a href="https://rl.uni-freiburg.de">Robot
+        Learning Lab of the University of Freiburg</a>, interested in Computer
+        Vision, Robotics, and Machine Learning in general.
       </p>
       <p>
         In my spare time, I am a Linux Kernel maintainer for Microsoft Surface
@@ -157,7 +209,7 @@ function SelectedPublications() {
       <div className='not-prose flex flex-col gap-7 sm:gap-8'>
         {
           publications.filter((entry) => entry.featured).map((entry) => {
-            return <Publication data={entry} key={entry.id} />
+            return <Publication data={entry} teaser key={entry.id} />
           })
         }
       </div>
@@ -240,15 +292,18 @@ export default async function Home() {
   return (
     <main>
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
-        <div className='mx-auto max-w-prose'>
-          <Profile />
-          <Prose>
-            <Biography />
-            <News />
-            <SelectedPublications />
-            <Awards />
-            <OpenSource />
-          </Prose>
+        <div className='flex justify-center gap-16'>
+          <ProfileSidebar />
+          <div className='flex-1 min-w-0 max-w-prose'>
+            <ProfileHeader />
+            <Prose>
+              <Biography />
+              <News />
+              <SelectedPublications />
+              <Awards />
+              <OpenSource />
+            </Prose>
+          </div>
         </div>
       </div>
     </main >
