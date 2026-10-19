@@ -11,7 +11,7 @@ export default function SectionHeading({ children, action, className = 'mt-14 sm
     <h2 className={`
       not-prose ${className}
       flex items-center gap-4
-      text-xs sm:text-sm font-semibold uppercase tracking-[0.15em]
+      text-sm sm:text-base font-semibold uppercase tracking-[0.15em]
       text-sky-800 dark:text-sky-400
     `}>
       <span className='whitespace-nowrap'>{children}</span>
