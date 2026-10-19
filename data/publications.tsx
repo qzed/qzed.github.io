@@ -3,6 +3,7 @@ import icons from "@/components/icons"
 const publications = [
     {
         id: "sge",
+        featured: true,
         title: "Streaming Gaussian Encoding for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
@@ -45,6 +46,7 @@ const publications = [
     },
     {
         id: "lags",
+        featured: true,
         title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
@@ -210,6 +212,7 @@ const publications = [
     },
     {
         id: "ms-raft-plus",
+        featured: true,
         title: "MS-RAFT+: High Resolution Multi-Scale RAFT",
         year: 2023,
         authors: [

@@ -1,8 +1,14 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
+import CollapsibleList from '@/components/CollapsibleList'
 import Prose from '@/components/Prose'
+import Publication, { LinkChip } from '@/components/Publication'
+import icons from '@/components/icons'
 
+import awards from '@data/awards'
+import news from '@data/news'
+import publications from '@data/publications'
 import socials from '@data/links/socials'
 
 
@@ -63,7 +69,7 @@ function SocialLinks() {
 
 function Biography() {
   return (
-    <Prose>
+    <>
       <h2>Biography</h2>
       <p>
         I am interested in Computer Vision, Robotics and Machine Learning in
@@ -72,10 +78,119 @@ function Biography() {
       </p>
       <p>
         In my spare time, I am a Linux Kernel maintainer for Microsoft Surface
-        devices. Presently, I am trying to make the ARM-based Surface Pro X and
-        its Qualcomm SoC play nice with Linux.
+        devices.
       </p>
-    </Prose>
+    </>
+  )
+}
+
+function formatDate(date: string) {
+  const [year, month] = date.split('-').map(Number)
+  return new Date(year, month - 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+}
+
+function News() {
+  return (
+    <>
+      <h2>News</h2>
+      <CollapsibleList visible={3} className='not-prose flex flex-col gap-2'>
+        {
+          news.map((entry, i) => {
+            return (
+              <li className='flex gap-4' key={i}>
+                <span className='w-20 shrink-0 text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
+                <span className='
+                  [&_a]:font-medium [&_a]:underline
+                  [&_a]:decoration-slate-400 [&_a:hover]:decoration-slate-700
+                  dark:[&_a]:decoration-slate-600 dark:[&_a:hover]:decoration-slate-300
+                '>
+                  {entry.content}
+                </span>
+              </li>
+            )
+          })
+        }
+      </CollapsibleList>
+    </>
+  )
+}
+
+function SelectedPublications() {
+  return (
+    <>
+      <h2 className='flex items-baseline justify-between gap-4'>
+        <span>Selected Publications</span>
+        <Link href="/publications" className='text-sm sm:text-base font-normal whitespace-nowrap'>
+          All publications &rarr;
+        </Link>
+      </h2>
+      <div className='not-prose flex flex-col gap-5 sm:gap-6'>
+        {
+          publications.filter((entry) => entry.featured).map((entry) => {
+            return <Publication data={entry} key={entry.id} />
+          })
+        }
+      </div>
+    </>
+  )
+}
+
+function Awards() {
+  return (
+    <>
+      <h2>Awards &amp; Honors</h2>
+      <ul className='not-prose flex flex-col gap-3'>
+        {
+          awards.map((entry) => {
+            const paper = publications.find((p) => p.id == entry.publication)
+
+            return (
+              <li className='flex gap-4' key={entry.id}>
+                <span className='w-20 shrink-0 text-slate-500 tabular-nums'>{formatDate(entry.date)}</span>
+                <div className='flex flex-col gap-1.5 items-start'>
+                  <span>
+                    <span className='font-semibold'>{entry.title}</span>
+                    <>, </>
+                    <span className='italic'>{entry.event}</span>
+                  </span>
+                  <div className='flex flex-row flex-wrap gap-2'>
+                    <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
+                    {
+                      [...(paper?.links ?? []), ...(entry.links ?? [])].map((link) => {
+                        return <LinkChip title={link.title} link={link.link} Icon={link.icon} key={link.title} />
+                      })
+                    }
+                  </div>
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </>
+  )
+}
+
+function OpenSource() {
+  return (
+    <>
+      <h2>Open Source</h2>
+      <p>
+        I strive to publish the code for all of my papers. You can find it
+        linked with each <Link href="/publications">publication</Link>.
+      </p>
+      <ul>
+        <li>
+          Maintainer of several Microsoft Surface platform drivers in the
+          mainline Linux kernel, including the <a href="https://docs.kernel.org/driver-api/surface_aggregator/index.html">
+          Surface System Aggregator Module (SSAM)</a> subsystem.
+        </li>
+        <li>
+          Core maintainer of and contributor to the <a href="https://github.com/linux-surface/linux-surface">
+          linux-surface</a> project.
+        </li>
+      </ul>
+    </>
   )
 }
 
@@ -92,7 +207,13 @@ export default async function Home() {
         <div className='mx-auto max-w-prose'>
           <Profile />
           <SocialLinks />
-          <Biography />
+          <Prose>
+            <Biography />
+            <News />
+            <SelectedPublications />
+            <Awards />
+            <OpenSource />
+          </Prose>
         </div>
       </div>
     </main >
