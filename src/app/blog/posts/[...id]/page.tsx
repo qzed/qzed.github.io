@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getAllPostsRaw, getPostById } from '@/lib/blog'
+import { getAllPosts, getAllPostsRaw, getPostById } from '@/lib/blog'
+import { PostMetadata } from '@/types/blog/post'
 
 import Prose from '@/components/Prose'
 import CitationPreview from '@/components/blog/CitationPreview'
@@ -30,8 +31,12 @@ function formatDate(date: string) {
   })
 }
 
-function PostDate({ date }: { date: string }) {
-  return <p className='text-gray-500 dark:text-gray-500'>{formatDate(date)}</p>
+function PostDate({ date, readingTime }: { date: string, readingTime: number }) {
+  return (
+    <p className='text-gray-500 dark:text-gray-500'>
+      {formatDate(date)} · {readingTime} min read
+    </p>
+  )
 }
 
 type PostMeta = {
@@ -40,29 +45,56 @@ type PostMeta = {
   author: string
   date: string
   tags?: string[]
+  readingTime: number
 }
 
 function PostHeader({ meta }: { meta: PostMeta }) {
   return (
     <div className='mb-10'>
-      <PostDate date={meta.date} />
+      <PostDate date={meta.date} readingTime={meta.readingTime} />
       <PostTitle title={meta.title} subtitle={meta.subtitle} />
       <Tags tags={meta.tags} />
     </div>
   )
 }
 
-function PostFooter({ meta }: { meta: PostMeta }) {
+function AdjacentPost({ post, label, align }: { post: PostMetadata, label: string, align: 'left' | 'right' }) {
   return (
-    <footer className='
-      mt-16 pt-6 flex flex-wrap justify-between gap-4
-      border-t border-slate-200 dark:border-slate-800
-      text-sm text-slate-500
-    '>
-      <Link href='/blog' className='hover:text-sky-700 dark:hover:text-sky-400'>
-        All posts
-      </Link>
-      <span>Published {formatDate(meta.date)}</span>
+    <Link href={`/blog/posts/${post.path}`} className={`
+      group flex flex-col gap-1 min-w-0
+      ${align == 'right' ? 'sm:col-start-2 sm:text-right' : ''}
+    `}>
+      <span className='text-xs uppercase tracking-[0.15em] text-slate-500'>{label}</span>
+      <span className='
+        font-medium text-slate-800 dark:text-slate-200
+        group-hover:text-sky-700 dark:group-hover:text-sky-400
+        transition-colors
+      '>
+        {post.title}
+      </span>
+    </Link>
+  )
+}
+
+function PostFooter({ meta, newer, older }: { meta: PostMeta, newer?: PostMetadata, older?: PostMetadata }) {
+  return (
+    <footer className='mt-16 border-t border-slate-200 dark:border-slate-800'>
+      {
+        (newer || older) &&
+        <nav aria-label='Adjacent posts' className='
+          grid grid-cols-1 sm:grid-cols-2 gap-6 py-6
+          border-b border-slate-200 dark:border-slate-800
+        '>
+          {older && <AdjacentPost post={older} label='&larr; Previous' align='left' />}
+          {newer && <AdjacentPost post={newer} label='Next &rarr;' align='right' />}
+        </nav>
+      }
+      <div className='pt-6 flex flex-wrap justify-between gap-4 text-sm text-slate-500'>
+        <Link href='/blog' className='hover:text-sky-700 dark:hover:text-sky-400'>
+          All posts
+        </Link>
+        <span>Published {formatDate(meta.date)}</span>
+      </div>
     </footer>
   )
 }
@@ -88,6 +120,12 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
   const toc = post.toc ?? []
   const showToc = countTocEntries(toc) >= 3
 
+  // Adjacent posts, ordered from newest to oldest
+  const posts = getAllPosts().sort((a, b) => b.date - a.date)
+  const index = posts.findIndex((entry) => entry.path == post.slug)
+  const newer = index > 0 ? posts[index - 1] : undefined
+  const older = index >= 0 ? posts[index + 1] : undefined
+
   return (
     <main>
       <div className='py-8 sm:py-12 lg:py-16 px-8'>
@@ -100,7 +138,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
             <Prose>
               <Mdx code={post.code} />
             </Prose>
-            <PostFooter meta={post} />
+            <PostFooter meta={post} newer={newer} older={older} />
             <CitationPreview />
           </article>
           {
