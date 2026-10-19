@@ -142,8 +142,9 @@ function Teaser({ src, fill, link, alt }: { src: string, fill?: boolean, link: s
       flex items-center justify-center
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
-      hover:border-slate-400 dark:hover:border-slate-500
-      transition-colors
+      hover:ring-2 hover:ring-sky-600 dark:hover:ring-sky-400
+      hover:border-transparent
+      transition
     `}>
       <img
         src={src} alt={alt} loading='lazy'
