@@ -156,7 +156,7 @@ function News() {
   return (
     <>
       <SectionHeading>News</SectionHeading>
-      <CollapsibleList visible={3} className='not-prose flex flex-col gap-2'>
+      <CollapsibleList visible={4} className='not-prose flex flex-col gap-2'>
         {
           news.map((entry, i) => {
             return (
