@@ -131,21 +131,6 @@ function ProfileHeader() {
   )
 }
 
-function ArrowLink({ href, children, className }: { href: string, children: ReactNode, className?: string }) {
-  const LinkComponent = href.startsWith('/') ? Link : 'a'
-
-  return (
-    <LinkComponent href={href} className={`
-      inline-flex items-center gap-1 whitespace-nowrap
-      text-slate-500 hover:text-sky-700 dark:hover:text-sky-400
-      ${className ?? ''}
-    `}>
-      {children}
-      <icons.ArrowForward className='size-[1.1em]' />
-    </LinkComponent>
-  )
-}
-
 function Biography() {
   return (
     <>
@@ -237,15 +222,11 @@ function Awards() {
                     <>, </>
                     <span className='italic'>{entry.event}</span>
                   </span>
-                  <div className='flex flex-row flex-wrap items-center gap-x-4 gap-y-2 text-sm'>
+                  <div className='flex flex-row flex-wrap gap-2'>
                     <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
                     {
-                      paper &&
-                      <ArrowLink href={paper.link}>{paper.short}</ArrowLink>
-                    }
-                    {
-                      entry.links?.map((link) => {
-                        return <ArrowLink href={link.link} key={link.title}>{link.title}</ArrowLink>
+                      [...(paper?.links ?? []), ...(entry.links ?? [])].map((link) => {
+                        return <LinkChip title={link.title} link={link.link} Icon={link.icon} key={link.title} />
                       })
                     }
                   </div>
