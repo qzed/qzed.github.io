@@ -69,6 +69,13 @@ function useActiveId(ids: string[]): string | null {
   return active
 }
 
+// Scroll back to the top of the page, removing the section from the URL.
+function scrollToTop(event: React.MouseEvent) {
+  event.preventDefault()
+  window.scrollTo({ top: 0 })
+  history.replaceState(null, '', location.pathname + location.search)
+}
+
 export default function TableOfContents({ toc }: { toc: TocEntry[] }) {
   const [entries] = useState(() => flatten(toc))
   const [ids] = useState(() => entries.map((entry) => entry.id))
@@ -76,9 +83,16 @@ export default function TableOfContents({ toc }: { toc: TocEntry[] }) {
 
   return (
     <nav aria-label='Table of contents' data-no-highlight className='text-sm'>
-      <p className='mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-sky-800 dark:text-sky-400'>
+      <a
+        href='#'
+        onClick={scrollToTop}
+        className='
+          block mb-3 text-xs font-semibold uppercase tracking-[0.15em]
+          text-sky-800 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300
+        '
+      >
         On this page
-      </p>
+      </a>
       <ul className='border-l border-slate-200 dark:border-slate-800'>
         {
           entries.map((entry) => {
