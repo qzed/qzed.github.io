@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 
 import CollapsibleList from '@/components/CollapsibleList'
 import Prose from '@/components/Prose'
-import Publication, { AwardChip } from '@/components/Publication'
+import Publication, { LinkChip } from '@/components/Publication'
 import icons from '@/components/icons'
 
 import awards from '@data/awards'
@@ -200,7 +200,7 @@ function Awards() {
                     <span className='italic'>{entry.event}</span>
                   </span>
                   <div className='flex flex-row flex-wrap items-center gap-x-4 gap-y-2 text-sm'>
-                    <AwardChip title="Certificate" link={entry.certificate} />
+                    <LinkChip title="Certificate" link={entry.certificate} Icon={icons.Trophy} />
                     {
                       paper &&
                       <ArrowLink href={paper.link}>{paper.short}</ArrowLink>
