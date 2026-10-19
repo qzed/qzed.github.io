@@ -132,25 +132,22 @@ function Links({ links, awards }: { links: any[], awards: any[] }) {
   )
 }
 
-function Teaser({ src, video, link, alt }: { src: string, video?: string, link: string, alt: string }) {
+// Renders and photos fill the teaser box, figures and diagrams are shown in
+// full with some padding.
+function Teaser({ src, fill, link, alt }: { src: string, fill?: boolean, link: string, alt: string }) {
   return (
     <a href={link} className={`
       shrink-0 self-start w-full sm:w-44 aspect-[16/9] sm:aspect-[4/3]
-      flex items-center justify-center ${video ? '' : 'p-2'}
+      flex items-center justify-center ${fill ? '' : 'p-2'}
       rounded-lg overflow-hidden bg-white
       border border-slate-200 dark:border-slate-700
       hover:border-slate-400 dark:hover:border-slate-500
       transition-colors
     `}>
-      {
-        video
-          ? <video
-              src={video} poster={src} aria-label={alt}
-              autoPlay muted loop playsInline preload='metadata'
-              className='w-full h-full object-cover'
-            />
-          : <img src={src} alt={alt} loading='lazy' className='max-w-full max-h-full object-contain' />
-      }
+      <img
+        src={src} alt={alt} loading='lazy'
+        className={fill ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}
+      />
     </a>
   )
 }
@@ -174,7 +171,7 @@ export default function Publication({ data, teaser = false }: { data: any, tease
   return (
     <div className='flex flex-col sm:flex-row gap-3 sm:gap-5'>
       <Teaser
-        src={data.teaser} video={data.teaserVideo} link={data.link}
+        src={data.teaser} fill={data.teaserFill} link={data.link}
         alt={`Teaser for ${data.short ?? data.title}`}
       />
       {details}

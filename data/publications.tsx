@@ -26,8 +26,8 @@ const publications = [
         ],
         published: "International Conference on Intelligent Robots and Systems (IROS)",
         type: "conference",
-        teaser: "/assets/publications/teasers/sge-poster.webp",
-        teaserVideo: "/assets/publications/teasers/sge.mp4",
+        teaser: "/assets/publications/teasers/sge.webp",
+        teaserFill: true,
         link: "https://sge.cs.uni-freiburg.de/",
         links: [
             {
@@ -80,8 +80,8 @@ const publications = [
         ],
         published: "IEEE Robotics and Automation Letters (RA-L)",
         type: "journal",
-        teaser: "/assets/publications/teasers/lags-poster.webp",
-        teaserVideo: "/assets/publications/teasers/lags.mp4",
+        teaser: "/assets/publications/teasers/lags.webp",
+        teaserFill: true,
         link: "https://lags.cs.uni-freiburg.de/",
         links: [
             {
