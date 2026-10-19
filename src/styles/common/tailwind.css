@@ -34,6 +34,12 @@
     pointer-events: none;
 }
 
+/* Show equations near the middle of the viewport when navigating to them,
+ * instead of directly below the header. */
+.mdprose [id^="eq:"] {
+    scroll-margin-top: calc(45dvh - 4rem);
+}
+
 /* Include the list marker of references */
 .csl-entry.target-highlight::after {
     left: -1.5rem;
