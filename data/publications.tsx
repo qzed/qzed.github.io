@@ -2,6 +2,7 @@ import icons from "@/components/icons"
 
 const publications = [
     {
+        id: "sge",
         title: "Streaming Gaussian Encoding for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
@@ -24,10 +25,6 @@ const publications = [
         published: "International Conference on Intelligent Robots and Systems (IROS)",
         type: "conference",
         link: "https://sge.cs.uni-freiburg.de/",
-        award: {
-            title: "Best Paper Award Finalist",
-            link: "/assets/awards/iros2026-best-paper-finalist.pdf",
-        },
         links: [
             {
                 title: "arXiv",
@@ -47,6 +44,7 @@ const publications = [
         ],
     },
     {
+        id: "lags",
         title: "LaGS: Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [
@@ -106,6 +104,7 @@ const publications = [
         ],
     },
     {
+        id: "amodal-flow",
         title: "Amodal Optical Flow",
         year: 2024,
         authors: [
@@ -168,6 +167,7 @@ const publications = [
         ]
     },
     {
+        id: "ccmr",
         title: "CCMR: High Resolution Optical Flow Estimation via Coarse-To-Fine Context-Guided Motion Reasoning",
         year: 2024,
         authors: [
@@ -209,6 +209,7 @@ const publications = [
         ]
     },
     {
+        id: "ms-raft-plus",
         title: "MS-RAFT+: High Resolution Multi-Scale RAFT",
         year: 2023,
         authors: [
