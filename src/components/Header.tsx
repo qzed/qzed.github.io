@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Logo from '@/components/Logo'
 import NavLink from "@/components/NavLink"
 import SidebarButton from '@/components/SidebarButton'
+import ThemeButton from '@/components/ThemeButton'
 
 import pages from '@data/links/pages'
 
@@ -91,8 +92,11 @@ export default function Header() {
           <nav className='h-full font-medium text-base lg:text-[1.025rem] hidden sm:inline-block'>
             <Menu />
           </nav>
-          <div className='absolute right-8 sm:hidden flex items-center'>
-            <SidebarButton />
+          <div className='flex items-center gap-4 ml-5'>
+            <ThemeButton />
+            <div className='sm:hidden flex items-center'>
+              <SidebarButton />
+            </div>
           </div>
         </div>
       </div>

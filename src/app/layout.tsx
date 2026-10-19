@@ -72,13 +72,33 @@ export const metadata: Metadata = {
   },
 }
 
+// Apply the theme before the first paint to avoid flashing the wrong one.
+// Uses the stored preference if there is one, otherwise follows the system.
+const themeScript = `
+(function () {
+  var media = window.matchMedia('(prefers-color-scheme: dark)')
+
+  function apply() {
+    var theme = null
+    try { theme = localStorage.getItem('theme') } catch (e) {}
+    document.documentElement.classList.toggle('dark', theme ? theme == 'dark' : media.matches)
+  }
+
+  apply()
+  media.addEventListener('change', apply)
+})()
+`
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='scroll-pt-[4rem] lg:scroll-pt-[5rem]'>
+    <html lang="en" className='scroll-pt-[4rem] lg:scroll-pt-[5rem]' suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="
         relative min-h-dvh
         bg-slate-100 dark:bg-slate-900

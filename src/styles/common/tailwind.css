@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
+/* Dark mode via class on <html>, set by the theme script in the root layout */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+    color-scheme: dark;
+}
+
 @utility text-optimize-legibility {
     text-rendering: optimizeLegibility;
 }
