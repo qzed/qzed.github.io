@@ -21,12 +21,12 @@ export function imageOptions() {
 }
 
 export const colors = {
-  background: '#f1f5f9',   // slate-100
-  text: '#0f172a',         // slate-900
-  muted: '#475569',        // slate-600
-  subtle: '#64748b',       // slate-500
-  accent: '#075985',       // sky-800
-  border: '#cbd5e1',       // slate-300
+  background: '#f4f4f5',   // slate-100
+  text: '#16181b',         // slate-900
+  muted: '#525458',        // slate-600
+  subtle: '#707377',       // slate-500
+  accent: '#3c537e',       // sky-800
+  border: '#d2d4d6',       // slate-300
 }
 
 export function Logo({ size }: { size: number }) {
