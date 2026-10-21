@@ -14,15 +14,11 @@ export default function Sidebar() {
   return (
     <>
       <div className={`
-        fixed inset-0 w-full h-full
+        fixed inset-0 w-full h-full z-20
         sm:hidden
         ${clsLigthbox}
         backdrop-blur-[0.5px]
-        before:content-['']
-        before:absolute before:top-0 before:left-0 before:inset-0
-        before:sm:hidden
-        before:opacity-25 before:bg-black dark:before:bg-black
-        before:z-[-1]
+        bg-black/25
       `} onClick={() => setVisible(false)}
       />
       <div className={`
