@@ -40,6 +40,20 @@ const news = [
         </>,
     },
     {
+        date: "2023-10",    // check date
+        content: <>
+            <a href="/publications#pub-ccmr">CCMR</a> was accepted at
+            WACV 2024.
+        </>,
+    },
+    {
+        date: "2023-10",
+        content: <>
+            <a href="/publications#pub-ms-raft-plus">MS-RAFT+</a> was
+            accepted to the International Journal of Computer Vision (IJCV).
+        </>,
+    },
+    {
         date: "2022-10",
         content: <>
             Our MS-RAFT+ submission won <b>1st place</b> in the optical flow
