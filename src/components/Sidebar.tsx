@@ -2,11 +2,21 @@
 
 import { PageLinks, SocialLinks } from './SidebarLinks'
 
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { SidebarContext } from './SidebarContext'
 
 export default function Sidebar() {
   const { isVisible, setVisible } = useContext(SidebarContext)
+
+  // Close the sidebar when the window becomes wide enough to show the regular
+  // navigation in the header (sm breakpoint).
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 40rem)')
+    const close = () => media.matches && setVisible(false)
+
+    media.addEventListener('change', close)
+    return () => media.removeEventListener('change', close)
+  }, [setVisible])
 
   const clsSidebar = isVisible ? "" : "-right-52"
   const clsLigthbox = isVisible ? "block" : "hidden"
