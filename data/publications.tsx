@@ -2,6 +2,78 @@ import icons from "@/components/icons"
 
 const publications = [
     {
+        id: "waypop",
+        short: "WayPOP",
+        featured: true,
+        title: "WayPOP: A Panoramic Open-Set Panoptic Tracking Benchmark",
+        year: 2026,
+        authors: [
+            {
+                name: "Rohit Mohan",
+                mark: "*",
+                link: "https://rl.uni-freiburg.de/people/mohan",
+            },
+            {
+                name: "Maximilian Luz",
+                mark: "*",
+            },
+            {
+                name: "Swarnava Chowdhury",
+            },
+            {
+                name: "Yao Lu",
+            },
+            {
+                name: "Florian Drews",
+            },
+            {
+                name: "Thomas Nürnberg",
+                link: "https://scholar.google.com/citations?user=tJj06xYAAAAJ&hl=en",
+            },
+            {
+                name: "Yakov Miron",
+                link: "https://scholar.google.com/citations?hl=en&user=sVVAo00AAAAJ",
+            },
+            {
+                name: "Federico Tombari",
+            },
+            {
+                name: "Stefano Gasperini",
+            },
+            {
+                name: "Abhinav Valada",
+                link: "https://rl.uni-freiburg.de/people/valada",
+            },
+        ],
+        published: "Conference on Neural Information Processing Systems (NeurIPS)",
+        type: "conference",
+        teaser: "/assets/publications/teasers/waypop.webp",
+        teaserFill: true,
+        link: "https://waypop.cs.uni-freiburg.de/",
+        links: [
+            {
+                title: "arXiv",
+                link: "https://arxiv.org/abs/2611.05801",
+                icon: icons.Description,
+            },
+            {
+                title: "Website",
+                link: "https://waypop.cs.uni-freiburg.de/",
+                icon: icons.Language,
+            },
+            {
+                title: "Code",
+                link: "https://github.com/robot-learning-freiburg/waypop-devkit",
+                icon: icons.Code,
+            },
+            {
+                title: "Dataset",
+                link: "https://huggingface.co/datasets/mohangrim/WayPOP",
+                icon: icons.Public,
+            },
+        ],
+    },
+    {
         id: "sge",
         short: "SGE",
         featured: true,
@@ -50,7 +122,6 @@ const publications = [
     {
         id: "lags",
         short: "LaGS",
-        featured: true,
         title: "Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
         year: 2026,
         authors: [

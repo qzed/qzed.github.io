@@ -8,7 +8,7 @@ const news = [
     {
         date: "2026-09",
         content: <>
-            WayPOP was accepted as a poster at NeurIPS 2026.
+            <a href="/publications#pub-waypop">WayPOP</a> was accepted as a poster at NeurIPS 2026.
         </>,
     },
     {
